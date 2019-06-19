@@ -233,12 +233,6 @@ namespace TA_Editor
                 MessageBox.Show("Please enter a value <> '0'", "Invalid operation");
                 return;
             }
-            var check = Convert.ToDouble(this.UIModel.MathParameter);
-            if (check == null)
-            {
-                MessageBox.Show("Please enter numeric values only", "Invalid operation");
-                return;
-            }
             this.AddCalculation(3);
         }
 
@@ -247,12 +241,6 @@ namespace TA_Editor
             if (this.UIModel.MathParameter == 0)
             {
                 MessageBox.Show("Please enter a value <> '0'", "Invalid operation");
-                return;
-            }
-            var check = Convert.ToDouble(this.UIModel.MathParameter);
-            if (check == null)
-            {
-                MessageBox.Show("Please enter numeric values only", "Invalid operation");
                 return;
             }
             this.AddCalculation(1);
@@ -2393,11 +2381,6 @@ namespace TA_Editor
                             if (line.ToUpper().Contains("RANGE=") && !line.ToUpper().Contains("NOAUTORANGE"))
                             {
                                 tdf.Range = GetDoubleValue(line);
-                                if (false)
-                                {
-                                    if (tdf.Range < 600)
-                                        tdf.Range = tdf.Range + 100;
-                                }
                             }
                             if (line.ToUpper().Contains("RELOADTIME="))
                             {
@@ -2406,13 +2389,6 @@ namespace TA_Editor
                             if (line.ToUpper().Contains("WEAPONVELOCITY="))
                             {
                                 tdf.Weaponvelocity = GetDoubleValue(line);
-                                if (false)
-                                {
-                                    if (tdf.Weaponvelocity < 500)
-                                        tdf.Weaponvelocity = tdf.Weaponvelocity * 2;
-                                    else
-                                        tdf.Weaponvelocity = tdf.Weaponvelocity * 1.5;
-                                }
                             }
                             if (line.ToUpper().Contains("AREAOFEFFECT="))
                             {
