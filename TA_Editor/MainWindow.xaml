@@ -1,0 +1,385 @@
+﻿<Window x:Class="TA_Editor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TA_Editor"
+        mc:Ignorable="d"
+        Title="Total Annihilation Units and Weapons Editor" Height="808" Width="1360" MinHeight="800" MinWidth="1360" Background="#8996AF">
+    <Window.Resources>
+        <Style x:Key="CustomCellStyle" TargetType="DataGridCell" BasedOn="{StaticResource {x:Type DataGridCell}}">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Path=Content.Text, Mode=OneWay, RelativeSource={RelativeSource Self}}" Value="0">
+                        <Setter Property="Opacity" Value="0.5"/>
+                    </DataTrigger>
+                    <Trigger Property="IsSelected" Value="true">
+                        <Setter Property="Background" Value="OliveDrab"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            <Setter Property="ToolTip" Value="{Binding ID}"></Setter>
+            </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border BorderThickness="1" Width="1400" Margin="0,4,0,0" Height="94" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Vertical" Margin="6,4,0,0" VerticalAlignment="Top" Background="#B7D1E2" HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Margin="4,6,2,6" Width="263" VerticalAlignment="Top" Height="20" BorderThickness="2" Text="{Binding Path}" ToolTip="The folder of your *extracted* Rev31.gp3 file including the Weapons and UNITS folder"></TextBox>
+                        <Button Width="80" Margin="2,6,4,6" VerticalAlignment="Top" Height="20" Content="Select Folder" Command="{x:Static local:TACommands.SelectFolderCommand}" ToolTip="Select the extracted .hpi, .gp3 or .ufo folder containing the UNITS and WEAPONS folders."></Button>
+                    </StackPanel>
+                </StackPanel>
+                
+                <StackPanel Orientation="Vertical" Margin="6,0,0,4" VerticalAlignment="Bottom" Background="#B7D1E2" HorizontalAlignment="Left">
+                    <StackPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Mass cell editing"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Background="#B7D1E2" HorizontalAlignment="Right">
+                        <Button Margin="4,0,45,0" HorizontalAlignment="Left" Content="i" Width="20" Height="20" ToolTip="Information" Click="OnInformationClick"></Button>
+                        <TextBox Margin="4,0" TextAlignment="Right" Width="60" Height="20" Text="{Binding MathParameter, UpdateSourceTrigger=LostFocus}" ToolTip="Parameter value for the specific operations multiply, addition substract or set"/>
+                        <Button Margin="2,4" Width="50" Height="20" Content="Mult" Command="{x:Static local:TACommands.MultiplyToValueCommand}"
+                            ToolTip="Multiplies the value to all selected cells if possible."></Button>
+                        <Button Margin="2,4" Width="50" Height="20" Content="Add" Command="{x:Static local:TACommands.AddToValueCommand}"
+                            ToolTip="Adds the value to all selected cells if possible."></Button>
+                        <Button Margin="2,4" Width="50" Height="20" Content="Sub" Command="{x:Static local:TACommands.SubstractToValueCommand}"
+                            ToolTip="Substracts the value to all selected cells if possible."></Button>
+                        <Button Margin="2,4,4,4" Width="50" Height="20" Content="Set" Command="{x:Static local:TACommands.SetFixedValueCommand}"
+                            ToolTip="Sets the fixed value to all selected cells if possible."></Button>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="8,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#B7D1E2">
+                    <Button Margin="0,6,0,0" Width="120" Height="20" Content="Read Units Data" Command="{x:Static local:TACommands.ReadAllFBIFilesCommand}"
+                            ToolTip="Reads all .fbi files in all folders containing the word 'units' corrersponding to the set filter. "></Button>
+                    <Button Margin="4,7,4,7" Width="120" Height="20" Content="Read Weapons Data" Command="{x:Static local:TACommands.ReadAllTDFFilesCommand}"
+                            ToolTip="Reads all .tdf files in all folders containing the word 'weapons' corresponding to the shown units."></Button>
+                    <Button Margin="4,0,4,4" Width="120" Height="20" Content="Clear all" Command="{x:Static local:TACommands.ClearAllDataCommand}"
+                            ToolTip="Clears all tables and resets the filters. Does not save anything. Unsaved data will be lost!"></Button>
+                </StackPanel>
+                
+                <!-- Filters -->
+                <StackPanel Grid.Column="2" Orientation="Vertical" Margin="8,4,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#B7D1E2">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Filters"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="2,2,0,0" Height="20" Visibility="{Binding FBI}">
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Arm" Background="#660000FF" IsChecked="{Binding Arm}" IsEnabled="{Binding UseFilters, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Core" Background="#77FF0000" IsChecked="{Binding Core}" IsEnabled="{Binding UseFilters, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                        <CheckBox Width="50" Margin="58,0,0,0" Height="20" Content="Lvl 1" IsChecked="{Binding Lvl1}" IsEnabled="{Binding UseFilters, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Lvl 2" IsChecked="{Binding Lvl2}" IsEnabled="{Binding UseFilters, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Lvl 3+" IsChecked="{Binding Lvl3}" IsEnabled="{Binding UseFilters, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                        <CheckBox Width="17" Margin="3,-38,0,0" Height="20" IsChecked="{Binding UseFilters, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="2" BorderBrush="Black" ToolTip="Enable/Disable filters - disable filters if the files use other factions than Arm or Core or if they have their own TEDclasses"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="2,2,0,0" Height="20" Visibility="{Binding FBI}">
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="KBot" IsChecked="{Binding KBot}" IsEnabled="{Binding UseFilters, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Vehcl" IsChecked="{Binding Vehcl}" IsEnabled="{Binding UseFilters, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Air" IsChecked="{Binding Air}" IsEnabled="{Binding UseFilters, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Ship" IsChecked="{Binding Ship}" IsEnabled="{Binding UseFilters, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Cnstr" IsChecked="{Binding Cnstr}" IsEnabled="{Binding UseFilters, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                        <CheckBox Width="65" Margin="4,0,4,0" Height="20" Content="Building" IsChecked="{Binding Building}" IsEnabled="{Binding UseFilters, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-2,0,2" Height="24">
+                        <TextBlock Margin="8,0,0,0" Height="20" Width="30" Text="Filter" ToolTip="Search for the specific text in the name or description (if available). You can use blank as 'or'."/>
+                        <TextBox Margin="4,0" Width="172" Height="20" Text="{Binding SearchText}" ToolTip="Search for the specific text in the name or description (if available). You can use blank as 'or'."/>
+                        <Button x:Name="m_FilterUnits" Margin="0,0,4,0" Width="60" Height="20" Content="Units" Command="{x:Static local:TACommands.FilterUnitsCommand}" ToolTip="Filters the units list depending on the set filters. The weapon list will be updatet appropriately to show only weapons used by these units."></Button>
+                        <Button x:Name="m_FilterWeapons" Margin="0,0,4,0" Width="60" Height="20" Content="Weapons" Command="{x:Static local:TACommands.FilterWeaponsCommand}" ToolTip="Filters the weapons list. Only weapons associated to a filtered units and containing a search text word (if entered) will be shown."></Button>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Columns -->
+                <StackPanel Grid.Column="3" Orientation="Vertical" Margin="8,4,0,4" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#B7D1E2">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Columns"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="2,2,0,0" Height="20" Visibility="{Binding FBI}">
+                        <CheckBox Width="100" Margin="4,0,0,0" Background="#77FF0000" Content="Economy" IsChecked="{Binding ShowEco}" IsEnabled="{Binding ViewAllColumns, UpdateSourceTrigger=PropertyChanged}" ToolTip="Shows all extra columns related to economy values or build power"></CheckBox>
+                        <CheckBox Width="100" Margin="4,0,0,0" Background="Teal" Content="Move/Place" IsChecked="{Binding ShowMovePlace}" IsEnabled="{Binding ViewAllColumns, UpdateSourceTrigger=PropertyChanged}" ToolTip="Shows all extra columns related to movement or placement values"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="2,2,0,0" Height="20" Visibility="{Binding FBI}">
+                        <CheckBox Width="100" Margin="4,0,0,0" Background="#FF00FF00" Content="Radar/Cloak" IsChecked="{Binding ShowRadar}" IsEnabled="{Binding ViewAllColumns, UpdateSourceTrigger=PropertyChanged}" ToolTip="Shows all extra columns related to intel values"></CheckBox>
+                        <CheckBox Width="100" Margin="4,0,0,0" Background="#FF9900FF" Content="Air" IsChecked="{Binding ShowAir}" IsEnabled="{Binding ViewAllColumns, UpdateSourceTrigger=PropertyChanged}" ToolTip="Shows all extra columns related to values important to air units"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="2,2,0,6" Height="20" Visibility="{Binding FBI}">
+                        <CheckBox Width="100" Margin="4,0,0,0" Background="#660000FF" Content="Order/Abilities" IsChecked="{Binding ShowOrder}" IsEnabled="{Binding ViewAllColumns, UpdateSourceTrigger=PropertyChanged}" ToolTip="Shows all extra columns related to general order or ability values"></CheckBox>
+                        <CheckBox Width="100" Margin="4,0,0,0" Content="Misc" IsChecked="{Binding ShowMisc}" IsEnabled="{Binding ViewAllColumns, UpdateSourceTrigger=PropertyChanged}" ToolTip="Shows all extra columns where a category does not fit"></CheckBox>
+                        <CheckBox Width="17" Margin="-17,-63,0,0" IsChecked="{Binding ViewAllColumns, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="2" BorderBrush="Black" ToolTip="Uncheck to view all available columns"></CheckBox>
+                    </StackPanel>
+                </StackPanel>
+
+
+                <StackPanel Grid.Column="4" Orientation="Vertical" Margin="8,4,0,4" Height="84" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#B7D1E2">
+                    <Button Margin="4,6,4,0"  Width="120" Height="20" Content="Save Data" Command="{x:Static local:TACommands.WriteAllChangedFilesCommand}"
+                            ToolTip="Writes all changed files back to the original folders. All old data will be overwritten"></Button>
+                    <Button Margin="4,7,4,7"  Width="120" Height="20" Content="Pack all Data" Command="{x:Static local:TACommands.PackAllFilesCommand}"
+                            ToolTip="Starts the default packing program (for example HPI File Pack). The path to the program will be stored in the TA_Editor.cfg"></Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!-- TDF Files -->
+            <DataGrid Grid.Row="2" x:Name="m_DataGridTDF" ItemsSource="{Binding TDFData, IsAsync=True}" AutoGenerateColumns="False" AlternationCount="2" 
+                        Visibility="{Binding TDI}" LoadingRow="DataGrid_LoadingRow" SelectedCellsChanged="OnSelectionChangedTDF" 
+                        EnableColumnVirtualization="True" EnableRowVirtualization="True"
+                        AlternatingRowBackground="Bisque" SelectionUnit="Cell" CellStyle="{StaticResource CustomCellStyle}" MouseRightButtonDown="OnCellRightClickClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="120" IsReadOnly="True" FontWeight="UltraLight">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="120" SortDirection="Descending" FontWeight="Bold">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Range" Binding="{Binding Range}" Width="45">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Reload" Binding="{Binding Reloadtime, UpdateSourceTrigger=PropertyChanged}" Width="50">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Default" Binding="{Binding Default , UpdateSourceTrigger=PropertyChanged}" Width="50">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="DPS" Binding="{Binding DPS}" Width="50" IsReadOnly="True" FontWeight="Bold">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Velocity" Binding="{Binding Weaponvelocity}" Width="55">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="AOE" Binding="{Binding Areaofeffect}" Width="40">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Burst" Binding="{Binding Burst, UpdateSourceTrigger=PropertyChanged}" Width="40">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="BurstRate" Binding="{Binding BurstRate, UpdateSourceTrigger=PropertyChanged}" Width="60">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Accuracy" Binding="{Binding Accuracy}" Width="50">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="E Shot" Binding="{Binding EnergyPerShot}" Width="45">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Tolerance" Binding="{Binding Tolerance}" Width="60">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Spray" Binding="{Binding SprayAngle}" Width="40">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="WTimer" Binding="{Binding WeaponTimer}" Width="55">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="StartVel" Binding="{Binding StartVelocity}" Width="50">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Accel" Binding="{Binding WeaponAcceleration}" Width="40">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="EdgeEff" Binding="{Binding EdgeEffectiveness}" Width="55">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="PitchTol" Binding="{Binding PitchTolerance}" Width="50">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="MinBarrel" Binding="{Binding MinBarrelAngle}" Width="60">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Col1" Binding="{Binding Color1}" Width="35">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Col2" Binding="{Binding Color2}" Width="35">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="UsedBy" Binding="{Binding UsedBy, UpdateSourceTrigger=Explicit}" Width="160" IsReadOnly="True" FontWeight="Bold">
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <GridSplitter Grid.Row="1" Height="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ResizeDirection="Rows" Foreground="Beige"/>
+
+            <!-- FBI Files -->
+            <Grid Grid.Row="0">
+                <FrameworkElement x:Name="dummyElement" Visibility="Collapsed"/>
+                <DataGrid x:Name="m_DataGridFBI"  ItemsSource="{Binding FBIData, IsAsync=True}" AutoGenerateColumns="False" AlternationCount="2" 
+                          Visibility="{Binding FBI}" LoadingRow="DataGrid_LoadingRow" SelectedCellsChanged="OnSelectionChangedFBI"
+                          EnableColumnVirtualization="True" EnableRowVirtualization="True"
+                          AlternatingRowBackground="LightBlue" SelectionUnit="Cell" CellStyle="{StaticResource CustomCellStyle}" MouseRightButtonDown="OnCellRightClickClick">
+                    <DataGrid.Resources>
+                        <local:BindingProxy x:Key="proxy" Data="{Binding}"/>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="UnitName" Binding="{Binding ID}" Width="70" IsReadOnly="True" FontWeight="UltraLight">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130" SortDirection="Descending">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Side" Binding="{Binding Side}" IsReadOnly="True" Width="40">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="140">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Level" Binding="{Binding Level}" IsReadOnly="True" Width="40">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Cost E" Binding="{Binding BuildCostEnergy}" Width="50">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Cost M" Binding="{Binding BuildCostMetal, UpdateSourceTrigger=PropertyChanged}" Width="50">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="BuildTime" Binding="{Binding BuildTime}" Width="65">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="TotalHP" Binding="{Binding MaxDamage, UpdateSourceTrigger=PropertyChanged}" Width="60">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="RealHP" Binding="{Binding RealDamage, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="60">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="RHP/Metal" Binding="{Binding DPM}" IsReadOnly="True" FontWeight="Bold" Width="70">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="DmgMod" Binding="{Binding DamageModifier, UpdateSourceTrigger=LostFocus}" Width="60">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="SightDist" Binding="{Binding SightDistance, UpdateSourceTrigger=PropertyChanged}" Width="60">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Velocity" Binding="{Binding MaxVelocity, UpdateSourceTrigger=LostFocus}" Width="50">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Brake" Binding="{Binding BrakeRate, UpdateSourceTrigger=LostFocus}" Width="50">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Accel" Binding="{Binding Acceleration, UpdateSourceTrigger=LostFocus}" Width="50">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="TurnRate" Binding="{Binding TurnRate, UpdateSourceTrigger=LostFocus}" Width="60">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="WorkTime" Binding="{Binding WorkerTime, UpdateSourceTrigger=PropertyChanged}" Width="65" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="E Usage" Binding="{Binding EnergyUse, UpdateSourceTrigger=LostFocus}" Width="60" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="E Storage" Binding="{Binding EnergyStorage, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="M Storage" Binding="{Binding MetalStorage, UpdateSourceTrigger=PropertyChanged}" Width="65" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="E Make" Binding="{Binding EnergyMake, UpdateSourceTrigger=LostFocus}" Width="50" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="M Make" Binding="{Binding MetalMake, UpdateSourceTrigger=LostFocus}" Width="55" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Makes M" Binding="{Binding MakesMetal, UpdateSourceTrigger=LostFocus}" Width="60" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Wind" Binding="{Binding WindGenerator, UpdateSourceTrigger=LostFocus}" Width="40" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="BuildDist" Binding="{Binding BuildDistance, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130" SortDirection="Descending" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="RadarDist" Binding="{Binding RadarDistance, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="SonarDist" Binding="{Binding SonarDistance, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="RadarJam" Binding="{Binding RadarDistanceJam, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="SonarJam" Binding="{Binding SonarDistanceJam, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Stealth" Binding="{Binding Stealth, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="CloakCost" Binding="{Binding CloakCost, UpdateSourceTrigger=PropertyChanged}" Width="65" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="CloakCostMov" Binding="{Binding CloakCostMoving, UpdateSourceTrigger=PropertyChanged}" Width="90" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="CloakDist" Binding="{Binding MinCloakDistance, UpdateSourceTrigger=PropertyChanged}" Foreground="DarkGreen" FontWeight="SemiBold" Width="60" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130" SortDirection="Descending" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Move" Binding="{Binding CanMove, UpdateSourceTrigger=PropertyChanged}" Width="40" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Guard" Binding="{Binding CanGuard, UpdateSourceTrigger=PropertyChanged}" Width="45" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Patrol" Binding="{Binding CanPatrol, UpdateSourceTrigger=PropertyChanged}" Width="45" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Reclaim" Binding="{Binding CanReclamate, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="DGun" Binding="{Binding CanDgun, UpdateSourceTrigger=PropertyChanged}" Width="40" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Capture" Binding="{Binding CanCapture, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Load" Binding="{Binding CanLoad, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="CantTransp" Binding="{Binding CantBeTransported, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="OnOff" Binding="{Binding OnOffable, UpdateSourceTrigger=PropertyChanged}" Width="45" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="ShootMe" Binding="{Binding ShootMe, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="NoAutoFire" Binding="{Binding NoAutoFire, UpdateSourceTrigger=PropertyChanged}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="FireStandOrders" Binding="{Binding FireStandOrders, UpdateSourceTrigger=PropertyChanged}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="StandFireOrder" Binding="{Binding StandingFireOrder, UpdateSourceTrigger=PropertyChanged}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="MobileStandOrders" Binding="{Binding MobileStandOrders, UpdateSourceTrigger=PropertyChanged}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="StandMoveOrder" Binding="{Binding StandingMoveOrder, UpdateSourceTrigger=PropertyChanged}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130" SortDirection="Descending" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="FootX" Binding="{Binding FootPrintX, UpdateSourceTrigger=PropertyChanged}" Width="45" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="FootZ" Binding="{Binding FootPrintZ, UpdateSourceTrigger=PropertyChanged}" Width="45" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="MaxWater" Binding="{Binding MaxWaterDepth, UpdateSourceTrigger=PropertyChanged}" Width="65" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="MinWater" Binding="{Binding MinWaterDepth, UpdateSourceTrigger=PropertyChanged}" Width="65" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Slope" Binding="{Binding MaxSlope, UpdateSourceTrigger=PropertyChanged}" Width="45" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="WaterLine" Binding="{Binding WaterLine, UpdateSourceTrigger=PropertyChanged}" Width="65" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Amph" Binding="{Binding Amphibious, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Floater" Binding="{Binding Floater, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Upright" Binding="{Binding Upright, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="TransSize" Binding="{Binding TransportSize, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="TransCap" Binding="{Binding TransportCapacity, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130" SortDirection="Descending" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="CanFly" Binding="{Binding CanFly, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="HovAttck" Binding="{Binding HoverAttack, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Cruisealt" Binding="{Binding Cruisealt, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="BankScale" Binding="{Binding BankScale, UpdateSourceTrigger=LostFocus}" Width="65" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="PitchScale" Binding="{Binding PitchScale, UpdateSourceTrigger=LostFocus}" Width="65" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Move1" Binding="{Binding MoveRate1, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Move2" Binding="{Binding MoveRate2, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130" SortDirection="Descending" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="ImmuneParalyze" Binding="{Binding ImmuneToParalyzer, UpdateSourceTrigger=PropertyChanged}" Width="80" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="HealTime" Binding="{Binding HealTime, UpdateSourceTrigger=PropertyChanged}" Width="60" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Sound" Binding="{Binding SoundCategory, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Explode" Binding="{Binding ExplodeAs, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="SelfDestruct" Binding="{Binding SelfDestructAs, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Corpse" Binding="{Binding Corpse, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="PriBadTarget" Binding="{Binding wpri_badtargetcategory, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="SecBadTarget" Binding="{Binding wsec_badtargetcategory, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="SpeBadTarget" Binding="{Binding wspe_badtargetcategory, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Movement" Binding="{Binding MovementClass, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="NoChase" Binding="{Binding NoChaseCategory, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="MissiontType" Binding="{Binding DefaultMissionType, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Category" Binding="{Binding Category, UpdateSourceTrigger=PropertyChanged}" FontWeight="Light" Width="190">
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
