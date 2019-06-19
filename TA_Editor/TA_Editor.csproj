@@ -57,6 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helper\BindingProxy.cs" />
+    <Compile Include="IO.cs" />
     <Compile Include="UIManager\UIManager.cs" />
     <Compile Include="UIModel\UIModel.cs" />
     <Page Include="MainWindow.xaml">
