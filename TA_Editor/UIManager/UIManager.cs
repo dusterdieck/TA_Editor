@@ -2341,136 +2341,11 @@ namespace TA_Editor
 
             foreach (string file in fileList)
             {
-                using (StreamReader sr = new StreamReader(file))
+                var tdfs = ReadWeaponFromTdf(file);
+
+                foreach (var tdf in tdfs)
                 {
-                    string line = "";
-                    TDF tdf = new TDF();
-                    tdf.File = file;
-                    string unit = "";
-                    while (!sr.EndOfStream)
-                    {
-                        line = sr.ReadLine();
-                        if (!line.StartsWith(@"/") && !line.StartsWith(@"\t/"))
-                        {
-                            if (unit != line && unit != "" && line.Contains("[") && !line.ToUpper().Contains("[DAMAGE]") && line.Length > 4)
-                            {
-                                tdf.Changed = false;
-                                this.UIModel.TDFData.Add(tdf);
-                                tdf = new TDF();
-                                tdf.File = file;
-                            }
-
-                            if (line.Contains("[") && !line.ToUpper().Contains("[DAMAGE]"))
-                            {
-                                tdf.ID = line.Replace("[", "").Replace("]", "");
-                                unit = line;
-                            }
-                            if (line.ToUpper().Contains("\tID=") || line.ToUpper().StartsWith("ID="))
-                            {
-                                tdf.WeaponId = GetDoubleValue(line).ToString();
-                            }
-                            if (line.ToUpper().Contains("\tNAME=") || line.ToUpper().StartsWith("NAME="))
-                            {
-                                tdf.Name = GetStringValue(line);
-                            }
-                            if (line.ToUpper().Contains("RANGE=") && !line.ToUpper().Contains("NOAUTORANGE"))
-                            {
-                                tdf.Range = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("RELOADTIME="))
-                            {
-                                tdf.Reloadtime = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("WEAPONVELOCITY="))
-                            {
-                                tdf.Weaponvelocity = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("AREAOFEFFECT="))
-                            {
-                                tdf.Areaofeffect = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("BURST=") && !line.ToUpper().Contains("BURSTRATE"))
-                            {
-                                tdf.Burst = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("BURSTRATE="))
-                            {
-                                tdf.BurstRate = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("ENERGYPERSHOT="))
-                            {
-                                tdf.EnergyPerShot = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("ACCURACY="))
-                            {
-                                tdf.Accuracy = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("STARTVELOCITY="))
-                            {
-                                tdf.StartVelocity = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("WEAPONACCELERATION="))
-                            {
-                                tdf.WeaponAcceleration = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("WEAPONTIMER="))
-                            {
-                                tdf.WeaponTimer = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("TOLERANCE=") && !line.ToUpper().Contains("PITCH"))
-                            {
-                                tdf.Tolerance = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("EDGEEFFECTIVENESS="))
-                            {
-                                tdf.EdgeEffectiveness = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("BEAMWEAPON=1"))
-                            {
-                                tdf.Accuracy = 1;
-                            }
-                            if (line.Contains("MINBARRELANGLE="))
-                            {
-                                tdf.MinBarrelAngle = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("COLOR="))
-                            {
-                                tdf.Color1 = GetStringValue(line);
-                            }
-                            if (line.ToUpper().Contains("COLOR2="))
-                            {
-                                tdf.Color2 = GetStringValue(line);
-                            }
-                            if (line.ToUpper().Contains("SPRAYANGLE="))
-                            {
-                                tdf.SprayAngle = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("PITCHTOLERANCE="))
-                            {
-                                tdf.PitchTolerance = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("MINBARRELANGLE="))
-                            {
-                                tdf.MinBarrelAngle = GetDoubleValue(line);
-                            }
-                            if (line.ToUpper().Contains("DEFAULT="))
-                            {
-                                try
-                                {
-                                    tdf.Default = GetDoubleValue(line);
-                                }
-                                catch
-                                {
-                                    throw new Exception(line + " ist fehlerhaft");
-                                }
-                            }
-                        }
-                    }
-
-                    tdf.Changed = false;
-                    if (tdf.ID != null)
-                        this.UIModel.TDFData.Add(tdf);
-
+                    this.UIModel.TDFData.Add(tdf);
                     if (!weaponIDs.Contains(tdf.WeaponId))
                     {
                         weaponIDs.Add(tdf.WeaponId);
@@ -2506,6 +2381,167 @@ namespace TA_Editor
             if (this.UIModel.TDFData.Count == 0)
             {
                 MessageBox.Show("No .tdf file could be read. You need to extract all files (.gp3, .ufo, .hpi) containing the weapons you want to edit first.", "No TDF files read");
+            }
+        }
+
+        private static List<TDF> ReadWeaponFromTdf(string file)
+        {
+            var tdfs = new List<TDF>();
+
+            using (StreamReader sr = new StreamReader(file))
+            {
+                string line = "";
+                TDF tdf = new TDF();
+                tdf.File = file;
+                string unit = "";
+                while (!sr.EndOfStream)
+                {
+                    line = sr.ReadLine();
+                    if (!line.StartsWith(@"/") && !line.StartsWith(@"\t/"))
+                    {
+                        if (unit != line && unit != "" && line.Contains("[") && !line.ToUpper().Contains("[DAMAGE]")
+                            && line.Length > 4)
+                        {
+                            tdf.Changed = false;
+                            tdfs.Add(tdf);
+                            tdf = new TDF();
+                            tdf.File = file;
+                        }
+
+                        if (line.Contains("[") && !line.ToUpper().Contains("[DAMAGE]"))
+                        {
+                            tdf.ID = line.Replace("[", "").Replace("]", "");
+                            unit = line;
+                        }
+
+                        if (line.ToUpper().Contains("\tID=") || line.ToUpper().StartsWith("ID="))
+                        {
+                            tdf.WeaponId = GetDoubleValue(line).ToString();
+                        }
+
+                        if (line.ToUpper().Contains("\tNAME=") || line.ToUpper().StartsWith("NAME="))
+                        {
+                            tdf.Name = GetStringValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("RANGE=") && !line.ToUpper().Contains("NOAUTORANGE"))
+                        {
+                            tdf.Range = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("RELOADTIME="))
+                        {
+                            tdf.Reloadtime = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("WEAPONVELOCITY="))
+                        {
+                            tdf.Weaponvelocity = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("AREAOFEFFECT="))
+                        {
+                            tdf.Areaofeffect = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("BURST=") && !line.ToUpper().Contains("BURSTRATE"))
+                        {
+                            tdf.Burst = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("BURSTRATE="))
+                        {
+                            tdf.BurstRate = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("ENERGYPERSHOT="))
+                        {
+                            tdf.EnergyPerShot = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("ACCURACY="))
+                        {
+                            tdf.Accuracy = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("STARTVELOCITY="))
+                        {
+                            tdf.StartVelocity = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("WEAPONACCELERATION="))
+                        {
+                            tdf.WeaponAcceleration = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("WEAPONTIMER="))
+                        {
+                            tdf.WeaponTimer = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("TOLERANCE=") && !line.ToUpper().Contains("PITCH"))
+                        {
+                            tdf.Tolerance = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("EDGEEFFECTIVENESS="))
+                        {
+                            tdf.EdgeEffectiveness = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("BEAMWEAPON=1"))
+                        {
+                            tdf.Accuracy = 1;
+                        }
+
+                        if (line.Contains("MINBARRELANGLE="))
+                        {
+                            tdf.MinBarrelAngle = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("COLOR="))
+                        {
+                            tdf.Color1 = GetStringValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("COLOR2="))
+                        {
+                            tdf.Color2 = GetStringValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("SPRAYANGLE="))
+                        {
+                            tdf.SprayAngle = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("PITCHTOLERANCE="))
+                        {
+                            tdf.PitchTolerance = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("MINBARRELANGLE="))
+                        {
+                            tdf.MinBarrelAngle = GetDoubleValue(line);
+                        }
+
+                        if (line.ToUpper().Contains("DEFAULT="))
+                        {
+                            try
+                            {
+                                tdf.Default = GetDoubleValue(line);
+                            }
+                            catch
+                            {
+                                throw new Exception(line + " ist fehlerhaft");
+                            }
+                        }
+                    }
+                }
+
+                tdf.Changed = false;
+                if (tdf.ID != null)
+                    tdfs.Add(tdf);
+                return tdfs;
             }
         }
 
