@@ -13,6 +13,8 @@ namespace TA_Editor
     public class TDF : INotifyPropertyChanged
     {
         public string ID { get; set; }
+
+        public string WeaponId { get; set; }
         public string Name { get; set; }
 
         private double m_Range;

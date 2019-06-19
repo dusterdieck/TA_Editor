@@ -2367,12 +2367,7 @@ namespace TA_Editor
                             }
                             if (line.ToUpper().Contains("\tID=") || line.ToUpper().StartsWith("ID="))
                             {
-                                if (!weaponIDs.Contains(GetDoubleValue(line).ToString()))
-                                {
-                                    weaponIDs.Add(GetDoubleValue(line).ToString());
-                                }
-                                else
-                                    weaponIDDoubles.Add(GetDoubleValue(line).ToString());
+                                tdf.WeaponId = GetDoubleValue(line).ToString();
                             }
                             if (line.ToUpper().Contains("\tNAME=") || line.ToUpper().StartsWith("NAME="))
                             {
@@ -2475,6 +2470,13 @@ namespace TA_Editor
                     tdf.Changed = false;
                     if (tdf.ID != null)
                         this.UIModel.TDFData.Add(tdf);
+
+                    if (!weaponIDs.Contains(tdf.WeaponId))
+                    {
+                        weaponIDs.Add(tdf.WeaponId);
+                    }
+                    else
+                        weaponIDDoubles.Add(tdf.WeaponId);
                 }
             }
             List<string> WeaponIDsFree = new List<string>();
