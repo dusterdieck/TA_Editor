@@ -2984,7 +2984,7 @@ namespace TA_Editor
             }
         }
 
-        private double GetDoubleValue(string input)
+        private static double GetDoubleValue(string input)
         {
             string[] inputArray = input.Split(';');
             string[] inputArray2 = inputArray[0].Split('/');
@@ -2996,7 +2996,7 @@ namespace TA_Editor
             }
             return double.Parse(output, new NumberFormatInfo() { NumberDecimalSeparator = "." });
         }
-        private string GetStringValue(string input)
+        private static string GetStringValue(string input)
         {
             string[] inputArray = input.Split(';');
             string[] inputArray2 = inputArray[0].Split('/');
