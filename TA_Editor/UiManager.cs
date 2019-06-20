@@ -222,7 +222,7 @@ namespace TA_Editor
                 MessageBox.Show("Please enter a value <> '0'", "Invalid operation");
                 return;
             }
-            this.AddCalculation(3);
+            this.AddCalculation(CalculationOperation.Subtract);
         }
 
         private void ExecuteAddToValueCommand(object sender, ExecutedRoutedEventArgs e)
@@ -232,9 +232,9 @@ namespace TA_Editor
                 MessageBox.Show("Please enter a value <> '0'", "Invalid operation");
                 return;
             }
-            this.AddCalculation(1);
+            this.AddCalculation(CalculationOperation.Add);
         }
-        private void AddCalculation(int operation)
+        private void AddCalculation(CalculationOperation operation)
         {
             Counter counter = new Counter();
 
@@ -307,10 +307,10 @@ namespace TA_Editor
             int selectedCells = this.MainWindow.DataGridTDF.SelectedCells.Count + dg.SelectedCells.Count;
 
             // Weapons
-            counter.Merge(BulkCalculation.CalculateOverAll(this.MainWindow.DataGridTDF, 2, this.UIModel.MathParameter));
+            counter.Merge(BulkCalculation.CalculateOverAll(this.MainWindow.DataGridTDF, CalculationOperation.Multiply, this.UIModel.MathParameter));
            
             // Units
-            counter.Merge(BulkCalculation.CalculateOverAll(dg, 2, this.UIModel.MathParameter));
+            counter.Merge(BulkCalculation.CalculateOverAll(dg, CalculationOperation.Multiply, this.UIModel.MathParameter));
 
             if (counter.outofrangecounter > 0 && (selectedCells != counter.successcounter))
                 MessageBox.Show(counter.successcounter + " values have been changed.\r "
@@ -351,10 +351,10 @@ namespace TA_Editor
             int selectedCells = this.MainWindow.DataGridTDF.SelectedCells.Count + dg.SelectedCells.Count;
 
             // Weapons
-            counter.Merge(BulkCalculation.CalculateOverAll(this.MainWindow.DataGridTDF, 4, this.UIModel.MathParameter));
+            counter.Merge(BulkCalculation.CalculateOverAll(this.MainWindow.DataGridTDF, CalculationOperation.SetValue, this.UIModel.MathParameter));
 
             // Units
-            counter.Merge(BulkCalculation.CalculateOverAll(dg, 4, this.UIModel.MathParameter));
+            counter.Merge(BulkCalculation.CalculateOverAll(dg, CalculationOperation.SetValue, this.UIModel.MathParameter));
 
             if (counter.outofrangecounter > 0 && (selectedCells != counter.successcounter))
                 MessageBox.Show(counter.successcounter + " values have been changed.\r "

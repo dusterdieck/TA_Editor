@@ -4,7 +4,7 @@ namespace TA_Editor
 {
     internal static class BulkCalculation
     {
-        public static Counter CalculateOverAll(DataGrid dg, int operation, double mathParameter)
+        public static Counter CalculateOverAll(DataGrid dg, CalculationOperation operation, double mathParameter)
         {
             var counter = new Counter();
             foreach (DataGridCellInfo dataGridCell in dg.SelectedCells)
@@ -987,17 +987,17 @@ namespace TA_Editor
             return counter;
         }
 
-        private static double Calculate(int operation, double param1, double param2)
+        private static double Calculate(CalculationOperation operation, double param1, double param2)
         {
             switch (operation)
             {
-                case 1:
+                case CalculationOperation.Add:
                     return param1 + param2;
-                case 2:
+                case CalculationOperation.Multiply:
                     return param1 * param2;
-                case 3:
+                case CalculationOperation.Subtract:
                     return param1 - param2;
-                case 4:
+                case CalculationOperation.SetValue:
                     return param2;
                 default:
                     return param1;
