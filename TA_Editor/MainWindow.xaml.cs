@@ -51,17 +51,6 @@ namespace TA_Editor
         //    }
         //}
 
-        private void OnButtonReadDataClick(object sender, RoutedEventArgs e)
-        {
-            TaCommands.ReadAllTDFFilesCommand.Execute(null, this);
-
-            string folderPath = @"E:\Privat\Rev31\rev31\Weapons";
-            foreach (string file in Directory.EnumerateFiles(folderPath, "*.tdf"))
-            {
-
-            }
-        }
-
         void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             e.Row.Header = (e.Row.GetIndex()).ToString();
@@ -89,11 +78,6 @@ namespace TA_Editor
                 "\r"
                 , "Total Annihilation Units and Weapons Editor V1.12"
                 );
-        }
-
-        private void OnShowEcoClick(object sender, RoutedEventArgs e)
-        {
-            this.DataGridFBI.SelectedCells.Clear();
         }
 
         private void OnSelectionChangedFBI(object sender, SelectedCellsChangedEventArgs e)
