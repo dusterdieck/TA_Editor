@@ -43,14 +43,6 @@ namespace TA_Editor
             }
         }
 
-        //public DataGrid DataGridFBI_Eco
-        //{
-        //    get
-        //    {
-        //        return m_DataGridFBI_Eco;
-        //    }
-        //}
-
         void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             e.Row.Header = (e.Row.GetIndex()).ToString();
