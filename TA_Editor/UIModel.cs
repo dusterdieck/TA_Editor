@@ -1458,7 +1458,7 @@ namespace TA_Editor
         }
     }
 
-    public class UIModel : INotifyPropertyChanged
+    public class UiModel : INotifyPropertyChanged
     {
         private Visibility m_FBI;
         private Visibility m_TDF;
@@ -1856,7 +1856,7 @@ namespace TA_Editor
             }
         }
 
-        public UIModel()
+        public UiModel()
         {
             this.TDFData = new ObservableCollection<Tdf>();
             this.FBIData = new ObservableCollection<Fbi>();

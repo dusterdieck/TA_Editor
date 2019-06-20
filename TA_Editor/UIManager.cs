@@ -29,7 +29,7 @@ namespace TA_Editor
     class UIManager
     {
         public MainWindow MainWindow { get; set; }
-        public UIModel UIModel { get; set; }
+        public UiModel UIModel { get; set; }
 
         protected CommandBindingCollection m_CommandBindings;
         protected virtual CommandBindingCollection CommandBindings
@@ -48,7 +48,7 @@ namespace TA_Editor
         {
             MainWindow = new MainWindow();
             MainWindow.Closing += OnBeginClosing;
-            this.UIModel = new UIModel();
+            this.UIModel = new UiModel();
             MainWindow.DataContext = this.UIModel;
             MainWindow.CommandBindings.Add(new CommandBinding(TACommands.ReadAllTDFFilesCommand, this.ExecuteReadAllTDFFilesCommand));
             MainWindow.CommandBindings.Add(new CommandBinding(TACommands.ReadAllFBIFilesCommand, this.ExecuteReadAllFBIFilesCommand));
