@@ -13,6 +13,6 @@ namespace TA_Editor
     /// </summary>
     public partial class App : Application
     {
-        UIManager uiManager = new UIManager();
+        UiManager uiManager = new UiManager();
     }
 }

@@ -15,7 +15,7 @@ using MessageBox = System.Windows.MessageBox;
 
 namespace TA_Editor
 {
-    class UIManager
+    class UiManager
     {
         public MainWindow MainWindow { get; set; }
         public UiModel UIModel { get; set; }
@@ -33,7 +33,7 @@ namespace TA_Editor
             }
         }
 
-        public UIManager()
+        public UiManager()
         {
             MainWindow = new MainWindow();
             MainWindow.Closing += OnBeginClosing;

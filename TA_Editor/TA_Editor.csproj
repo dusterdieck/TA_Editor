@@ -57,10 +57,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BindingProxy.cs" />
+    <Compile Include="Counter.cs" />
     <Compile Include="Fbi.cs" />
     <Compile Include="IO.cs" />
     <Compile Include="Tdf.cs" />
-    <Compile Include="UIManager.cs" />
+    <Compile Include="UiManager.cs" />
     <Compile Include="UiModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
