@@ -358,7 +358,7 @@ namespace TA_Editor
                 if (m_TDF == value)
                     return;
                 m_TDF = value;
-                this.NotifyPropertyChanged("TDI");
+                this.NotifyPropertyChanged("TDF");
             }
         }
 
