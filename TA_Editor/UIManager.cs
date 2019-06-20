@@ -185,7 +185,7 @@ namespace TA_Editor
                 if (this.MainWindow.DataGridTDF.SelectedCells.Count == 1)
                 {
                     DataGridCellInfo dataGridCell = this.MainWindow.DataGridTDF.SelectedCells[0];
-                    var tdf = dataGridCell.Item as TDF;
+                    var tdf = dataGridCell.Item as Tdf;
                     Process.Start(tdf.File);
                 }
                 else if (this.MainWindow.DataGridFBI.SelectedCells.Count == 1)
@@ -388,7 +388,7 @@ namespace TA_Editor
         {
             foreach (DataGridCellInfo dataGridCell in dg.SelectedCells)
             {
-                var tdf = dataGridCell.Item as TDF;
+                var tdf = dataGridCell.Item as Tdf;
                 if (tdf != null)
                 {
                     // range
@@ -1408,7 +1408,7 @@ namespace TA_Editor
                 return;
             }
             int tdfDataChanged = 0;
-            foreach (TDF tdf in this.UIModel.TDFData)
+            foreach (Tdf tdf in this.UIModel.TDFData)
             {
                 
                 if (tdf.Changed)

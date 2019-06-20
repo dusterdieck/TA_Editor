@@ -7,14 +7,14 @@ using TA_Editor;
 
 internal static class IO
 {
-    public static List<TDF> ReadWeaponFromTdf(string file)
+    public static List<Tdf> ReadWeaponFromTdf(string file)
     {
-        var tdfs = new List<TDF>();
+        var tdfs = new List<Tdf>();
 
         using (StreamReader sr = new StreamReader(file))
         {
             string line = "";
-            TDF tdf = new TDF();
+            Tdf tdf = new Tdf();
             tdf.File = file;
             string unit = "";
             while (!sr.EndOfStream)
@@ -27,7 +27,7 @@ internal static class IO
                     {
                         tdf.Changed = false;
                         tdfs.Add(tdf);
-                        tdf = new TDF();
+                        tdf = new Tdf();
                         tdf.File = file;
                     }
 

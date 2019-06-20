@@ -10,7 +10,7 @@ using System.Windows.Data;
 
 namespace TA_Editor
 {
-    public class TDF : INotifyPropertyChanged
+    public class Tdf : INotifyPropertyChanged
     {
         public string ID { get; set; }
 
@@ -1463,7 +1463,7 @@ namespace TA_Editor
         private Visibility m_FBI;
         private Visibility m_TDF;
         private ICollectionView m_TDFDataView { get; set; }
-        private ObservableCollection<TDF> m_TDFData { get; set; }
+        private ObservableCollection<Tdf> m_TDFData { get; set; }
         private ICollectionView m_FBIDataView { get; set; }
         private ObservableCollection<FBI> m_FBIData { get; set; }
 
@@ -1732,7 +1732,7 @@ namespace TA_Editor
         }
         #endregion
 
-        public ObservableCollection<TDF> TDFData
+        public ObservableCollection<Tdf> TDFData
         {
             get
             {
@@ -1858,7 +1858,7 @@ namespace TA_Editor
 
         public UIModel()
         {
-            this.TDFData = new ObservableCollection<TDF>();
+            this.TDFData = new ObservableCollection<Tdf>();
             this.FBIData = new ObservableCollection<FBI>();
             this.TDF = Visibility.Visible;
             this.FBI = Visibility.Visible;
@@ -1892,7 +1892,7 @@ namespace TA_Editor
 
         private bool FilterTDFData(object item)
         {
-            TDF tdf = item as TDF;
+            Tdf tdf = item as Tdf;
             tdf.UsedByList = new ObservableCollection<string>();
             // creates the weapon list of all shown units
             List<string> weaponList = new List<string>();
