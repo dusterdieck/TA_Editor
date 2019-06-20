@@ -53,7 +53,7 @@ namespace TA_Editor
 
         private void OnButtonReadDataClick(object sender, RoutedEventArgs e)
         {
-            TACommands.ReadAllTDFFilesCommand.Execute(null, this);
+            TaCommands.ReadAllTDFFilesCommand.Execute(null, this);
 
             string folderPath = @"E:\Privat\Rev31\rev31\Weapons";
             foreach (string file in Directory.EnumerateFiles(folderPath, "*.tdf"))
@@ -108,7 +108,7 @@ namespace TA_Editor
 
         private void OnCellRightClickClick(object sender, MouseButtonEventArgs e)
         {
-            TACommands.OnCellRightClickClick.Execute(null, this);
+            TaCommands.OnCellRightClickClick.Execute(null, this);
         }
     }
 }

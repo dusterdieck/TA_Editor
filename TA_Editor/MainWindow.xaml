@@ -40,7 +40,7 @@
                 <StackPanel Orientation="Vertical" Margin="6,4,0,0" VerticalAlignment="Top" Background="#B7D1E2" HorizontalAlignment="Left">
                     <StackPanel Orientation="Horizontal">
                         <TextBox Margin="4,6,2,6" Width="263" VerticalAlignment="Top" Height="20" BorderThickness="2" Text="{Binding Path}" ToolTip="The folder of your *extracted* Rev31.gp3 file including the Weapons and UNITS folder"></TextBox>
-                        <Button Width="80" Margin="2,6,4,6" VerticalAlignment="Top" Height="20" Content="Select Folder" Command="{x:Static local:TACommands.SelectFolderCommand}" ToolTip="Select the extracted .hpi, .gp3 or .ufo folder containing the UNITS and WEAPONS folders."></Button>
+                        <Button Width="80" Margin="2,6,4,6" VerticalAlignment="Top" Height="20" Content="Select Folder" Command="{x:Static local:TaCommands.SelectFolderCommand}" ToolTip="Select the extracted .hpi, .gp3 or .ufo folder containing the UNITS and WEAPONS folders."></Button>
                     </StackPanel>
                 </StackPanel>
                 
@@ -51,23 +51,23 @@
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Background="#B7D1E2" HorizontalAlignment="Right">
                         <Button Margin="4,0,45,0" HorizontalAlignment="Left" Content="i" Width="20" Height="20" ToolTip="Information" Click="OnInformationClick"></Button>
                         <TextBox Margin="4,0" TextAlignment="Right" Width="60" Height="20" Text="{Binding MathParameter, UpdateSourceTrigger=LostFocus}" ToolTip="Parameter value for the specific operations multiply, addition substract or set"/>
-                        <Button Margin="2,4" Width="50" Height="20" Content="Mult" Command="{x:Static local:TACommands.MultiplyToValueCommand}"
+                        <Button Margin="2,4" Width="50" Height="20" Content="Mult" Command="{x:Static local:TaCommands.MultiplyToValueCommand}"
                             ToolTip="Multiplies the value to all selected cells if possible."></Button>
-                        <Button Margin="2,4" Width="50" Height="20" Content="Add" Command="{x:Static local:TACommands.AddToValueCommand}"
+                        <Button Margin="2,4" Width="50" Height="20" Content="Add" Command="{x:Static local:TaCommands.AddToValueCommand}"
                             ToolTip="Adds the value to all selected cells if possible."></Button>
-                        <Button Margin="2,4" Width="50" Height="20" Content="Sub" Command="{x:Static local:TACommands.SubstractToValueCommand}"
+                        <Button Margin="2,4" Width="50" Height="20" Content="Sub" Command="{x:Static local:TaCommands.SubstractToValueCommand}"
                             ToolTip="Substracts the value to all selected cells if possible."></Button>
-                        <Button Margin="2,4,4,4" Width="50" Height="20" Content="Set" Command="{x:Static local:TACommands.SetFixedValueCommand}"
+                        <Button Margin="2,4,4,4" Width="50" Height="20" Content="Set" Command="{x:Static local:TaCommands.SetFixedValueCommand}"
                             ToolTip="Sets the fixed value to all selected cells if possible."></Button>
                     </StackPanel>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Orientation="Vertical" Margin="8,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#B7D1E2">
-                    <Button Margin="0,6,0,0" Width="120" Height="20" Content="Read Units Data" Command="{x:Static local:TACommands.ReadAllFBIFilesCommand}"
+                    <Button Margin="0,6,0,0" Width="120" Height="20" Content="Read Units Data" Command="{x:Static local:TaCommands.ReadAllFBIFilesCommand}"
                             ToolTip="Reads all .fbi files in all folders containing the word 'units' corrersponding to the set filter. "></Button>
-                    <Button Margin="4,7,4,7" Width="120" Height="20" Content="Read Weapons Data" Command="{x:Static local:TACommands.ReadAllTDFFilesCommand}"
+                    <Button Margin="4,7,4,7" Width="120" Height="20" Content="Read Weapons Data" Command="{x:Static local:TaCommands.ReadAllTDFFilesCommand}"
                             ToolTip="Reads all .tdf files in all folders containing the word 'weapons' corresponding to the shown units."></Button>
-                    <Button Margin="4,0,4,4" Width="120" Height="20" Content="Clear all" Command="{x:Static local:TACommands.ClearAllDataCommand}"
+                    <Button Margin="4,0,4,4" Width="120" Height="20" Content="Clear all" Command="{x:Static local:TaCommands.ClearAllDataCommand}"
                             ToolTip="Clears all tables and resets the filters. Does not save anything. Unsaved data will be lost!"></Button>
                 </StackPanel>
                 
@@ -95,8 +95,8 @@
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-2,0,2" Height="24">
                         <TextBlock Margin="8,0,0,0" Height="20" Width="30" Text="Filter" ToolTip="Search for the specific text in the name or description (if available). You can use blank as 'or'."/>
                         <TextBox Margin="4,0" Width="172" Height="20" Text="{Binding SearchText}" ToolTip="Search for the specific text in the name or description (if available). You can use blank as 'or'."/>
-                        <Button x:Name="m_FilterUnits" Margin="0,0,4,0" Width="60" Height="20" Content="Units" Command="{x:Static local:TACommands.FilterUnitsCommand}" ToolTip="Filters the units list depending on the set filters. The weapon list will be updatet appropriately to show only weapons used by these units."></Button>
-                        <Button x:Name="m_FilterWeapons" Margin="0,0,4,0" Width="60" Height="20" Content="Weapons" Command="{x:Static local:TACommands.FilterWeaponsCommand}" ToolTip="Filters the weapons list. Only weapons associated to a filtered units and containing a search text word (if entered) will be shown."></Button>
+                        <Button x:Name="m_FilterUnits" Margin="0,0,4,0" Width="60" Height="20" Content="Units" Command="{x:Static local:TaCommands.FilterUnitsCommand}" ToolTip="Filters the units list depending on the set filters. The weapon list will be updatet appropriately to show only weapons used by these units."></Button>
+                        <Button x:Name="m_FilterWeapons" Margin="0,0,4,0" Width="60" Height="20" Content="Weapons" Command="{x:Static local:TaCommands.FilterWeaponsCommand}" ToolTip="Filters the weapons list. Only weapons associated to a filtered units and containing a search text word (if entered) will be shown."></Button>
                     </StackPanel>
                 </StackPanel>
 
@@ -122,9 +122,9 @@
 
 
                 <StackPanel Grid.Column="4" Orientation="Vertical" Margin="8,4,0,4" Height="84" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#B7D1E2">
-                    <Button Margin="4,6,4,0"  Width="120" Height="20" Content="Save Data" Command="{x:Static local:TACommands.WriteAllChangedFilesCommand}"
+                    <Button Margin="4,6,4,0"  Width="120" Height="20" Content="Save Data" Command="{x:Static local:TaCommands.WriteAllChangedFilesCommand}"
                             ToolTip="Writes all changed files back to the original folders. All old data will be overwritten"></Button>
-                    <Button Margin="4,7,4,7"  Width="120" Height="20" Content="Pack all Data" Command="{x:Static local:TACommands.PackAllFilesCommand}"
+                    <Button Margin="4,7,4,7"  Width="120" Height="20" Content="Pack all Data" Command="{x:Static local:TaCommands.PackAllFilesCommand}"
                             ToolTip="Starts the default packing program (for example HPI File Pack). The path to the program will be stored in the TA_Editor.cfg"></Button>
                 </StackPanel>
             </Grid>
