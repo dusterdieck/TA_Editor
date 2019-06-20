@@ -108,7 +108,7 @@
                 this.m_BuildCostEnergy = value;
                 this.Changed = true;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("DPM");
+                this.NotifyPropertyChanged(nameof(DPM));
             }
         }
 
@@ -121,7 +121,7 @@
                 this.m_BuildCostMetal = value;
                 this.Changed = true;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("DPM");
+                this.NotifyPropertyChanged(nameof(DPM));
             }
         }
 
@@ -134,8 +134,8 @@
                 this.m_DamageModifier = value;
                 this.Changed = true;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("DPM");
-                this.NotifyPropertyChanged("RealDamage");
+                this.NotifyPropertyChanged(nameof(DPM));
+                this.NotifyPropertyChanged(nameof(RealDamage));
             }
         }
 
@@ -148,8 +148,8 @@
                 this.m_MaxDamage = value;
                 this.Changed = true;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("DPM");
-                this.NotifyPropertyChanged("RealDamage");
+                this.NotifyPropertyChanged(nameof(DPM));
+                this.NotifyPropertyChanged(nameof(RealDamage));
             }
         }
         public double RealDamage

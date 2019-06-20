@@ -159,7 +159,7 @@ namespace TA_Editor
                 if (m_ShowEco == value) return;
                     m_ShowEco = value;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("VisibilityShowEco");
+                this.NotifyPropertyChanged(nameof(VisibilityShowEco));
             }
         }
         public Visibility VisibilityShowEco
@@ -181,7 +181,7 @@ namespace TA_Editor
                 if (m_ShowOrder == value) return;
                 m_ShowOrder = value;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("VisibilityShowOrder");
+                this.NotifyPropertyChanged(nameof(VisibilityShowOrder));
             }
         }
         public Visibility VisibilityShowOrder
@@ -203,7 +203,7 @@ namespace TA_Editor
                 if (m_ShowRadar == value) return;
                 m_ShowRadar = value;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("VisibilityShowRadar");
+                this.NotifyPropertyChanged(nameof(VisibilityShowRadar));
             }
         }
         public Visibility VisibilityShowRadar
@@ -225,7 +225,7 @@ namespace TA_Editor
                 if (m_ShowMovePlace == value) return;
                 m_ShowMovePlace = value;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("VisibilityShowMovePlace");
+                this.NotifyPropertyChanged(nameof(VisibilityShowMovePlace));
             }
         }
         public Visibility VisibilityShowMovePlace
@@ -247,7 +247,7 @@ namespace TA_Editor
                 if (m_ShowMisc == value) return;
                 m_ShowMisc = value;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("VisibilityShowMisc");
+                this.NotifyPropertyChanged(nameof(VisibilityShowMisc));
             }
         }
         public Visibility VisibilityShowMisc
@@ -269,7 +269,7 @@ namespace TA_Editor
                 if (m_ShowAir == value) return;
                 m_ShowAir = value;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("VisibilityShowAir");
+                this.NotifyPropertyChanged(nameof(VisibilityShowAir));
             }
         }
         public Visibility VisibilityShowAir
@@ -346,7 +346,7 @@ namespace TA_Editor
                 if (m_FBI == value)
                     return;
                 m_FBI = value;
-                this.NotifyPropertyChanged("FBI");
+                this.NotifyPropertyChanged(nameof(FBI));
             }
         }
 
@@ -358,7 +358,7 @@ namespace TA_Editor
                 if (m_TDF == value)
                     return;
                 m_TDF = value;
-                this.NotifyPropertyChanged("TDF");
+                this.NotifyPropertyChanged(nameof(TDF));
             }
         }
 
@@ -399,12 +399,12 @@ namespace TA_Editor
                     return;
                 m_ViewAllColumns = value;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("VisibilityShowEco");
-                this.NotifyPropertyChanged("VisibilityShowAir");
-                this.NotifyPropertyChanged("VisibilityShowOrder");
-                this.NotifyPropertyChanged("VisibilityShowMisc");
-                this.NotifyPropertyChanged("VisibilityShowRadar");
-                this.NotifyPropertyChanged("VisibilityShowMovePlace");
+                this.NotifyPropertyChanged(nameof(VisibilityShowEco));
+                this.NotifyPropertyChanged(nameof(VisibilityShowAir));
+                this.NotifyPropertyChanged(nameof(VisibilityShowOrder));
+                this.NotifyPropertyChanged(nameof(VisibilityShowMisc));
+                this.NotifyPropertyChanged(nameof(VisibilityShowRadar));
+                this.NotifyPropertyChanged(nameof(VisibilityShowMovePlace));
             }
         }
 

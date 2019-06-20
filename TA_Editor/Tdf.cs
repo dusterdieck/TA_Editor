@@ -33,7 +33,7 @@
                 this.m_Reloadtime = value;
                 this.Changed = true;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("DPS");
+                this.NotifyPropertyChanged(nameof(DPS));
             }
         }
 
@@ -71,7 +71,7 @@
                 this.m_Burst = value;
                 this.Changed = true;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("DPS");
+                this.NotifyPropertyChanged(nameof(DPS));
             }
         }
 
@@ -252,7 +252,7 @@
                 this.m_Default = value;
                 this.Changed = true;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("DPS");
+                this.NotifyPropertyChanged(nameof(DPS));
             }
         }
 
@@ -295,7 +295,7 @@
                 //    UsedBy = UsedBy + item;
                 //}
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged("UsedBy");
+                this.NotifyPropertyChanged(nameof(UsedBy));
             }
         }
         public double DPS
