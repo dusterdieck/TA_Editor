@@ -256,10 +256,10 @@ namespace TA_Editor
             int selectedCells = this.MainWindow.DataGridTDF.SelectedCells.Count + dg.SelectedCells.Count;
 
             // Weapons
-            counter = BulkCalculation.CalculateOverAll(this.MainWindow.DataGridTDF, operation, this.UIModel.MathParameter, counter);
+            counter.Merge(BulkCalculation.CalculateOverAll(this.MainWindow.DataGridTDF, operation, this.UIModel.MathParameter));
 
             // Units
-            counter = BulkCalculation.CalculateOverAll(dg, operation, this.UIModel.MathParameter, counter);
+            counter.Merge(BulkCalculation.CalculateOverAll(dg, operation, this.UIModel.MathParameter));
 
             if (counter.outofrangecounter > 0 && (selectedCells != counter.successcounter))
                 MessageBox.Show(counter.successcounter + " values have been changed.\r " 
@@ -307,10 +307,10 @@ namespace TA_Editor
             int selectedCells = this.MainWindow.DataGridTDF.SelectedCells.Count + dg.SelectedCells.Count;
 
             // Weapons
-            counter = BulkCalculation.CalculateOverAll(this.MainWindow.DataGridTDF, 2, this.UIModel.MathParameter, counter);
+            counter.Merge(BulkCalculation.CalculateOverAll(this.MainWindow.DataGridTDF, 2, this.UIModel.MathParameter));
            
             // Units
-            counter = BulkCalculation.CalculateOverAll(dg, 2, this.UIModel.MathParameter, counter);
+            counter.Merge(BulkCalculation.CalculateOverAll(dg, 2, this.UIModel.MathParameter));
 
             if (counter.outofrangecounter > 0 && (selectedCells != counter.successcounter))
                 MessageBox.Show(counter.successcounter + " values have been changed.\r "
@@ -351,10 +351,10 @@ namespace TA_Editor
             int selectedCells = this.MainWindow.DataGridTDF.SelectedCells.Count + dg.SelectedCells.Count;
 
             // Weapons
-            counter = BulkCalculation.CalculateOverAll(this.MainWindow.DataGridTDF, 4, this.UIModel.MathParameter, counter);
+            counter.Merge(BulkCalculation.CalculateOverAll(this.MainWindow.DataGridTDF, 4, this.UIModel.MathParameter));
 
             // Units
-            counter = BulkCalculation.CalculateOverAll(dg, 4, this.UIModel.MathParameter, counter);
+            counter.Merge(BulkCalculation.CalculateOverAll(dg, 4, this.UIModel.MathParameter));
 
             if (counter.outofrangecounter > 0 && (selectedCells != counter.successcounter))
                 MessageBox.Show(counter.successcounter + " values have been changed.\r "

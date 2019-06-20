@@ -4,8 +4,9 @@ using TA_Editor;
 
 internal static class BulkCalculation
 {
-    public static Counter CalculateOverAll(DataGrid dg, int operation, double mathParameter, Counter counter)
+    public static Counter CalculateOverAll(DataGrid dg, int operation, double mathParameter)
     {
+        var counter = new Counter();
         foreach (DataGridCellInfo dataGridCell in dg.SelectedCells)
         {
             var tdf = dataGridCell.Item as Tdf;

@@ -9,5 +9,11 @@
             this.successcounter = 0;
             this.outofrangecounter = 0;
         }
+
+        public void Merge(Counter other)
+        {
+            successcounter += other.successcounter;
+            outofrangecounter += other.outofrangecounter;
+        }
     }
 }
