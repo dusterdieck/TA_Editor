@@ -1363,20 +1363,26 @@ namespace TA_Editor
         /// <param name="param1">unit value</param>
         private double Calculate(int operation, double param1)
         {
+            return Calculate(operation, param1, this.UIModel.MathParameter);
+        }
+
+        private static double Calculate(int operation, double param1, double param2)
+        {
             switch (operation)
             {
                 case 1:
-                    return param1 + UIModel.MathParameter;
+                    return param1 + param2;
                 case 2:
-                    return param1 * UIModel.MathParameter;
+                    return param1 * param2;
                 case 3:
-                    return param1 - UIModel.MathParameter;
+                    return param1 - param2;
                 case 4:
-                    return UIModel.MathParameter;
+                    return param2;
                 default:
                     return param1;
             }
         }
+
         #endregion
 
         public DataGridCell GetDataGridCell(DataGridCellInfo cellInfo)
