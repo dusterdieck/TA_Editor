@@ -61,7 +61,7 @@
     <Compile Include="IO.cs" />
     <Compile Include="Tdf.cs" />
     <Compile Include="UIManager.cs" />
-    <Compile Include="UIModel.cs" />
+    <Compile Include="UiModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
