@@ -56,10 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helper\BindingProxy.cs" />
+    <Compile Include="BindingProxy.cs" />
     <Compile Include="IO.cs" />
-    <Compile Include="UIManager\UIManager.cs" />
-    <Compile Include="UIModel\UIModel.cs" />
+    <Compile Include="UIManager.cs" />
+    <Compile Include="UIModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,7 +68,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\TACommands.cs" />
+    <Compile Include="TACommands.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
