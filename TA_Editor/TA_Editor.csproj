@@ -57,6 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BindingProxy.cs" />
+    <Compile Include="BulkCalculation.cs" />
     <Compile Include="Counter.cs" />
     <Compile Include="Fbi.cs" />
     <Compile Include="IO.cs" />
