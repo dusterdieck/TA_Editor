@@ -15,17 +15,6 @@ using MessageBox = System.Windows.MessageBox;
 
 namespace TA_Editor
 {
-    public class Counter
-    {
-        public int successcounter { get; set; }
-        public int outofrangecounter { get; set; }
-        public Counter()
-        {
-            successcounter = 0;
-            outofrangecounter = 0;
-        }
-    }
-
     class UIManager
     {
         public MainWindow MainWindow { get; set; }
