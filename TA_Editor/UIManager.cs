@@ -191,7 +191,7 @@ namespace TA_Editor
                 else if (this.MainWindow.DataGridFBI.SelectedCells.Count == 1)
                 {
                     DataGridCellInfo dataGridCell = this.MainWindow.DataGridFBI.SelectedCells[0];
-                    var fbi = dataGridCell.Item as FBI;
+                    var fbi = dataGridCell.Item as Fbi;
                     Process.Start(fbi.File);
                 }
         }
@@ -501,7 +501,7 @@ namespace TA_Editor
             // Units
             foreach (DataGridCellInfo dataGridCell in dg.SelectedCells)
             {
-                var fbi = dataGridCell.Item as FBI;
+                var fbi = dataGridCell.Item as Fbi;
                 if (fbi != null)
                 {
                     // energy costs
@@ -1627,7 +1627,7 @@ namespace TA_Editor
             }
 
             int fbiDataChanged = 0;
-            foreach (FBI unit in this.UIModel.FBIData)
+            foreach (Fbi unit in this.UIModel.FBIData)
             {
                 if (unit.Changed)
                 {

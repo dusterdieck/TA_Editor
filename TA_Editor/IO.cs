@@ -168,13 +168,13 @@ internal static class IO
         }
     }
 
-    public static FBI ReadUnitFromFbi(string file)
+    public static Fbi ReadUnitFromFbi(string file)
     {
         using (StreamReader sr = new StreamReader(file))
         {
 
             string line = "";
-            FBI unit = new FBI();
+            Fbi unit = new Fbi();
             unit.File = file;
             unit.Weapons = new List<string>();
 

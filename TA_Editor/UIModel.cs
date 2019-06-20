@@ -346,7 +346,7 @@ namespace TA_Editor
         }
     }
 
-    public class FBI : INotifyPropertyChanged
+    public class Fbi : INotifyPropertyChanged
     {
         #region categories
         private bool m_KBot;
@@ -1465,7 +1465,7 @@ namespace TA_Editor
         private ICollectionView m_TDFDataView { get; set; }
         private ObservableCollection<Tdf> m_TDFData { get; set; }
         private ICollectionView m_FBIDataView { get; set; }
-        private ObservableCollection<FBI> m_FBIData { get; set; }
+        private ObservableCollection<Fbi> m_FBIData { get; set; }
 
         public bool FilterWeaponsForWords { get; set; }
 
@@ -1751,7 +1751,7 @@ namespace TA_Editor
             }
         }
 
-        public ObservableCollection<FBI> FBIData
+        public ObservableCollection<Fbi> FBIData
         {
             get
             {
@@ -1859,7 +1859,7 @@ namespace TA_Editor
         public UIModel()
         {
             this.TDFData = new ObservableCollection<Tdf>();
-            this.FBIData = new ObservableCollection<FBI>();
+            this.FBIData = new ObservableCollection<Fbi>();
             this.TDF = Visibility.Visible;
             this.FBI = Visibility.Visible;
             this.Lvl1 = true;
@@ -1900,7 +1900,7 @@ namespace TA_Editor
             {
                 foreach (var element in m_FBIDataView)
                 {
-                    var unit = element as FBI;
+                    var unit = element as Fbi;
                     if (unit != null)
                     {
                         foreach (string weapon in unit.Weapons)
@@ -1976,7 +1976,7 @@ namespace TA_Editor
 
         private bool FilterFBIData(object item)
         {
-            FBI fbi = item as FBI;
+            Fbi fbi = item as Fbi;
             if (UseFilters)
             {
                 if (Lvl1 && fbi.Level == "L1" || Lvl2 && fbi.Level == "L2" || Lvl3 && fbi.Level == "L3" || Lvl3 && fbi.Level == "L4" || Lvl3 && fbi.Level == "L5" || (Lvl1 && Lvl2 && Lvl3) || (!Lvl1 && !Lvl2 && !Lvl3) )
