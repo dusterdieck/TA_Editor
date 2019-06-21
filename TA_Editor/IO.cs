@@ -45,17 +45,16 @@ namespace TA_Editor
                 tdf.WeaponTimer = weaponInfo.GetDoubleOrDefault("WEAPONTIMER");
                 tdf.Tolerance = weaponInfo.GetDoubleOrDefault("TOLERANCE");
                 tdf.EdgeEffectiveness = weaponInfo.GetDoubleOrDefault("EDGEEFFECTIVENESS");
-
-                if (weaponInfo.GetBoolOrDefault("BEAMWEAPON"))
-                {
-                    tdf.Accuracy = 1;
-                }
-
                 tdf.Color1 = weaponInfo.GetStringOrDefault("COLOR");
                 tdf.Color2 = weaponInfo.GetStringOrDefault("COLOR2");
                 tdf.SprayAngle = weaponInfo.GetDoubleOrDefault("SPRAYANGLE");
                 tdf.PitchTolerance = weaponInfo.GetDoubleOrDefault("PITCHTOLERANCE");
                 tdf.MinBarrelAngle = weaponInfo.GetDoubleOrDefault("MINBARRELANGLE");
+
+                if (weaponInfo.GetBoolOrDefault("BEAMWEAPON"))
+                {
+                    tdf.Accuracy = 1;
+                }
 
                 if (weaponInfo.Keys.TryGetValue("DAMAGE", out var damageInfo))
                 {
