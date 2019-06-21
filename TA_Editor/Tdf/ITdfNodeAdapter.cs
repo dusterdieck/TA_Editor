@@ -19,7 +19,7 @@
         /// </summary>
         /// <param name="name">The name of the property.</param>
         /// <param name="value">The value of the property.</param>
-        void AddProperty(string name, string value);
+        void AddProperty(int startIndex, int endIndex, int valueStartIndex, int valueEndIndex, string name, string value);
 
         /// <summary>
         /// Indicates that the current block has finished

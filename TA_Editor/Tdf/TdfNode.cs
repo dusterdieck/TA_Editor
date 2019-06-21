@@ -10,6 +10,15 @@
     /// </summary>
     public class TdfNode
     {
+        public class PropertyInfo
+        {
+            public int StartIndex { get; set; }
+            public int EndIndex { get; set; }
+            public int ValueStartIndex { get; set; }
+            public int ValueEndIndex { get; set; }
+            public string Value { get; set; }
+        }
+
         private const int IndentationLevel = 4;
 
         /// <summary>
@@ -29,7 +38,7 @@
         {
             this.Name = name;
             this.Keys = new Dictionary<string, TdfNode>(StringComparer.OrdinalIgnoreCase);
-            this.Entries = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            this.Entries = new Dictionary<string, PropertyInfo>(StringComparer.OrdinalIgnoreCase);
         }
 
         /// <summary>
@@ -47,7 +56,7 @@
         /// Gets the mapping of entries in this node.
         /// Each item is a property with a name and associated value.
         /// </summary>
-        public Dictionary<string, string> Entries { get; private set; }
+        public Dictionary<string, PropertyInfo> Entries { get; private set; }
 
         /// <summary>
         /// Reads a TDF file from the given stream into a TdfNode.
@@ -74,17 +83,27 @@
 
         public string GetStringOrDefault(string key)
         {
-            return this.Entries.TryGetValue(key, out var v) ? v : null;
+            return this.Entries.TryGetValue(key, out var v) ? v.Value : null;
         }
 
         public double GetDoubleOrDefault(string key)
         {
-            return this.Entries.TryGetValue(key, out var v) ? TdfConvert.ToDouble(v) : 0;
+            if (!this.Entries.TryGetValue(key, out var v))
+            {
+                return 0.0;
+            }
+
+            if (!TdfConvert.TryToDouble(v.Value, out var d))
+            {
+                return 0.0;
+            }
+
+            return d;
         }
 
         public bool GetBoolOrDefault(string key)
         {
-            return this.Entries.TryGetValue(key, out var v) && TdfConvert.ToBool(v);
+            return this.Entries.TryGetValue(key, out var v) && TdfConvert.ToBool(v.Value);
         }
 
         /// <summary>

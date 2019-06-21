@@ -54,9 +54,16 @@
         /// </summary>
         /// <param name="name">The name of the property.</param>
         /// <param name="value">The value of the property.</param>
-        public void AddProperty(string name, string value)
+        public void AddProperty(int startIndex, int endIndex, int valueStartIndex, int valueEndIndex, string name, string value)
         {
-            this.nodeStack.Peek().Entries[name] = value;
+            this.nodeStack.Peek().Entries[name] = new TdfNode.PropertyInfo
+                {
+                    StartIndex = startIndex,
+                    EndIndex = endIndex,
+                    ValueStartIndex = valueStartIndex,
+                    ValueEndIndex = valueEndIndex,
+                    Value = value,
+                };
         }
 
         /// <summary>

@@ -38,6 +38,14 @@
             this.adapter = adapter;
         }
 
+        public int CurrentIndex
+        {
+            get
+            {
+                return this.reader.CurrentIndex;
+            }
+        }
+
         /// <summary>
         /// Gets the line number of the line that the parser is currently reading.
         /// </summary>
@@ -144,12 +152,17 @@
 
         private void Property()
         {
+            var startIndex = this.CurrentIndex;
             var name = this.PropertyName();
             this.Expect('=');
+            var valueStartIndex = this.CurrentIndex;
             var value = this.PropertyValue();
+            var valueEndIndex = this.CurrentIndex;
             this.Terminator();
+            this.OptionalWhitespace();
+            var endIndex = this.CurrentIndex;
 
-            this.adapter.AddProperty(name, value);
+            this.adapter.AddProperty(startIndex, endIndex, valueStartIndex, valueEndIndex, name, value);
         }
 
         private void Terminator()

@@ -12,6 +12,8 @@
 
         private int outputChar;
 
+        private int internalCurrentIndex;
+
         private int internalCurrentLine;
 
         private int internalCurrentColumn;
@@ -27,6 +29,8 @@
 
             this.GetNextOutputChar();
         }
+
+        public int CurrentIndex { get; set; }
 
         public int CurrentLine { get; set; }
 
@@ -54,6 +58,7 @@
             // take a snapshot of our internal position here
             this.CurrentColumn = this.internalCurrentColumn;
             this.CurrentLine = this.internalCurrentLine;
+            this.CurrentIndex = this.internalCurrentIndex;
 
             // Try to accept newline and output a normalized version.
             if (this.AcceptNewline())
@@ -147,6 +152,7 @@
 
         private void Consume()
         {
+            this.internalCurrentIndex++;
             this.internalCurrentColumn++;
             this.nextChar = this.nextNextChar;
             this.nextNextChar = this.reader.Read();
