@@ -51,11 +51,6 @@ namespace TA_Editor
                 tdf.PitchTolerance = weaponInfo.GetDoubleOrDefault("PITCHTOLERANCE");
                 tdf.MinBarrelAngle = weaponInfo.GetDoubleOrDefault("MINBARRELANGLE");
 
-                if (weaponInfo.GetBoolOrDefault("BEAMWEAPON"))
-                {
-                    tdf.Accuracy = 1;
-                }
-
                 if (weaponInfo.Keys.TryGetValue("DAMAGE", out var damageInfo))
                 {
                     tdf.Default = damageInfo.GetDoubleOrDefault("DEFAULT");
