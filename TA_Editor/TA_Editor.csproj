@@ -63,6 +63,13 @@
     <Compile Include="Fbi.cs" />
     <Compile Include="IO.cs" />
     <Compile Include="Tdf.cs" />
+    <Compile Include="Tdf\ITdfNodeAdapter.cs" />
+    <Compile Include="Tdf\TdfConvert.cs" />
+    <Compile Include="Tdf\TdfLexingReader.cs" />
+    <Compile Include="Tdf\TdfNode.cs" />
+    <Compile Include="Tdf\TdfNodeAdapter.cs" />
+    <Compile Include="Tdf\TdfParseException.cs" />
+    <Compile Include="Tdf\TdfParser.cs" />
     <Compile Include="UiManager.cs" />
     <Compile Include="UiModel.cs" />
     <Page Include="MainWindow.xaml">
