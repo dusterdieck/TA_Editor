@@ -72,6 +72,16 @@
             return adapter.RootNode;
         }
 
+        public string GetStringOrDefault(string key)
+        {
+            return this.Entries.TryGetValue(key, out var v) ? v : null;
+        }
+
+        public double GetDoubleOrDefault(string key)
+        {
+            return this.Entries.TryGetValue(key, out var v) ? TdfConvert.ToDouble(v) : 0;
+        }
+
         /// <summary>
         /// Writes the contents of this TdfNode to the given stream
         /// in TDF format.
