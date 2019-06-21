@@ -63,6 +63,7 @@
     <Compile Include="Fbi.cs" />
     <Compile Include="IO.cs" />
     <Compile Include="Tdf.cs" />
+    <Compile Include="TdfCompare.cs" />
     <Compile Include="Tdf\ITdfNodeAdapter.cs" />
     <Compile Include="Tdf\ParseException.cs" />
     <Compile Include="Tdf\TdfConvert.cs" />

@@ -8,6 +8,52 @@
     /// </summary>
     public static class TdfConvert
     {
+        public static TdfNode.PropertyInfo ToStringInfo(int i)
+        {
+            if (i == 0)
+            {
+                return new TdfNode.PropertyInfo { Value = "" };
+            }
+            return new TdfNode.PropertyInfo
+                {
+                    Value = TdfConvert.ToString(i)
+                };
+        }
+
+        public static TdfNode.PropertyInfo ToStringInfo(double i)
+        {
+            if (i == 0.0)
+            {
+                return new TdfNode.PropertyInfo { Value = "" };
+            }
+
+            return new TdfNode.PropertyInfo
+                {
+                    Value = TdfConvert.ToString(i)
+                };
+        }
+
+        public static TdfNode.PropertyInfo ToStringInfo(bool i)
+        {
+            if (!i)
+            {
+                return new TdfNode.PropertyInfo { Value = "" };
+            }
+
+            return new TdfNode.PropertyInfo
+                {
+                    Value = TdfConvert.ToString(i)
+                };
+        }
+
+        public static TdfNode.PropertyInfo ToStringInfo(string i)
+        {
+            return new TdfNode.PropertyInfo
+                {
+                    Value = i
+                };
+        }
+
         /// <summary>
         /// Converts the given integer to a string.
         /// </summary>
