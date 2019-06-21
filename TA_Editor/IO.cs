@@ -227,6 +227,38 @@ namespace TA_Editor
             return output;
         }
 
+        private static TdfNode toTdfNode(Tdf weapon)
+        {
+            var n = new TdfNode(weapon.ID);
+
+            n.Entries["ID"] = TdfConvert.ToStringInfo(weapon.WeaponId);
+            n.Entries["NAME"] = TdfConvert.ToStringInfo(weapon.Name);
+            n.Entries["RANGE"] = TdfConvert.ToStringInfo(weapon.Range);
+            n.Entries["RELOADTIME"] = TdfConvert.ToStringInfo(weapon.Reloadtime);
+            n.Entries["WEAPONVELOCITY"] = TdfConvert.ToStringInfo(weapon.Weaponvelocity);
+            n.Entries["AREAOFEFFECT"] = TdfConvert.ToStringInfo(weapon.Areaofeffect);
+            n.Entries["BURST"] = TdfConvert.ToStringInfo(weapon.Burst);
+            n.Entries["BURSTRATE"] = TdfConvert.ToStringInfo(weapon.BurstRate);
+            n.Entries["ENERGYPERSHOT"] = TdfConvert.ToStringInfo(weapon.EnergyPerShot);
+            n.Entries["ACCURACY"] = TdfConvert.ToStringInfo(weapon.Accuracy);
+            n.Entries["STARTVELOCITY"] = TdfConvert.ToStringInfo(weapon.StartVelocity);
+            n.Entries["WEAPONACCELERATION"] = TdfConvert.ToStringInfo(weapon.WeaponAcceleration);
+            n.Entries["WEAPONTIMER"] = TdfConvert.ToStringInfo(weapon.WeaponTimer);
+            n.Entries["TOLERANCE"] = TdfConvert.ToStringInfo(weapon.Tolerance);
+            n.Entries["EDGEEFFECTIVENESS"] = TdfConvert.ToStringInfo(weapon.EdgeEffectiveness);
+            n.Entries["COLOR"] = TdfConvert.ToStringInfo(weapon.Color1);
+            n.Entries["COLOR2"] = TdfConvert.ToStringInfo(weapon.Color2);
+            n.Entries["SPRAYANGLE"] = TdfConvert.ToStringInfo(weapon.SprayAngle);
+            n.Entries["PITCHTOLERANCE"] = TdfConvert.ToStringInfo(weapon.PitchTolerance);
+            n.Entries["MINBARRELANGLE"] = TdfConvert.ToStringInfo(weapon.MinBarrelAngle);
+
+            var damage = new TdfNode("DAMAGE");
+            damage.Entries["DEFAULT"] = TdfConvert.ToStringInfo(weapon.Default);
+            n.Keys["DAMAGE"] = damage;
+
+            return n;
+        }
+
         private static TdfNode toTdfNode(Fbi unit)
         {
             var n = new TdfNode("UNITINFO");
@@ -329,322 +361,23 @@ namespace TA_Editor
             TdfCompare.PerformInstructions(unit.File, instructions);
         }
 
-        public static void WriteWeaponTdfFile(Tdf tdf)
+        public static void WriteWeaponTdfFile(Tdf weapon)
         {
-            List<string> stringToWrite = new List<string>();
-            string line;
-
-            using (StreamReader sr = new StreamReader(tdf.File))
+            TdfNode sourceRoot;
+            using (var f = new StreamReader(weapon.File))
             {
-                bool belongsToUnit = false;
-
-                bool energypershot = false;
-                bool burst = false;
-                bool burstrate = false;
-                bool accuracy = false;
-                bool tolerance = false;
-                bool pitchtolerance = false;
-                bool weapontimer = false;
-                bool startvelocity = false;
-                bool weaponacceleration = false;
-                bool edgeeffectiveness = true;
-                bool beamweapon = false;
-                bool sprayangle = false;
-                bool minbarrelangle = false;
-                bool color1 = false;
-                bool color2 = false;
-
-                while (!sr.EndOfStream)
-                {
-                    line = sr.ReadLine();
-
-                    if (line.Contains("[") && !line.ToUpper().Contains("[DAMAGE]"))
-                    {
-                        belongsToUnit = false;
-                    }
-
-                    if (line.Contains(tdf.ID))
-                    {
-                        belongsToUnit = true;
-
-                        energypershot = false;
-                        burst = false;
-                        burstrate = false;
-                        accuracy = false;
-                        tolerance = false;
-                        pitchtolerance = false;
-                        weapontimer = false;
-                        startvelocity = false;
-                        weaponacceleration = false;
-                        edgeeffectiveness = false;
-                        beamweapon = false;
-                        sprayangle = false;
-                        minbarrelangle = false;
-                        color1 = false;
-                        color2 = false;
-                    }
-
-                    if (belongsToUnit)
-                    {
-                        // Änderungen gehören hier rein
-
-                        if (line.ToUpper().Contains("\tNAME="))
-                        {
-                            line = "\t" + "name=" + tdf.Name + ";";
-                        }
-
-                        if (line.ToUpper().Contains("RANGE=") && !line.Contains("NOAUTORANGE="))
-                        {
-                            line = "\t" + "range=" + Convert.ToInt32(tdf.Range) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("RELOADTIME="))
-                        {
-                            line = "\t" + "reloadtime=" + String.Format(
-                                CultureInfo.InvariantCulture,
-                                "{0:0.00}",
-                                tdf.Reloadtime) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("WEAPONVELOCITY="))
-                        {
-                            line = "\t" + "weaponvelocity=" + String.Format(
-                                CultureInfo.InvariantCulture,
-                                "{0:0}",
-                                tdf.Weaponvelocity) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("BURST="))
-                        {
-                            burst = true;
-                            line = "\t" + "burst=" + Convert.ToInt32(tdf.Burst) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("BURSTRATE="))
-                        {
-                            burstrate = true;
-                            line = "\t" + "burstrate=" + String.Format(CultureInfo.InvariantCulture, "{0:0.000}", tdf.BurstRate)
-                                + ";";
-                        }
-
-                        if (line.ToUpper().Contains("AREAOFEFFECT="))
-                        {
-                            line = "\t" + "areaofeffect=" + String.Format(
-                                CultureInfo.InvariantCulture,
-                                "{0:0}",
-                                tdf.Areaofeffect) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("ACCURACY="))
-                        {
-                            accuracy = true;
-                            line = "\t" + "accuracy=" + String.Format(CultureInfo.InvariantCulture, "{0:0}", tdf.Accuracy)
-                                + ";";
-                        }
-
-                        if (line.ToUpper().Contains("ENERGYPERSHOT="))
-                        {
-                            energypershot = true;
-                            line = "\t" + "energypershot=" + String.Format(
-                                CultureInfo.InvariantCulture,
-                                "{0:0}",
-                                tdf.EnergyPerShot) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("TOLERANCE=") && !line.ToUpper().Contains("PITCH"))
-                        {
-                            tolerance = true;
-                            line = "\t" + "pitchtolerance=" + String.Format(
-                                CultureInfo.InvariantCulture,
-                                "{0:0}",
-                                tdf.PitchTolerance) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("WEAPONTIMER="))
-                        {
-                            pitchtolerance = true;
-                            line = "\t" + "weapontimer=" + String.Format(
-                                CultureInfo.InvariantCulture,
-                                "{0:0.00}",
-                                tdf.WeaponTimer) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("STARTVELOCITY="))
-                        {
-                            startvelocity = true;
-                            line = "\t" + "startvelocity=" + String.Format(
-                                CultureInfo.InvariantCulture,
-                                "{0:0}",
-                                tdf.StartVelocity) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("WEAPONACCELERATION="))
-                        {
-                            weaponacceleration = true;
-                            line = "\t" + "weaponacceleration=" + String.Format(
-                                CultureInfo.InvariantCulture,
-                                "{0:0}",
-                                tdf.WeaponAcceleration) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("EDGEEFFECTIVENESS="))
-                        {
-                            edgeeffectiveness = true;
-                            line = "\t" + "edgeeffectiveness=" + String.Format(
-                                CultureInfo.InvariantCulture,
-                                "{0:0.00}",
-                                tdf.EdgeEffectiveness) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("BEAMWEAPON="))
-                        {
-                            beamweapon = true;
-                            line = "\t" + "beamweapon=" + String.Format(CultureInfo.InvariantCulture, "{0:0}", tdf.BeamWeapon)
-                                + ";";
-                        }
-
-                        if (line.ToUpper().Contains("PITCHTOLERANCE="))
-                        {
-                            pitchtolerance = true;
-                            line = "\t" + "pitchtolerance=" + String.Format(
-                                CultureInfo.InvariantCulture,
-                                "{0:0}",
-                                tdf.PitchTolerance) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("MINBARRELANGLE="))
-                        {
-                            minbarrelangle = true;
-                            line = "\t" + "minbarrelangle=" + String.Format(
-                                CultureInfo.InvariantCulture,
-                                "{0:0}",
-                                tdf.MinBarrelAngle) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("SPRAYANGLE="))
-                        {
-                            sprayangle = true;
-                            line = "\t" + "sprayangle=" + String.Format(CultureInfo.InvariantCulture, "{0:0}", tdf.SprayAngle)
-                                + ";";
-                        }
-
-                        if (line.ToUpper().Contains("COLOR1="))
-                        {
-                            color1 = true;
-                            line = "\t" + "color1=" + String.Format(CultureInfo.InvariantCulture, "{0:0}", tdf.Color1) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("COLOR2="))
-                        {
-                            color2 = true;
-                            line = "\t" + "color2=" + String.Format(CultureInfo.InvariantCulture, "{0:0}", tdf.Color2) + ";";
-                        }
-
-                        if (line.ToUpper().Contains("[DAMAGE]"))
-                        {
-                            string extra = "";
-                            if (!energypershot && tdf.EnergyPerShot > 0)
-                                extra = extra + "\t" + "energypershot=" + String.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "{0:0}",
-                                    tdf.EnergyPerShot) + ";\r";
-                            if (!accuracy && tdf.Accuracy > 0)
-                                extra = extra + "\t" + "accuracy=" + String.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "{0:0}",
-                                    tdf.Accuracy) + ";\r";
-                            if (!burst && tdf.Burst > 0)
-                                extra = extra + "\t" + "burst=" + Convert.ToInt32(tdf.Burst) + ";\r";
-                            if (!burstrate && tdf.BurstRate > 0)
-                                extra = extra + "\t" + "burstrate=" + String.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "{0:0.000}",
-                                    tdf.BurstRate) + ";\r";
-                            if (!weapontimer && tdf.WeaponTimer > 0)
-                                extra = extra + "\t" + "weapontimer=" + String.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "{0:0.00}",
-                                    tdf.WeaponTimer) + ";\r";
-                            if (!tolerance && tdf.Tolerance > 0)
-                                extra = extra + "\t" + "tolerance=" + String.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "{0:0}",
-                                    tdf.Tolerance) + ";\r";
-                            if (!pitchtolerance && tdf.PitchTolerance > 0)
-                                extra = extra + "\t" + "pitchtolerance=" + String.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "{0:0}",
-                                    tdf.PitchTolerance) + ";\r";
-                            if (!startvelocity && tdf.StartVelocity > 0)
-                                extra = extra + "\t" + "startvelocity=" + String.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "{0:0.00}",
-                                    tdf.StartVelocity) + ";\r";
-                            if (!weaponacceleration && tdf.WeaponAcceleration > 0)
-                                extra = extra + "\t" + "weaponacceleration=" + String.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "{0:0.00}",
-                                    tdf.WeaponAcceleration) + ";\r";
-                            if (!minbarrelangle && tdf.MinBarrelAngle > 0)
-                                extra = extra + "\t" + "minbarrelangle=" + String.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "{0:0}",
-                                    tdf.MinBarrelAngle) + ";\r";
-                            if (!beamweapon && tdf.BeamWeapon == "1")
-                                extra = extra + "\t" + "beamweapon=" + String.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "{0:0}",
-                                    tdf.BeamWeapon) + ";\r";
-                            if (!edgeeffectiveness && tdf.EdgeEffectiveness > 0)
-                                extra = extra + "\t" + "edgeeffectiveness=" + String.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "{0:0.00}",
-                                    tdf.EdgeEffectiveness) + ";\r";
-                            if (!sprayangle && tdf.SprayAngle > 0)
-                                extra = extra + "\t" + "sprayangle=" + String.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "{0:0}",
-                                    tdf.SprayAngle) + ";\r";
-                            if (!color1 && tdf.Color1 != null && tdf.Color1.Length > 0 && tdf.BeamWeapon != null
-                                && tdf.BeamWeapon == "1")
-                                extra = extra + "\t" + "color=" + String.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "{0:0}",
-                                    tdf.Color1) + ";\r";
-                            if (!color2 && tdf.Color2 != null && tdf.Color2.Length > 0 && tdf.BeamWeapon != null
-                                && tdf.BeamWeapon == "1")
-                                extra = extra + "\t" + "color=" + String.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "{0:0}",
-                                    tdf.Color2) + ";\r";
-                            line = extra + "\t" + "[DAMAGE]";
-                        }
-
-                        if (line.ToUpper().Contains("DEFAULT="))
-                        {
-                            line = "\t" + "\t" + "default=" + tdf.Default + ";";
-                        }
-                    }
-
-                    string outLine = "";
-
-                    if ((!line.StartsWith("\t") && !line.StartsWith("[") && !line.StartsWith("/"))
-                        && !line.ToUpper().Contains("[DAMAGE]"))
-                        outLine = "\t" + line;
-                    else
-                        outLine = line;
-
-                    stringToWrite.Add(outLine);
-                }
+                sourceRoot = TdfNode.LoadTdf(f);
             }
 
-            using (StreamWriter sw = new StreamWriter(tdf.File))
+            var targetWeaponInfo = toTdfNode(weapon);
+
+            var instructions = TdfCompare.ComputePropertyMapping(sourceRoot.Keys[weapon.ID], targetWeaponInfo, 1);
+            if (sourceRoot.Keys[weapon.ID].Keys.ContainsKey("DAMAGE"))
             {
-                foreach (string stw in stringToWrite)
-                {
-                    sw.WriteLine(stw);
-                }
+                instructions.AddRange(TdfCompare.ComputePropertyMapping(sourceRoot.Keys[weapon.ID].Keys["DAMAGE"], targetWeaponInfo.Keys["DAMAGE"], 2));
             }
+
+            TdfCompare.PerformInstructions(weapon.File, instructions);
         }
     }
 }
