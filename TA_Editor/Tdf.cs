@@ -114,7 +114,7 @@
         private double m_WeaponTimer;
         public double WeaponTimer
         {
-            get { return this.m_EnergyPerShot; }
+            get { return this.m_WeaponTimer; }
             set
             {
                 this.m_WeaponTimer = value;
