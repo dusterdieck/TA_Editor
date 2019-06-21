@@ -82,6 +82,11 @@
             return this.Entries.TryGetValue(key, out var v) ? TdfConvert.ToDouble(v) : 0;
         }
 
+        public bool GetBoolOrDefault(string key)
+        {
+            return this.Entries.TryGetValue(key, out var v) && TdfConvert.ToBool(v);
+        }
+
         /// <summary>
         /// Writes the contents of this TdfNode to the given stream
         /// in TDF format.

@@ -101,5 +101,10 @@
 
             return Convert.ToDouble(s);
         }
+
+        public static bool TryToDouble(string s, out double result)
+        {
+            return double.TryParse(s, out result);
+        }
     }
 }
