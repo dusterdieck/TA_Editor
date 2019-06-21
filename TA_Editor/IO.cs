@@ -72,31 +72,12 @@ namespace TA_Editor
 
             var unit = new Fbi();
             unit.File = file;
-            unit.Weapons = new List<string>();
 
             unit.ID = unitInfo.GetStringOrDefault("UNITNAME");
             unit.Side = unitInfo.GetStringOrDefault("SIDE");
             unit.Name = unitInfo.GetStringOrDefault("NAME");
             unit.Description = unitInfo.GetStringOrDefault("DESCRIPTION");
             unit.Category = unitInfo.GetStringOrDefault("CATEGORY");
-
-            if (unit.Category != null)
-            {
-                if (unit.Category.Contains("LEVEL1")) { unit.Level = "L1"; }
-                else if (unit.Category.Contains("LEVEL2")) { unit.Level = "L2"; }
-                else if (unit.Category.Contains("LEVEL3")) { unit.Level = "L3"; }
-                else if (unit.Category.Contains("LEVEL4")) { unit.Level = "L4"; }
-                else if (unit.Category.Contains("LEVEL5")) { unit.Level = "L5"; }
-            }
-
-            var tedClass = unitInfo.GetStringOrDefault("TEDCLASS") ?? "";
-            unit.Vehcl = tedClass.Contains("TANK");
-            unit.KBot = tedClass.Contains("KBOT") || tedClass.Contains("COMMANDER");
-            unit.Building = new[] { "ENERGY", "METAL", "PLANT", "FORT", "SPECIAL" }.Any(x => tedClass.Contains(x));
-            unit.Ship = tedClass.Contains("SHIP") || tedClass.Contains("WATER");
-            unit.Cnstr = tedClass.Contains("CNSTR") || (unit.Category != null && unit.Category.Contains("CNSTR"));
-            unit.Air = tedClass.Contains("VTOL");
-
             unit.BuildCostEnergy = unitInfo.GetDoubleOrDefault("BUILDCOSTENERGY");
             unit.BuildCostMetal = unitInfo.GetDoubleOrDefault("BUILDCOSTMETAL");
             unit.MaxDamage = unitInfo.GetDoubleOrDefault("MAXDAMAGE");
@@ -172,6 +153,24 @@ namespace TA_Editor
             unit.SelfDestructAs = unitInfo.GetStringOrDefault("SELFDESTRUCTAS");
             unit.DefaultMissionType = unitInfo.GetStringOrDefault("DEFAULTMISSIONTYPE");
 
+            if (unit.Category != null)
+            {
+                if (unit.Category.Contains("LEVEL1")) { unit.Level = "L1"; }
+                else if (unit.Category.Contains("LEVEL2")) { unit.Level = "L2"; }
+                else if (unit.Category.Contains("LEVEL3")) { unit.Level = "L3"; }
+                else if (unit.Category.Contains("LEVEL4")) { unit.Level = "L4"; }
+                else if (unit.Category.Contains("LEVEL5")) { unit.Level = "L5"; }
+            }
+
+            var tedClass = unitInfo.GetStringOrDefault("TEDCLASS") ?? "";
+            unit.Vehcl = tedClass.Contains("TANK");
+            unit.KBot = tedClass.Contains("KBOT") || tedClass.Contains("COMMANDER");
+            unit.Building = new[] { "ENERGY", "METAL", "PLANT", "FORT", "SPECIAL" }.Any(x => tedClass.Contains(x));
+            unit.Ship = tedClass.Contains("SHIP") || tedClass.Contains("WATER");
+            unit.Cnstr = tedClass.Contains("CNSTR") || (unit.Category != null && unit.Category.Contains("CNSTR"));
+            unit.Air = tedClass.Contains("VTOL");
+
+            unit.Weapons = new List<string>();
             for (var i = 1; i <= 5; ++i)
             {
                 var weapon = unitInfo.GetStringOrDefault($"WEAPON{i}");
