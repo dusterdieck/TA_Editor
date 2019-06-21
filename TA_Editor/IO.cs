@@ -15,7 +15,11 @@ namespace TA_Editor
         {
             var tdfs = new List<Tdf>();
 
-            var root = TdfNode.LoadTdf(File.OpenRead(file));
+            TdfNode root;
+            using (var f = new StreamReader(file))
+            {
+                root = TdfNode.LoadTdf(f);
+            }
 
             foreach (var entry in root.Keys)
             {
@@ -67,7 +71,12 @@ namespace TA_Editor
 
         public static Fbi ReadUnitFromFbi(string file)
         {
-            var root = TAUtil.Tdf.TdfNode.LoadTdf(File.OpenRead(file));
+            TdfNode root;
+            using (var f = new StreamReader(file))
+            {
+                root = TdfNode.LoadTdf(f);
+            }
+
             var unitInfo = root.Keys["UNITINFO"];
 
             var unit = new Fbi();
