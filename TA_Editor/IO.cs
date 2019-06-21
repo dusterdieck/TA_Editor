@@ -6,6 +6,7 @@ using System.IO;
 namespace TA_Editor
 {
     using System.Linq;
+    using System.Text;
 
     using TAUtil.Tdf;
 
@@ -16,7 +17,7 @@ namespace TA_Editor
             var tdfs = new List<Tdf>();
 
             TdfNode root;
-            using (var f = new StreamReader(file))
+            using (var f = new StreamReader(file, Encoding.GetEncoding(1252)))
             {
                 root = TdfNode.LoadTdf(f);
             }
@@ -72,7 +73,7 @@ namespace TA_Editor
         public static Fbi ReadUnitFromFbi(string file)
         {
             TdfNode root;
-            using (var f = new StreamReader(file))
+            using (var f = new StreamReader(file, Encoding.GetEncoding(1252)))
             {
                 root = TdfNode.LoadTdf(f);
             }

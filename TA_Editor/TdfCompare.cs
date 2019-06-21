@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Text;
 
     using TAUtil.Tdf;
 
@@ -97,9 +98,9 @@
         public static void PerformInstructions(string file, IEnumerable<IInstruction> instructions)
         {
             var tempFile = $"{file}.__TA_Editor_tmp";
-            using (var input = new StreamReader(file))
+            using (var input = new StreamReader(file, Encoding.GetEncoding(1252)))
             {
-                using (var output = new StreamWriter(tempFile))
+                using (var output = new StreamWriter(File.OpenWrite(tempFile), Encoding.GetEncoding(1252)))
                 {
                     PerformInstructions(input, output, instructions);
                 }
