@@ -38,35 +38,17 @@
             this.adapter = adapter;
         }
 
-        public int CurrentIndex
-        {
-            get
-            {
-                return this.reader.CurrentIndex;
-            }
-        }
+        public int CurrentIndex => this.reader.CurrentIndex;
 
         /// <summary>
         /// Gets the line number of the line that the parser is currently reading.
         /// </summary>
-        public int CurrentLine
-        {
-            get
-            {
-                return this.reader.CurrentLine;
-            }
-        }
+        public int CurrentLine => this.reader.CurrentLine;
 
         /// <summary>
         /// Gets the column number of the character that the parser is currently reading.
         /// </summary>
-        public int CurrentColumn
-        {
-            get
-            {
-                return this.reader.CurrentColumn;
-            }
-        }
+        public int CurrentColumn => this.reader.CurrentColumn;
 
         /// <summary>
         /// Reads and parses the input.

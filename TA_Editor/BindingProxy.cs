@@ -15,8 +15,8 @@ namespace TA_Editor
 
         public object Data
         {
-            get { return (object)this.GetValue(DataProperty); }
-            set { this.SetValue(DataProperty, value); }
+            get => (object)this.GetValue(DataProperty);
+            set => this.SetValue(DataProperty, value);
         }
 
         public static readonly DependencyProperty DataProperty =

@@ -15,7 +15,7 @@
         private double m_Range;
         public double Range
         {
-            get { return this.m_Range; }
+            get => this.m_Range;
             set
             {
                 this.m_Range = value;
@@ -27,7 +27,7 @@
         private double m_Reloadtime;
         public double Reloadtime
         {
-            get { return this.m_Reloadtime; }
+            get => this.m_Reloadtime;
             set
             {
                 this.m_Reloadtime = value;
@@ -40,7 +40,7 @@
         private double m_Weaponvelocity;
         public double Weaponvelocity
         {
-            get { return this.m_Weaponvelocity; }
+            get => this.m_Weaponvelocity;
             set
             {
                 this.m_Weaponvelocity = value;
@@ -53,7 +53,7 @@
         private double m_Areaofeffect;
         public double Areaofeffect
         {
-            get { return this.m_Areaofeffect; }
+            get => this.m_Areaofeffect;
             set
             {
                 this.m_Areaofeffect = value;
@@ -65,7 +65,7 @@
         private double m_Burst;
         public double Burst
         {
-            get { return this.m_Burst; }
+            get => this.m_Burst;
             set
             {
                 this.m_Burst = value;
@@ -78,7 +78,7 @@
         private double m_BurstRate;
         public double BurstRate
         {
-            get { return this.m_BurstRate; }
+            get => this.m_BurstRate;
             set
             {
                 this.m_BurstRate = value;
@@ -90,7 +90,7 @@
         private double m_Accuracy;
         public double Accuracy
         {
-            get { return this.m_Accuracy; }
+            get => this.m_Accuracy;
             set
             {
                 this.m_Accuracy = value;
@@ -102,7 +102,7 @@
         private double m_EnergyPerShot;
         public double EnergyPerShot
         {
-            get { return this.m_EnergyPerShot; }
+            get => this.m_EnergyPerShot;
             set
             {
                 this.m_EnergyPerShot = value;
@@ -114,7 +114,7 @@
         private double m_WeaponTimer;
         public double WeaponTimer
         {
-            get { return this.m_WeaponTimer; }
+            get => this.m_WeaponTimer;
             set
             {
                 this.m_WeaponTimer = value;
@@ -126,7 +126,7 @@
         private double m_Tolerance;
         public double Tolerance
         {
-            get { return this.m_Tolerance; }
+            get => this.m_Tolerance;
             set
             {
                 this.m_Tolerance = value;
@@ -138,7 +138,7 @@
         private double m_StartVelocity;
         public double StartVelocity
         {
-            get { return this.m_StartVelocity; }
+            get => this.m_StartVelocity;
             set
             {
                 this.m_StartVelocity = value;
@@ -150,7 +150,7 @@
         private double m_WeaponAcceleration;
         public double WeaponAcceleration
         {
-            get { return this.m_WeaponAcceleration; }
+            get => this.m_WeaponAcceleration;
             set
             {
                 this.m_WeaponAcceleration = value;
@@ -162,7 +162,7 @@
         private double m_EdgeEffectiveness;
         public double EdgeEffectiveness
         {
-            get { return this.m_EdgeEffectiveness; }
+            get => this.m_EdgeEffectiveness;
             set
             {
                 this.m_EdgeEffectiveness = value;
@@ -174,7 +174,7 @@
         private string m_BeamWeapon;
         public string BeamWeapon
         {
-            get { return this.m_BeamWeapon; }
+            get => this.m_BeamWeapon;
             set
             {
                 this.m_BeamWeapon = value;
@@ -186,7 +186,7 @@
         private double m_PitchTolerance;
         public double PitchTolerance
         {
-            get { return this.m_PitchTolerance; }
+            get => this.m_PitchTolerance;
             set
             {
                 this.m_PitchTolerance = value;
@@ -198,7 +198,7 @@
         private double m_MinBarrelAngle;
         public double MinBarrelAngle
         {
-            get { return this.m_MinBarrelAngle; }
+            get => this.m_MinBarrelAngle;
             set
             {
                 this.m_MinBarrelAngle = value;
@@ -210,7 +210,7 @@
         private string m_Color1;
         public string Color1
         {
-            get { return this.m_Color1; }
+            get => this.m_Color1;
             set
             {
                 this.m_Color1 = value;
@@ -222,7 +222,7 @@
         private string m_Color2;
         public string Color2
         {
-            get { return this.m_Color2; }
+            get => this.m_Color2;
             set
             {
                 this.m_Color2 = value;
@@ -234,7 +234,7 @@
         private double m_SprayAngle;
         public double SprayAngle
         {
-            get { return this.m_SprayAngle; }
+            get => this.m_SprayAngle;
             set
             {
                 this.m_SprayAngle = value;
@@ -246,7 +246,7 @@
         private double m_Default;
         public double Default
         {
-            get { return this.m_Default; }
+            get => this.m_Default;
             set
             {
                 this.m_Default = value;
@@ -259,7 +259,7 @@
         private string m_UsedBy;
         public string UsedBy
         {
-            get { return this.m_UsedBy; }
+            get => this.m_UsedBy;
             set
             {
                 if (this.m_UsedBy == value)
@@ -279,10 +279,7 @@
         private ObservableCollection<string> m_UsedByList;
         public ObservableCollection<string> UsedByList
         {
-            get
-            {
-                return this.m_UsedByList;
-            }
+            get => this.m_UsedByList;
             set
             {
                 if (this.UsedByList == value)
@@ -318,7 +315,7 @@
         private bool m_Changed;
         public bool Changed
         {
-            get { return this.m_Changed; }
+            get => this.m_Changed;
             set
             {
                 if (value == this.m_Changed)

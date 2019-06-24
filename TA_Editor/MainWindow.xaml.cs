@@ -15,21 +15,9 @@ namespace TA_Editor
 
         }
 
-        public DataGrid DataGridTDF
-        {
-            get
-            {
-                return this.m_DataGridTDF;
-            }
-        }
+        public DataGrid DataGridTDF => this.m_DataGridTDF;
 
-        public DataGrid DataGridFBI
-        {
-            get
-            {
-                return this.m_DataGridFBI;
-            }
-        }
+        public DataGrid DataGridFBI => this.m_DataGridFBI;
 
         void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {

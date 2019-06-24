@@ -31,7 +31,7 @@ namespace TA_Editor
 
         public bool Arm
         {
-            get { return this.m_Arm; }
+            get => this.m_Arm;
             set
             {
                 if (this.m_Arm == value) return;
@@ -41,7 +41,7 @@ namespace TA_Editor
         }
         public bool Core
         {
-            get { return this.m_Core; }
+            get => this.m_Core;
             set
             {
                 if (this.m_Core == value) return;
@@ -51,7 +51,7 @@ namespace TA_Editor
         }
         public bool Lvl1
         {
-            get { return this.m_Lvl1; }
+            get => this.m_Lvl1;
             set
             {
                 if (this.m_Lvl1 == value) return;
@@ -61,7 +61,7 @@ namespace TA_Editor
         }
         public bool Lvl2
         {
-            get { return this.m_Lvl2; }
+            get => this.m_Lvl2;
             set
             {
                 if (this.m_Lvl2 == value) return;
@@ -71,7 +71,7 @@ namespace TA_Editor
         }
         public bool Lvl3
         {
-            get { return this.m_Lvl3; }
+            get => this.m_Lvl3;
             set
             {
                 if (this.m_Lvl3 == value) return;
@@ -88,7 +88,7 @@ namespace TA_Editor
         
         public bool Vehcl
         {
-            get { return this.m_Vehcl; }
+            get => this.m_Vehcl;
             set
             {
                 if (this.m_Vehcl == value) return;
@@ -98,7 +98,7 @@ namespace TA_Editor
         }
         public bool KBot
         {
-            get { return this.m_KBot; }
+            get => this.m_KBot;
             set
             {
                 if (this.m_KBot == value) return;
@@ -108,7 +108,7 @@ namespace TA_Editor
         }
         public bool Ship
         {
-            get { return this.m_Ship; }
+            get => this.m_Ship;
             set
             {
                 if (this.m_Ship == value) return;
@@ -118,7 +118,7 @@ namespace TA_Editor
         }
         public bool Air
         {
-            get { return this.m_Air; }
+            get => this.m_Air;
             set
             {
                 if (this.m_Air == value) return;
@@ -128,7 +128,7 @@ namespace TA_Editor
         }
         public bool Cnstr
         {
-            get { return this.m_Cnstr; }
+            get => this.m_Cnstr;
             set
             {
                 if (this.m_Cnstr == value) return;
@@ -138,7 +138,7 @@ namespace TA_Editor
         }
         public bool Building
         {
-            get { return this.m_Building; }
+            get => this.m_Building;
             set
             {
                 if (this.m_Building == value) return;
@@ -153,7 +153,7 @@ namespace TA_Editor
         private bool m_ShowEco;
         public bool ShowEco
         {
-            get { return this.m_ShowEco; }
+            get => this.m_ShowEco;
             set
             {
                 if (this.m_ShowEco == value) return;
@@ -175,7 +175,7 @@ namespace TA_Editor
         private bool m_ShowOrder;
         public bool ShowOrder
         {
-            get { return this.m_ShowOrder; }
+            get => this.m_ShowOrder;
             set
             {
                 if (this.m_ShowOrder == value) return;
@@ -197,7 +197,7 @@ namespace TA_Editor
         private bool m_ShowRadar;
         public bool ShowRadar
         {
-            get { return this.m_ShowRadar; }
+            get => this.m_ShowRadar;
             set
             {
                 if (this.m_ShowRadar == value) return;
@@ -219,7 +219,7 @@ namespace TA_Editor
         private bool m_ShowMovePlace;
         public bool ShowMovePlace
         {
-            get { return this.m_ShowMovePlace; }
+            get => this.m_ShowMovePlace;
             set
             {
                 if (this.m_ShowMovePlace == value) return;
@@ -241,7 +241,7 @@ namespace TA_Editor
         private bool m_ShowMisc;
         public bool ShowMisc
         {
-            get { return this.m_ShowMisc; }
+            get => this.m_ShowMisc;
             set
             {
                 if (this.m_ShowMisc == value) return;
@@ -263,7 +263,7 @@ namespace TA_Editor
         private bool m_ShowAir;
         public bool ShowAir
         {
-            get { return this.m_ShowAir; }
+            get => this.m_ShowAir;
             set
             {
                 if (this.m_ShowAir == value) return;
@@ -340,7 +340,7 @@ namespace TA_Editor
 
         public Visibility FBI
         {
-            get { return this.m_FBI; }
+            get => this.m_FBI;
             set
             {
                 if (this.m_FBI == value)
@@ -352,7 +352,7 @@ namespace TA_Editor
 
         public Visibility TDF
         {
-            get { return this.m_TDF; }
+            get => this.m_TDF;
             set
             {
                 if (this.m_TDF == value)
@@ -365,7 +365,7 @@ namespace TA_Editor
         private string m_SearchText;
         public string SearchText
         {
-            get { return this.m_SearchText; }
+            get => this.m_SearchText;
             set
             {
                 if (this.m_SearchText == value)
@@ -380,7 +380,7 @@ namespace TA_Editor
         private bool m_UseFilters;
         public bool UseFilters
         {
-            get { return this.m_UseFilters; }
+            get => this.m_UseFilters;
             set
             {
                 if (this.m_UseFilters == value)
@@ -392,7 +392,7 @@ namespace TA_Editor
         private bool m_ViewAllColumns;
         public bool ViewAllColumns
         {
-            get { return this.m_ViewAllColumns; }
+            get => this.m_ViewAllColumns;
             set
             {
                 if (this.m_ViewAllColumns == value)
