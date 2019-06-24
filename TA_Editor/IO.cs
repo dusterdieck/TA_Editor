@@ -200,7 +200,7 @@ namespace TA_Editor
             return unit;
         }
 
-        private static TdfNode toTdfNode(Tdf weapon)
+        private static TdfNode ToTdfNode(Tdf weapon)
         {
             var n = new TdfNode(weapon.ID);
 
@@ -232,7 +232,7 @@ namespace TA_Editor
             return n;
         }
 
-        private static TdfNode toTdfNode(Fbi unit)
+        private static TdfNode ToTdfNode(Fbi unit)
         {
             var n = new TdfNode("UNITINFO");
 
@@ -327,7 +327,7 @@ namespace TA_Editor
                 sourceRoot = TdfNode.LoadTdf(f);
             }
 
-            var targetUnitInfo = toTdfNode(unit);
+            var targetUnitInfo = ToTdfNode(unit);
 
             var instructions = TdfCompare.ComputePropertyMapping(sourceRoot.Keys["UNITINFO"], targetUnitInfo, 1);
 
@@ -342,7 +342,7 @@ namespace TA_Editor
                 sourceRoot = TdfNode.LoadTdf(f);
             }
 
-            var targetWeaponInfo = toTdfNode(weapon);
+            var targetWeaponInfo = ToTdfNode(weapon);
 
             var instructions = TdfCompare.ComputePropertyMapping(sourceRoot.Keys[weapon.ID], targetWeaponInfo, 1);
             if (sourceRoot.Keys[weapon.ID].Keys.ContainsKey("DAMAGE"))
