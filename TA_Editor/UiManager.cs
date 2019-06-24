@@ -462,7 +462,7 @@ namespace TA_Editor
             List<string> fileList = new List<string>();
             foreach (string folder in folders)
             {
-                if (Regex.IsMatch(folder.ToUpper(), @"^WEAPON[A-Z]$"))
+                if (Regex.IsMatch(Path.GetFileName(folder), @"^weapon[a-z]$", RegexOptions.IgnoreCase))
                 {
                     unitFolders.Add(folder);
                 }
@@ -470,10 +470,15 @@ namespace TA_Editor
 
             foreach (string folder in unitFolders)
             {
-                string[] folderContent = Directory.GetFiles(folder);
+                string[] folderContent = Directory.GetFiles(folder, "*.tdf");
                 foreach (string s in folderContent)
                 {
-                    fileList.Add(s);
+                    // The GetFiles pattern isn't sufficient -- due to legacy path handling
+                    // it will include files such as "foo.tdf~"
+                    if (string.Equals(Path.GetExtension(s), ".tdf", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        fileList.Add(s);
+                    }
                 }
             }
 
@@ -557,7 +562,7 @@ namespace TA_Editor
             List<string> fileList = new List<string>();
             foreach (string folder in folders)
             {
-                if (Regex.IsMatch(folder.ToUpper(), @"^UNITS[A-Z]$"))
+                if (Regex.IsMatch(Path.GetFileName(folder), @"^units[a-z]$", RegexOptions.IgnoreCase))
                 {
                     unitFolders.Add(folder);
                 }
@@ -565,10 +570,15 @@ namespace TA_Editor
 
             foreach (string folder in unitFolders)
             {
-                string[] folderContent = Directory.GetFiles(folder);
+                string[] folderContent = Directory.GetFiles(folder, "*.fbi");
                 foreach (string s in folderContent)
                 {
-                    fileList.Add(s);
+                    // The GetFiles pattern isn't sufficient -- due to legacy path handling
+                    // it will include files such as "foo.fbi~"
+                    if (string.Equals(Path.GetExtension(s), ".fbi", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        fileList.Add(s);
+                    }
                 }
             }
 
