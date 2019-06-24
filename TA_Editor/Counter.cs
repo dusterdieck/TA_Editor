@@ -12,8 +12,8 @@
 
         public void Merge(Counter other)
         {
-            successcounter += other.successcounter;
-            outofrangecounter += other.outofrangecounter;
+            this.successcounter += other.successcounter;
+            this.outofrangecounter += other.outofrangecounter;
         }
     }
 }

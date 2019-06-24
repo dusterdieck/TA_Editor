@@ -154,8 +154,8 @@
 
         private void WriteTdf(StreamWriter writer, int depth)
         {
-            string indent = new string(' ', depth * TdfNode.IndentationLevel);
-            string indent2 = new string(' ', (depth + 1) * TdfNode.IndentationLevel);
+            string indent = new string(' ', depth * IndentationLevel);
+            string indent2 = new string(' ', (depth + 1) * IndentationLevel);
 
             // write out the header
             writer.Write(indent);

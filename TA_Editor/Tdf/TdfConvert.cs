@@ -16,7 +16,7 @@
             }
             return new TdfNode.PropertyInfo
                 {
-                    Value = TdfConvert.ToString(i)
+                    Value = ToString(i)
                 };
         }
 
@@ -29,7 +29,7 @@
 
             return new TdfNode.PropertyInfo
                 {
-                    Value = TdfConvert.ToString(i)
+                    Value = ToString(i)
                 };
         }
 
@@ -42,7 +42,7 @@
 
             return new TdfNode.PropertyInfo
                 {
-                    Value = TdfConvert.ToString(i)
+                    Value = ToString(i)
                 };
         }
 

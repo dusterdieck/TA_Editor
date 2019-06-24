@@ -26,33 +26,33 @@ namespace TA_Editor
         {
             get
             {
-                if (m_CommandBindings == null)
+                if (this.m_CommandBindings == null)
                 {
-                    m_CommandBindings = new CommandBindingCollection();
+                    this.m_CommandBindings = new CommandBindingCollection();
                 }
-                return m_CommandBindings;
+                return this.m_CommandBindings;
             }
         }
 
         public UiManager()
         {
-            MainWindow = new MainWindow();
-            MainWindow.Closing += OnBeginClosing;
+            this.MainWindow = new MainWindow();
+            this.MainWindow.Closing += this.OnBeginClosing;
             this.UIModel = new UiModel();
-            MainWindow.DataContext = this.UIModel;
-            MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.ReadAllTDFFilesCommand, this.ExecuteReadAllTDFFilesCommand));
-            MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.ReadAllFBIFilesCommand, this.ExecuteReadAllFBIFilesCommand));
-            MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.WriteAllChangedFilesCommand, this.ExecuteWriteAllChangedFilesCommand));
-            MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.PackAllFilesCommand, this.ExecutePackAllFilesCommand));
-            MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.AddToValueCommand, this.ExecuteAddToValueCommand));
-            MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.SubstractToValueCommand, this.ExecuteSubstractToValueCommand));
-            MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.MultiplyToValueCommand, this.ExecuteMultiplyToValueCommand));
-            MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.SetFixedValueCommand, this.ExecuteSetFixedValueCommand));
-            MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.FilterWeaponsCommand, this.ExecuteFilterWeaponsCommand));
-            MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.FilterUnitsCommand, this.ExecuteFilterUnitsCommand));
-            MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.ClearAllDataCommand, this.ExecuteClearAllDataCommand));
-            MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.OnCellRightClickClick, this.ExecuteOnCellDoubleClickCommand));
-            MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.SelectFolderCommand, this.ExecuteSelectFolderCommand));
+            this.MainWindow.DataContext = this.UIModel;
+            this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.ReadAllTDFFilesCommand, this.ExecuteReadAllTDFFilesCommand));
+            this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.ReadAllFBIFilesCommand, this.ExecuteReadAllFBIFilesCommand));
+            this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.WriteAllChangedFilesCommand, this.ExecuteWriteAllChangedFilesCommand));
+            this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.PackAllFilesCommand, this.ExecutePackAllFilesCommand));
+            this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.AddToValueCommand, this.ExecuteAddToValueCommand));
+            this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.SubstractToValueCommand, this.ExecuteSubstractToValueCommand));
+            this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.MultiplyToValueCommand, this.ExecuteMultiplyToValueCommand));
+            this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.SetFixedValueCommand, this.ExecuteSetFixedValueCommand));
+            this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.FilterWeaponsCommand, this.ExecuteFilterWeaponsCommand));
+            this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.FilterUnitsCommand, this.ExecuteFilterUnitsCommand));
+            this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.ClearAllDataCommand, this.ExecuteClearAllDataCommand));
+            this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.OnCellRightClickClick, this.ExecuteOnCellDoubleClickCommand));
+            this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.SelectFolderCommand, this.ExecuteSelectFolderCommand));
 
             string path = Environment.CurrentDirectory;
             if (File.Exists(path + "\\TA_Editor.cfg"))
@@ -70,7 +70,7 @@ namespace TA_Editor
                 }
             }
 
-            MainWindow.Show();
+            this.MainWindow.Show();
         }
 
         private void OnBeginClosing(object sender, CancelEventArgs e)

@@ -31,51 +31,51 @@ namespace TA_Editor
 
         public bool Arm
         {
-            get { return m_Arm; }
+            get { return this.m_Arm; }
             set
             {
-                if (m_Arm == value) return;
-                m_Arm = value;
+                if (this.m_Arm == value) return;
+                this.m_Arm = value;
                 this.NotifyPropertyChanged();
             }
         }
         public bool Core
         {
-            get { return m_Core; }
+            get { return this.m_Core; }
             set
             {
-                if (m_Core == value) return;
-                m_Core = value;
+                if (this.m_Core == value) return;
+                this.m_Core = value;
                 this.NotifyPropertyChanged();
             }
         }
         public bool Lvl1
         {
-            get { return m_Lvl1; }
+            get { return this.m_Lvl1; }
             set
             {
-                if (m_Lvl1 == value) return;
-                m_Lvl1 = value;
+                if (this.m_Lvl1 == value) return;
+                this.m_Lvl1 = value;
                 this.NotifyPropertyChanged();
             }
         }
         public bool Lvl2
         {
-            get { return m_Lvl2; }
+            get { return this.m_Lvl2; }
             set
             {
-                if (m_Lvl2 == value) return;
-                m_Lvl2 = value;
+                if (this.m_Lvl2 == value) return;
+                this.m_Lvl2 = value;
                 this.NotifyPropertyChanged();
             }
         }
         public bool Lvl3
         {
-            get { return m_Lvl3; }
+            get { return this.m_Lvl3; }
             set
             {
-                if (m_Lvl3 == value) return;
-                m_Lvl3 = value;
+                if (this.m_Lvl3 == value) return;
+                this.m_Lvl3 = value;
                 this.NotifyPropertyChanged();
             }
         }
@@ -88,61 +88,61 @@ namespace TA_Editor
         
         public bool Vehcl
         {
-            get { return m_Vehcl; }
+            get { return this.m_Vehcl; }
             set
             {
-                if (m_Vehcl == value) return;
-                m_Vehcl = value;
+                if (this.m_Vehcl == value) return;
+                this.m_Vehcl = value;
                 this.NotifyPropertyChanged();
             }
         }
         public bool KBot
         {
-            get { return m_KBot; }
+            get { return this.m_KBot; }
             set
             {
-                if (m_KBot == value) return;
-                m_KBot = value;
+                if (this.m_KBot == value) return;
+                this.m_KBot = value;
                 this.NotifyPropertyChanged();
             }
         }
         public bool Ship
         {
-            get { return m_Ship; }
+            get { return this.m_Ship; }
             set
             {
-                if (m_Ship == value) return;
-                m_Ship = value;
+                if (this.m_Ship == value) return;
+                this.m_Ship = value;
                 this.NotifyPropertyChanged();
             }
         }
         public bool Air
         {
-            get { return m_Air; }
+            get { return this.m_Air; }
             set
             {
-                if (m_Air == value) return;
-                m_Air = value;
+                if (this.m_Air == value) return;
+                this.m_Air = value;
                 this.NotifyPropertyChanged();
             }
         }
         public bool Cnstr
         {
-            get { return m_Cnstr; }
+            get { return this.m_Cnstr; }
             set
             {
-                if (m_Cnstr == value) return;
-                m_Cnstr = value;
+                if (this.m_Cnstr == value) return;
+                this.m_Cnstr = value;
                 this.NotifyPropertyChanged();
             }
         }
         public bool Building
         {
-            get { return m_Building; }
+            get { return this.m_Building; }
             set
             {
-                if (m_Building == value) return;
-                m_Building = value;
+                if (this.m_Building == value) return;
+                this.m_Building = value;
                 this.NotifyPropertyChanged();
             }
         }
@@ -153,20 +153,20 @@ namespace TA_Editor
         private bool m_ShowEco;
         public bool ShowEco
         {
-            get { return m_ShowEco; }
+            get { return this.m_ShowEco; }
             set
             {
-                if (m_ShowEco == value) return;
-                    m_ShowEco = value;
+                if (this.m_ShowEco == value) return;
+                this.m_ShowEco = value;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged(nameof(VisibilityShowEco));
+                this.NotifyPropertyChanged(nameof(this.VisibilityShowEco));
             }
         }
         public Visibility VisibilityShowEco
         {
             get
             {
-                if (ShowEco || !ViewAllColumns) 
+                if (this.ShowEco || !this.ViewAllColumns) 
                     return Visibility.Visible;
                 else
                     return Visibility.Collapsed;
@@ -175,20 +175,20 @@ namespace TA_Editor
         private bool m_ShowOrder;
         public bool ShowOrder
         {
-            get { return m_ShowOrder; }
+            get { return this.m_ShowOrder; }
             set
             {
-                if (m_ShowOrder == value) return;
-                m_ShowOrder = value;
+                if (this.m_ShowOrder == value) return;
+                this.m_ShowOrder = value;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged(nameof(VisibilityShowOrder));
+                this.NotifyPropertyChanged(nameof(this.VisibilityShowOrder));
             }
         }
         public Visibility VisibilityShowOrder
         {
             get
             {
-                if (ShowOrder || !ViewAllColumns) 
+                if (this.ShowOrder || !this.ViewAllColumns) 
                     return Visibility.Visible;
                 else
                     return Visibility.Collapsed;
@@ -197,20 +197,20 @@ namespace TA_Editor
         private bool m_ShowRadar;
         public bool ShowRadar
         {
-            get { return m_ShowRadar; }
+            get { return this.m_ShowRadar; }
             set
             {
-                if (m_ShowRadar == value) return;
-                m_ShowRadar = value;
+                if (this.m_ShowRadar == value) return;
+                this.m_ShowRadar = value;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged(nameof(VisibilityShowRadar));
+                this.NotifyPropertyChanged(nameof(this.VisibilityShowRadar));
             }
         }
         public Visibility VisibilityShowRadar
         {
             get
             {
-                if (ShowRadar || !ViewAllColumns) 
+                if (this.ShowRadar || !this.ViewAllColumns) 
                     return Visibility.Visible;
                 else
                     return Visibility.Collapsed;
@@ -219,20 +219,20 @@ namespace TA_Editor
         private bool m_ShowMovePlace;
         public bool ShowMovePlace
         {
-            get { return m_ShowMovePlace; }
+            get { return this.m_ShowMovePlace; }
             set
             {
-                if (m_ShowMovePlace == value) return;
-                m_ShowMovePlace = value;
+                if (this.m_ShowMovePlace == value) return;
+                this.m_ShowMovePlace = value;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged(nameof(VisibilityShowMovePlace));
+                this.NotifyPropertyChanged(nameof(this.VisibilityShowMovePlace));
             }
         }
         public Visibility VisibilityShowMovePlace
         {
             get
             {
-                if (ShowMovePlace || !ViewAllColumns) 
+                if (this.ShowMovePlace || !this.ViewAllColumns) 
                     return Visibility.Visible;
                 else
                     return Visibility.Collapsed;
@@ -241,20 +241,20 @@ namespace TA_Editor
         private bool m_ShowMisc;
         public bool ShowMisc
         {
-            get { return m_ShowMisc; }
+            get { return this.m_ShowMisc; }
             set
             {
-                if (m_ShowMisc == value) return;
-                m_ShowMisc = value;
+                if (this.m_ShowMisc == value) return;
+                this.m_ShowMisc = value;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged(nameof(VisibilityShowMisc));
+                this.NotifyPropertyChanged(nameof(this.VisibilityShowMisc));
             }
         }
         public Visibility VisibilityShowMisc
         {
             get
             {
-                if (ShowMisc || !ViewAllColumns) 
+                if (this.ShowMisc || !this.ViewAllColumns) 
                     return Visibility.Visible;
                 else
                     return Visibility.Collapsed;
@@ -263,20 +263,20 @@ namespace TA_Editor
         private bool m_ShowAir;
         public bool ShowAir
         {
-            get { return m_ShowAir; }
+            get { return this.m_ShowAir; }
             set
             {
-                if (m_ShowAir == value) return;
-                m_ShowAir = value;
+                if (this.m_ShowAir == value) return;
+                this.m_ShowAir = value;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged(nameof(VisibilityShowAir));
+                this.NotifyPropertyChanged(nameof(this.VisibilityShowAir));
             }
         }
         public Visibility VisibilityShowAir
         {
             get
             {
-                if (ShowAir || !ViewAllColumns)
+                if (this.ShowAir || !this.ViewAllColumns)
                     return Visibility.Visible;
                 else
                     return Visibility.Collapsed;
@@ -288,18 +288,18 @@ namespace TA_Editor
         {
             get
             {
-                if (m_TDFData == null)
+                if (this.m_TDFData == null)
                 {
-                    m_TDFDataView = CollectionViewSource.GetDefaultView(m_TDFData);
-                    m_TDFDataView.Filter = FilterTDFData;
+                    this.m_TDFDataView = CollectionViewSource.GetDefaultView(this.m_TDFData);
+                    this.m_TDFDataView.Filter = this.FilterTDFData;
                 }
-                return m_TDFData;
+                return this.m_TDFData;
             }
             set
             {
-                m_TDFData = value;
-                m_TDFDataView = CollectionViewSource.GetDefaultView(m_TDFData);
-                m_TDFDataView.Filter = FilterTDFData;
+                this.m_TDFData = value;
+                this.m_TDFDataView = CollectionViewSource.GetDefaultView(this.m_TDFData);
+                this.m_TDFDataView.Filter = this.FilterTDFData;
             }
         }
 
@@ -307,18 +307,18 @@ namespace TA_Editor
         {
             get
             {
-                if (m_FBIData == null)
+                if (this.m_FBIData == null)
                 {
-                    m_FBIDataView = CollectionViewSource.GetDefaultView(m_FBIData);
-                    m_FBIDataView.Filter = FilterFBIData;
+                    this.m_FBIDataView = CollectionViewSource.GetDefaultView(this.m_FBIData);
+                    this.m_FBIDataView.Filter = this.FilterFBIData;
                 }
-                return m_FBIData;
+                return this.m_FBIData;
             }
             set
             {
-                m_FBIData = value;
-                m_FBIDataView = CollectionViewSource.GetDefaultView(m_FBIData);
-                m_FBIDataView.Filter = FilterFBIData;
+                this.m_FBIData = value;
+                this.m_FBIDataView = CollectionViewSource.GetDefaultView(this.m_FBIData);
+                this.m_FBIDataView.Filter = this.FilterFBIData;
             }
         }
 
@@ -326,51 +326,51 @@ namespace TA_Editor
         public string Path
         {
             get {
-                if (!Directory.Exists(m_Path))
+                if (!Directory.Exists(this.m_Path))
                     return "enter valid folder path here...";
-                return m_Path;
+                return this.m_Path;
             }
             set
             {
-                m_Path = value;
-                NotifyPropertyChanged();
+                this.m_Path = value;
+                this.NotifyPropertyChanged();
             }
         }
 
 
         public Visibility FBI
         {
-            get { return m_FBI; }
+            get { return this.m_FBI; }
             set
             {
-                if (m_FBI == value)
+                if (this.m_FBI == value)
                     return;
-                m_FBI = value;
-                this.NotifyPropertyChanged(nameof(FBI));
+                this.m_FBI = value;
+                this.NotifyPropertyChanged(nameof(this.FBI));
             }
         }
 
         public Visibility TDF
         {
-            get { return m_TDF; }
+            get { return this.m_TDF; }
             set
             {
-                if (m_TDF == value)
+                if (this.m_TDF == value)
                     return;
-                m_TDF = value;
-                this.NotifyPropertyChanged(nameof(TDF));
+                this.m_TDF = value;
+                this.NotifyPropertyChanged(nameof(this.TDF));
             }
         }
 
         private string m_SearchText;
         public string SearchText
         {
-            get { return m_SearchText; }
+            get { return this.m_SearchText; }
             set
             {
-                if (m_SearchText == value)
+                if (this.m_SearchText == value)
                     return;
-                m_SearchText = value;
+                this.m_SearchText = value;
                 this.NotifyPropertyChanged();
             }
         }
@@ -380,31 +380,31 @@ namespace TA_Editor
         private bool m_UseFilters;
         public bool UseFilters
         {
-            get { return m_UseFilters; }
+            get { return this.m_UseFilters; }
             set
             {
-                if (m_UseFilters == value)
+                if (this.m_UseFilters == value)
                     return;
-                m_UseFilters = value;
+                this.m_UseFilters = value;
                 this.NotifyPropertyChanged();
             }
         }
         private bool m_ViewAllColumns;
         public bool ViewAllColumns
         {
-            get { return m_ViewAllColumns; }
+            get { return this.m_ViewAllColumns; }
             set
             {
-                if (m_ViewAllColumns == value)
+                if (this.m_ViewAllColumns == value)
                     return;
-                m_ViewAllColumns = value;
+                this.m_ViewAllColumns = value;
                 this.NotifyPropertyChanged();
-                this.NotifyPropertyChanged(nameof(VisibilityShowEco));
-                this.NotifyPropertyChanged(nameof(VisibilityShowAir));
-                this.NotifyPropertyChanged(nameof(VisibilityShowOrder));
-                this.NotifyPropertyChanged(nameof(VisibilityShowMisc));
-                this.NotifyPropertyChanged(nameof(VisibilityShowRadar));
-                this.NotifyPropertyChanged(nameof(VisibilityShowMovePlace));
+                this.NotifyPropertyChanged(nameof(this.VisibilityShowEco));
+                this.NotifyPropertyChanged(nameof(this.VisibilityShowAir));
+                this.NotifyPropertyChanged(nameof(this.VisibilityShowOrder));
+                this.NotifyPropertyChanged(nameof(this.VisibilityShowMisc));
+                this.NotifyPropertyChanged(nameof(this.VisibilityShowRadar));
+                this.NotifyPropertyChanged(nameof(this.VisibilityShowMovePlace));
             }
         }
 
@@ -432,14 +432,14 @@ namespace TA_Editor
 
         public void SetFilterUnits()
         {
-            m_FBIDataView.Filter = this.FilterFBIData;
+            this.m_FBIDataView.Filter = this.FilterFBIData;
             this.FilterWeaponsForWords = false;
-            m_TDFDataView.Filter = this.FilterTDFData;
+            this.m_TDFDataView.Filter = this.FilterTDFData;
         }
         public void SetFilterWeapons()
         {
             this.FilterWeaponsForWords = true;
-            m_TDFDataView.Filter = this.FilterTDFData;
+            this.m_TDFDataView.Filter = this.FilterTDFData;
         }
 
         private bool FilterTDFData(object item)
@@ -448,9 +448,9 @@ namespace TA_Editor
             tdf.UsedByList = new ObservableCollection<string>();
             // creates the weapon list of all shown units
             List<string> weaponList = new List<string>();
-            if (m_FBIDataView != null)
+            if (this.m_FBIDataView != null)
             {
-                foreach (var element in m_FBIDataView)
+                foreach (var element in this.m_FBIDataView)
                 {
                     var unit = element as Fbi;
                     if (unit != null)
@@ -529,22 +529,22 @@ namespace TA_Editor
         private bool FilterFBIData(object item)
         {
             Fbi fbi = item as Fbi;
-            if (UseFilters)
+            if (this.UseFilters)
             {
-                if (Lvl1 && fbi.Level == "L1" || Lvl2 && fbi.Level == "L2" || Lvl3 && fbi.Level == "L3" || Lvl3 && fbi.Level == "L4" || Lvl3 && fbi.Level == "L5" || (Lvl1 && Lvl2 && Lvl3) || (!Lvl1 && !Lvl2 && !Lvl3) )
+                if (this.Lvl1 && fbi.Level == "L1" || this.Lvl2 && fbi.Level == "L2" || this.Lvl3 && fbi.Level == "L3" || this.Lvl3 && fbi.Level == "L4" || this.Lvl3 && fbi.Level == "L5" || (this.Lvl1 && this.Lvl2 && this.Lvl3) || (!this.Lvl1 && !this.Lvl2 && !this.Lvl3) )
                 {
                 }
                 else
                     return false;
 
-                if (Arm && fbi.Side.ToUpper() == "ARM" || Core && fbi.Side.ToUpper() == "CORE" || (!Arm && !Core && fbi.Side.ToUpper() != "ARM" && fbi.Side.ToUpper() != "CORE"))
+                if (this.Arm && fbi.Side.ToUpper() == "ARM" || this.Core && fbi.Side.ToUpper() == "CORE" || (!this.Arm && !this.Core && fbi.Side.ToUpper() != "ARM" && fbi.Side.ToUpper() != "CORE"))
                 {
 
                 }
                 else
                     return false;
 
-                if (KBot && fbi.KBot || Vehcl && fbi.Vehcl || Air && fbi.Air || Ship && fbi.Ship || Cnstr && fbi.Cnstr || Building && fbi.Building)
+                if (this.KBot && fbi.KBot || this.Vehcl && fbi.Vehcl || this.Air && fbi.Air || this.Ship && fbi.Ship || this.Cnstr && fbi.Cnstr || this.Building && fbi.Building)
                 {
                 }
                 else
@@ -573,9 +573,9 @@ namespace TA_Editor
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
-            if (PropertyChanged != null)
+            if (this.PropertyChanged != null)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

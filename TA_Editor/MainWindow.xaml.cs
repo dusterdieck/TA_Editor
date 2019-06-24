@@ -11,7 +11,7 @@ namespace TA_Editor
     {
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
         }
 
@@ -19,7 +19,7 @@ namespace TA_Editor
         {
             get
             {
-                return m_DataGridTDF;
+                return this.m_DataGridTDF;
             }
         }
 
@@ -27,7 +27,7 @@ namespace TA_Editor
         {
             get
             {
-                return m_DataGridFBI;
+                return this.m_DataGridFBI;
             }
         }
 
