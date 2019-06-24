@@ -159,11 +159,26 @@ namespace TA_Editor
 
             if (unit.Category != null)
             {
-                if (unit.Category.Contains("LEVEL1")) { unit.Level = "L1"; }
-                else if (unit.Category.Contains("LEVEL2")) { unit.Level = "L2"; }
-                else if (unit.Category.Contains("LEVEL3")) { unit.Level = "L3"; }
-                else if (unit.Category.Contains("LEVEL4")) { unit.Level = "L4"; }
-                else if (unit.Category.Contains("LEVEL5")) { unit.Level = "L5"; }
+                if (unit.Category.Contains("LEVEL1"))
+                {
+                    unit.Level = "L1";
+                }
+                else if (unit.Category.Contains("LEVEL2"))
+                {
+                    unit.Level = "L2";
+                }
+                else if (unit.Category.Contains("LEVEL3"))
+                {
+                    unit.Level = "L3";
+                }
+                else if (unit.Category.Contains("LEVEL4"))
+                {
+                    unit.Level = "L4";
+                }
+                else if (unit.Category.Contains("LEVEL5"))
+                {
+                    unit.Level = "L5";
+                }
             }
 
             var tedClass = unitInfo.GetStringOrDefault("TEDCLASS") ?? "";
