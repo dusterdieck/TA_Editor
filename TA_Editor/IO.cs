@@ -12,10 +12,8 @@ namespace TA_Editor
 
     internal static class IO
     {
-        public static List<Tdf> ReadWeaponFromTdf(string file)
+        public static IEnumerable<Tdf> ReadWeaponFromTdf(string file)
         {
-            var tdfs = new List<Tdf>();
-
             TdfNode root;
             using (var f = new StreamReader(file, Encoding.GetEncoding(1252)))
             {
@@ -26,42 +24,9 @@ namespace TA_Editor
             {
                 var weaponInfo = entry.Value;
 
-                Tdf tdf = new Tdf();
-                tdf.File = file;
-
-                tdf.ID = weaponInfo.Name;
-                tdf.WeaponId = weaponInfo.GetStringOrDefault("ID");
-                tdf.Name = weaponInfo.GetStringOrDefault("NAME");
-                tdf.Range = weaponInfo.GetDoubleOrDefault("RANGE");
-                tdf.Reloadtime = weaponInfo.GetDoubleOrDefault("RELOADTIME");
-                tdf.Weaponvelocity = weaponInfo.GetDoubleOrDefault("WEAPONVELOCITY");
-                tdf.Areaofeffect = weaponInfo.GetDoubleOrDefault("AREAOFEFFECT");
-                tdf.Burst = weaponInfo.GetDoubleOrDefault("BURST");
-                tdf.BurstRate = weaponInfo.GetDoubleOrDefault("BURSTRATE");
-                tdf.EnergyPerShot = weaponInfo.GetDoubleOrDefault("ENERGYPERSHOT");
-                tdf.Accuracy = weaponInfo.GetDoubleOrDefault("ACCURACY");
-                tdf.StartVelocity = weaponInfo.GetDoubleOrDefault("STARTVELOCITY");
-                tdf.WeaponAcceleration = weaponInfo.GetDoubleOrDefault("WEAPONACCELERATION");
-                tdf.WeaponTimer = weaponInfo.GetDoubleOrDefault("WEAPONTIMER");
-                tdf.Tolerance = weaponInfo.GetDoubleOrDefault("TOLERANCE");
-                tdf.EdgeEffectiveness = weaponInfo.GetDoubleOrDefault("EDGEEFFECTIVENESS");
-                tdf.Color1 = weaponInfo.GetStringOrDefault("COLOR");
-                tdf.Color2 = weaponInfo.GetStringOrDefault("COLOR2");
-                tdf.SprayAngle = weaponInfo.GetDoubleOrDefault("SPRAYANGLE");
-                tdf.PitchTolerance = weaponInfo.GetDoubleOrDefault("PITCHTOLERANCE");
-                tdf.MinBarrelAngle = weaponInfo.GetDoubleOrDefault("MINBARRELANGLE");
-
-                if (weaponInfo.Keys.TryGetValue("DAMAGE", out var damageInfo))
-                {
-                    tdf.Default = damageInfo.GetDoubleOrDefault("DEFAULT");
-                }
-
-                tdf.Changed = false;
-                if (tdf.ID != null)
-                    tdfs.Add(tdf);
+                var tdf = ToTdf(file, weaponInfo);
+                yield return tdf;
             }
-
-            return tdfs;
         }
 
         public static Fbi ReadUnitFromFbi(string file)
@@ -73,7 +38,82 @@ namespace TA_Editor
             }
 
             var unitInfo = root.Keys["UNITINFO"];
+            var unit = ToFbi(file, unitInfo);
+            return unit;
+        }
 
+        public static void WriteUnitFbiFile(Fbi unit)
+        {
+            TdfNode sourceRoot;
+            using (var f = new StreamReader(unit.File))
+            {
+                sourceRoot = TdfNode.LoadTdf(f);
+            }
+
+            var targetUnitInfo = ToTdfNode(unit);
+
+            var instructions = TdfCompare.ComputePropertyMapping(sourceRoot.Keys["UNITINFO"], targetUnitInfo, 1);
+
+            TdfCompare.PerformInstructions(unit.File, instructions);
+        }
+
+        public static void WriteWeaponTdfFile(Tdf weapon)
+        {
+            TdfNode sourceRoot;
+            using (var f = new StreamReader(weapon.File))
+            {
+                sourceRoot = TdfNode.LoadTdf(f);
+            }
+
+            var targetWeaponInfo = ToTdfNode(weapon);
+
+            var instructions = TdfCompare.ComputePropertyMapping(sourceRoot.Keys[weapon.ID], targetWeaponInfo, 1);
+            if (sourceRoot.Keys[weapon.ID].Keys.ContainsKey("DAMAGE"))
+            {
+                instructions.AddRange(TdfCompare.ComputePropertyMapping(sourceRoot.Keys[weapon.ID].Keys["DAMAGE"], targetWeaponInfo.Keys["DAMAGE"], 2));
+            }
+
+            TdfCompare.PerformInstructions(weapon.File, instructions);
+        }
+
+        private static Tdf ToTdf(string file, TdfNode weaponInfo)
+        {
+            var tdf = new Tdf();
+            tdf.File = file;
+
+            tdf.ID = weaponInfo.Name;
+            tdf.WeaponId = weaponInfo.GetStringOrDefault("ID");
+            tdf.Name = weaponInfo.GetStringOrDefault("NAME");
+            tdf.Range = weaponInfo.GetDoubleOrDefault("RANGE");
+            tdf.Reloadtime = weaponInfo.GetDoubleOrDefault("RELOADTIME");
+            tdf.Weaponvelocity = weaponInfo.GetDoubleOrDefault("WEAPONVELOCITY");
+            tdf.Areaofeffect = weaponInfo.GetDoubleOrDefault("AREAOFEFFECT");
+            tdf.Burst = weaponInfo.GetDoubleOrDefault("BURST");
+            tdf.BurstRate = weaponInfo.GetDoubleOrDefault("BURSTRATE");
+            tdf.EnergyPerShot = weaponInfo.GetDoubleOrDefault("ENERGYPERSHOT");
+            tdf.Accuracy = weaponInfo.GetDoubleOrDefault("ACCURACY");
+            tdf.StartVelocity = weaponInfo.GetDoubleOrDefault("STARTVELOCITY");
+            tdf.WeaponAcceleration = weaponInfo.GetDoubleOrDefault("WEAPONACCELERATION");
+            tdf.WeaponTimer = weaponInfo.GetDoubleOrDefault("WEAPONTIMER");
+            tdf.Tolerance = weaponInfo.GetDoubleOrDefault("TOLERANCE");
+            tdf.EdgeEffectiveness = weaponInfo.GetDoubleOrDefault("EDGEEFFECTIVENESS");
+            tdf.Color1 = weaponInfo.GetStringOrDefault("COLOR");
+            tdf.Color2 = weaponInfo.GetStringOrDefault("COLOR2");
+            tdf.SprayAngle = weaponInfo.GetDoubleOrDefault("SPRAYANGLE");
+            tdf.PitchTolerance = weaponInfo.GetDoubleOrDefault("PITCHTOLERANCE");
+            tdf.MinBarrelAngle = weaponInfo.GetDoubleOrDefault("MINBARRELANGLE");
+
+            if (weaponInfo.Keys.TryGetValue("DAMAGE", out var damageInfo))
+            {
+                tdf.Default = damageInfo.GetDoubleOrDefault("DEFAULT");
+            }
+
+            tdf.Changed = false;
+            return tdf;
+        }
+
+        private static Fbi ToFbi(string file, TdfNode unitInfo)
+        {
             var unit = new Fbi();
             unit.File = file;
 
@@ -332,40 +372,6 @@ namespace TA_Editor
             n.Entries["DEFAULTMISSIONTYPE"] = TdfConvert.ToStringInfo(unit.DefaultMissionType);
 
             return n;
-        }
-
-        public static void WriteUnitFbiFile(Fbi unit)
-        {
-            TdfNode sourceRoot;
-            using (var f = new StreamReader(unit.File))
-            {
-                sourceRoot = TdfNode.LoadTdf(f);
-            }
-
-            var targetUnitInfo = ToTdfNode(unit);
-
-            var instructions = TdfCompare.ComputePropertyMapping(sourceRoot.Keys["UNITINFO"], targetUnitInfo, 1);
-
-            TdfCompare.PerformInstructions(unit.File, instructions);
-        }
-
-        public static void WriteWeaponTdfFile(Tdf weapon)
-        {
-            TdfNode sourceRoot;
-            using (var f = new StreamReader(weapon.File))
-            {
-                sourceRoot = TdfNode.LoadTdf(f);
-            }
-
-            var targetWeaponInfo = ToTdfNode(weapon);
-
-            var instructions = TdfCompare.ComputePropertyMapping(sourceRoot.Keys[weapon.ID], targetWeaponInfo, 1);
-            if (sourceRoot.Keys[weapon.ID].Keys.ContainsKey("DAMAGE"))
-            {
-                instructions.AddRange(TdfCompare.ComputePropertyMapping(sourceRoot.Keys[weapon.ID].Keys["DAMAGE"], targetWeaponInfo.Keys["DAMAGE"], 2));
-            }
-
-            TdfCompare.PerformInstructions(weapon.File, instructions);
         }
     }
 }
