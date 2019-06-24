@@ -15,6 +15,8 @@ using MessageBox = System.Windows.MessageBox;
 
 namespace TA_Editor
 {
+    using System.Text.RegularExpressions;
+
     class UiManager
     {
         public MainWindow MainWindow { get; set; }
@@ -460,7 +462,7 @@ namespace TA_Editor
             List<string> fileList = new List<string>();
             foreach (string folder in folders)
             {
-                if (folder.ToUpper().Contains("WEAPON"))
+                if (Regex.IsMatch(folder.ToUpper(), @"^WEAPON[A-Z]$"))
                 {
                     unitFolders.Add(folder);
                 }
@@ -555,7 +557,7 @@ namespace TA_Editor
             List<string> fileList = new List<string>();
             foreach (string folder in folders)
             {
-                if (folder.ToUpper().Contains("UNIT"))
+                if (Regex.IsMatch(folder.ToUpper(), @"^UNITS[A-Z]$"))
                 {
                     unitFolders.Add(folder);
                 }
