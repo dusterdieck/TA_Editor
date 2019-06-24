@@ -87,7 +87,7 @@
                     instructions.Add(new Insert
                         {
                             StartIndex = lastPropertyEnd,
-                            Value = $"{entry.Key}={entry.Value.Value};\n" + new string('\t', indentLevel)
+                            Value = $"{entry.Key}={entry.Value.Value};\r\n" + new string('\t', indentLevel)
                         });
                 }
             }
