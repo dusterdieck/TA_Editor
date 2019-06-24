@@ -200,28 +200,6 @@ namespace TA_Editor
             return unit;
         }
 
-        private static double GetDoubleValue(string input)
-        {
-            string[] inputArray = input.Split(';');
-            string[] inputArray2 = inputArray[0].Split('/');
-            string[] inputArray3 = inputArray[0].Split('=');
-            string output = inputArray3[1];
-            if (output.StartsWith("."))
-            {
-                output = "0" + output; 
-            }
-            return Double.Parse(output, new NumberFormatInfo() { NumberDecimalSeparator = "." });
-        }
-
-        private static string GetStringValue(string input)
-        {
-            string[] inputArray = input.Split(';');
-            string[] inputArray2 = inputArray[0].Split('/');
-            string[] inputArray3 = inputArray[0].Split('=');
-            string output = inputArray3[1];
-            return output;
-        }
-
         private static TdfNode toTdfNode(Tdf weapon)
         {
             var n = new TdfNode(weapon.ID);
