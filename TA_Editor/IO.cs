@@ -42,7 +42,7 @@ namespace TA_Editor
         public static void WriteUnitFbiFile(Fbi unit)
         {
             TdfNode sourceRoot;
-            using (var f = new StreamReader(unit.File))
+            using (var f = new StreamReader(unit.File, Encoding.GetEncoding(1252)))
             {
                 sourceRoot = TdfNode.LoadTdf(f);
             }
@@ -57,7 +57,7 @@ namespace TA_Editor
         public static void WriteWeaponTdfFile(Tdf weapon)
         {
             TdfNode sourceRoot;
-            using (var f = new StreamReader(weapon.File))
+            using (var f = new StreamReader(weapon.File, Encoding.GetEncoding(1252)))
             {
                 sourceRoot = TdfNode.LoadTdf(f);
             }
