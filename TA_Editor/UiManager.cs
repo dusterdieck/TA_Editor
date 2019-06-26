@@ -262,21 +262,21 @@ namespace TA_Editor
             // Units
             counter.Merge(BulkCalculation.CalculateOverAll(dg, operation, this.UIModel.MathParameter));
 
-            if (counter.outofrangecounter > 0 && (selectedCells != counter.successcounter))
-                MessageBox.Show(counter.successcounter + " values have been changed.\r " 
-                    + (selectedCells - counter.successcounter) + " cells could not be changed\r" 
-                    + counter.outofrangecounter + " values were out of range and have been set to default.", 
+            if (counter.OutOfRangeCount > 0 && (selectedCells != counter.SuccessCount))
+                MessageBox.Show(counter.SuccessCount + " values have been changed.\r " 
+                    + (selectedCells - counter.SuccessCount) + " cells could not be changed\r" 
+                    + counter.OutOfRangeCount + " values were out of range and have been set to default.", 
                     "Calculation Errors");
-            else if (counter.outofrangecounter > 0 && selectedCells.Equals(counter.successcounter))
-                MessageBox.Show(counter.successcounter + " values have been changed.\r" +
-                    +counter.outofrangecounter + " values were out of range and have been set to default.",
+            else if (counter.OutOfRangeCount > 0 && selectedCells.Equals(counter.SuccessCount))
+                MessageBox.Show(counter.SuccessCount + " values have been changed.\r" +
+                    +counter.OutOfRangeCount + " values were out of range and have been set to default.",
                     "Calculation Errors");
-            else if (counter.outofrangecounter == 0 && !selectedCells.Equals(counter.successcounter))
-                MessageBox.Show(counter.successcounter + " values have been changed.\r" +
-                    +(selectedCells - counter.successcounter) + " cells could not be changed.\r",
+            else if (counter.OutOfRangeCount == 0 && !selectedCells.Equals(counter.SuccessCount))
+                MessageBox.Show(counter.SuccessCount + " values have been changed.\r" +
+                    +(selectedCells - counter.SuccessCount) + " cells could not be changed.\r",
                     "Calculation Mixed Success");
             else
-                MessageBox.Show("All " + counter.successcounter + " values have been changed successfully.", "Calculation Success");
+                MessageBox.Show("All " + counter.SuccessCount + " values have been changed successfully.", "Calculation Success");
         }
 
         private void ExecuteMultiplyToValueCommand(object sender, ExecutedRoutedEventArgs e)
@@ -313,21 +313,21 @@ namespace TA_Editor
             // Units
             counter.Merge(BulkCalculation.CalculateOverAll(dg, CalculationOperation.Multiply, this.UIModel.MathParameter));
 
-            if (counter.outofrangecounter > 0 && (selectedCells != counter.successcounter))
-                MessageBox.Show(counter.successcounter + " values have been changed.\r "
-                    + (selectedCells - counter.successcounter) + " cells could not be changed\r"
-                    + counter.outofrangecounter + " values were out of range and have been set to default.",
+            if (counter.OutOfRangeCount > 0 && (selectedCells != counter.SuccessCount))
+                MessageBox.Show(counter.SuccessCount + " values have been changed.\r "
+                    + (selectedCells - counter.SuccessCount) + " cells could not be changed\r"
+                    + counter.OutOfRangeCount + " values were out of range and have been set to default.",
                     "Calculation Errors");
-            else if (counter.outofrangecounter > 0 && selectedCells.Equals(counter.successcounter))
-                MessageBox.Show(counter.successcounter + " values have been changed.\r" +
-                    +counter.outofrangecounter + " values were out of range and have been set to default.",
+            else if (counter.OutOfRangeCount > 0 && selectedCells.Equals(counter.SuccessCount))
+                MessageBox.Show(counter.SuccessCount + " values have been changed.\r" +
+                    +counter.OutOfRangeCount + " values were out of range and have been set to default.",
                     "Calculation Errors");
-            else if (counter.outofrangecounter == 0 && !selectedCells.Equals(counter.successcounter))
-                MessageBox.Show(counter.successcounter + " values have been changed.\r" +
-                    +(selectedCells - counter.successcounter) + " cells could not be changed.\r",
+            else if (counter.OutOfRangeCount == 0 && !selectedCells.Equals(counter.SuccessCount))
+                MessageBox.Show(counter.SuccessCount + " values have been changed.\r" +
+                    +(selectedCells - counter.SuccessCount) + " cells could not be changed.\r",
                     "Calculation Mixed Success");
             else
-                MessageBox.Show("All " + counter.successcounter + " values have been changed successfully.", "Calculation Success");
+                MessageBox.Show("All " + counter.SuccessCount + " values have been changed successfully.", "Calculation Success");
         }
 
         private void ExecuteSetFixedValueCommand(object sender, ExecutedRoutedEventArgs e)
@@ -357,21 +357,21 @@ namespace TA_Editor
             // Units
             counter.Merge(BulkCalculation.CalculateOverAll(dg, CalculationOperation.SetValue, this.UIModel.MathParameter));
 
-            if (counter.outofrangecounter > 0 && (selectedCells != counter.successcounter))
-                MessageBox.Show(counter.successcounter + " values have been changed.\r "
-                    + (selectedCells - counter.successcounter) + " cells could not be changed\r"
-                    + counter.outofrangecounter + " values were out of range and have been set to default.",
+            if (counter.OutOfRangeCount > 0 && (selectedCells != counter.SuccessCount))
+                MessageBox.Show(counter.SuccessCount + " values have been changed.\r "
+                    + (selectedCells - counter.SuccessCount) + " cells could not be changed\r"
+                    + counter.OutOfRangeCount + " values were out of range and have been set to default.",
                     "Calculation Errors");
-            else if (counter.outofrangecounter > 0 && selectedCells.Equals(counter.successcounter))
-                MessageBox.Show(counter.successcounter + " values have been changed.\r" +
-                    +counter.outofrangecounter + " values were out of range and have been set to default.",
+            else if (counter.OutOfRangeCount > 0 && selectedCells.Equals(counter.SuccessCount))
+                MessageBox.Show(counter.SuccessCount + " values have been changed.\r" +
+                    +counter.OutOfRangeCount + " values were out of range and have been set to default.",
                     "Calculation Errors");
-            else if (counter.outofrangecounter == 0 && !selectedCells.Equals(counter.successcounter))
-                MessageBox.Show(counter.successcounter + " values have been changed.\r" +
-                    +(selectedCells - counter.successcounter) + " cells could not be changed.\r",
+            else if (counter.OutOfRangeCount == 0 && !selectedCells.Equals(counter.SuccessCount))
+                MessageBox.Show(counter.SuccessCount + " values have been changed.\r" +
+                    +(selectedCells - counter.SuccessCount) + " cells could not be changed.\r",
                     "Calculation Mixed Success");
             else
-                MessageBox.Show("All " + counter.successcounter + " values have been changed successfully.", "Calculation Success");
+                MessageBox.Show("All " + counter.SuccessCount + " values have been changed successfully.", "Calculation Success");
         }
 
         #endregion
