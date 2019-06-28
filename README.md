@@ -1,5 +1,7 @@
 # Total Annihilation Units and Weapons Editor
 
+[![Build status](https://ci.appveyor.com/api/projects/status/ps1dvk06s0428avx/branch/master?svg=true)](https://ci.appveyor.com/project/MHeasell/ta-editor/branch/master)
+
 This is a fork of the Total Annihilation Units and Weapons Editor
 originally developed by MacBain on the TAUniverse forums.
 
