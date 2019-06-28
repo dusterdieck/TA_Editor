@@ -1,3 +1,5 @@
+version: 1.13.0.{build}
+
 before_build:
   - nuget restore
 
@@ -6,6 +8,12 @@ after_build:
 
 artifacts:
   - path: TA_Editor.zip
+
+assembly_info:
+  patch: true
+  file: AssemblyInfo.cs
+  assembly_version: "{version}"
+  assembly_file_version: "{version}"
 
 deploy: off
 
