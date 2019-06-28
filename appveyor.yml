@@ -1,4 +1,4 @@
-version: 1.13.0
+version: 1.13.0.{build}
 
 before_build:
   - nuget restore
@@ -14,8 +14,8 @@ artifacts:
 assembly_info:
   patch: true
   file: AssemblyInfo.cs
-  assembly_version: "{version}.{build}"
-  assembly_file_version: "{version}.{build}"
+  assembly_version: "{version}"
+  assembly_file_version: "{version}"
 
 deploy:
   release: v$(APPVEYOR_BUILD_VERSION)
