@@ -18,7 +18,7 @@ assembly_info:
   assembly_file_version: "{version}"
 
 deploy:
-  release: v$(APPVEYOR_BUILD_VERSION)
+  tag: $(APPVEYOR_REPO_TAG_NAME)
   draft: true
   provider: GitHub
   auth_token:
