@@ -4,7 +4,8 @@ before_build:
   - nuget restore
 
 after_build:
-  - 7z a TA_Editor-%APPVEYOR_BUILD_VERSION%-%CONFIGURATION%.zip %APPVEYOR_BUILD_FOLDER%\TA_Editor\bin\%CONFIGURATION%\* README.md
+  - COPY README.md README.txt
+  - 7z a TA_Editor-%APPVEYOR_BUILD_VERSION%-%CONFIGURATION%.zip %APPVEYOR_BUILD_FOLDER%\TA_Editor\bin\%CONFIGURATION%\* README.txt
 
 artifacts:
   - path: TA_Editor-$(APPVEYOR_BUILD_VERSION)-$(CONFIGURATION).zip
