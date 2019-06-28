@@ -41,17 +41,15 @@ modifications by Michael Heasell. Use this program at your own risk.
 
 ## Why a Fork?
 
-The original project has numerous bugs, particularly
-around reading and saving files.
-It routinely makes unexpected edits when saving changed data,
-making the tool too dangerous to use as an editor.
+The original project has numerous bugs, particularly around reading and
+saving files. It routinely makes unexpected edits when saving changed
+data, making the tool too dangerous to use as an editor.
 
-This fork uses a modified version of [TAUtil](https://github.com/MHeasell/TAUtil)
-as a basis for reading and saving logic.
-It makes precise edits to files in place,
-changing values while preserving existing formatting and comments.
+This fork uses a modified version of
+[TAUtil](https://github.com/MHeasell/TAUtil) as a basis for reading and
+saving logic. It makes precise edits to files in place, changing values
+while preserving existing formatting and comments.
 
-**WARNING**: This software comes with absolutely no warranty.
-It is recommended that you back up existing data
-or place it under version control before using this tool
-and review changes carefully.
+**WARNING**: This software comes with absolutely no warranty. It is
+recommended that you back up existing data or place it under version
+control before using this tool and review changes carefully.
