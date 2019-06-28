@@ -8,6 +8,7 @@ after_build:
 
 artifacts:
   - path: TA_Editor.zip
+    name: TA_Editor-$(APPVEYOR_BUILD_VERSION)-$(CONFIGURATION).zip
 
 assembly_info:
   patch: true
