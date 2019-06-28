@@ -17,7 +17,16 @@ assembly_info:
   assembly_version: "{version}"
   assembly_file_version: "{version}"
 
-deploy: off
+deploy:
+  release: v$(APPVEYOR_BUILD_VERSION)
+  draft: true
+  provider: GitHub
+  auth_token:
+    secure: glwd3HCPhB64nX2++Co5BhN4vEwqEILuPQG0puwWoFpKTFd21iphYt8Z2QsNiAV1
+  artifact: TA_Editor
+  on:
+    APPVEYOR_REPO_TAG: true
+    configuration: Release
 
 configuration:
   - Debug
