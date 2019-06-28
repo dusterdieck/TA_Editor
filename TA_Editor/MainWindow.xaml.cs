@@ -4,6 +4,8 @@ using System.Windows.Input;
 
 namespace TA_Editor
 {
+    using System.Reflection;
+
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
@@ -42,9 +44,9 @@ namespace TA_Editor
                 "After you are finished you need to SAVE the edited data. This will replace all changed files in the original folder with the values in the table. \r" +
                 "The last step to do is to pack the folder back to its original file (HPIpacker can help here) and place it into your TA folder. \r" +
                 "\r" +
-                "The author of this program is Pascal Wauer. Using this program is under your own responsibility." +
+                "The original author of this program is Pascal Wauer. This fork contains modifications by Michael Heasell. Using this program is under your own responsibility." +
                 "\r"
-                , "Total Annihilation Units and Weapons Editor V1.12"
+                , "Total Annihilation Units and Weapons Editor " + Assembly.GetExecutingAssembly().GetName().Version
                 );
         }
 
