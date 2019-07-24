@@ -140,7 +140,7 @@
             <DataGrid Grid.Row="2" x:Name="m_DataGridTDF" ItemsSource="{Binding TDFData, IsAsync=True}" AutoGenerateColumns="False" AlternationCount="2" 
                         Visibility="{Binding TDI}" LoadingRow="DataGrid_LoadingRow" SelectedCellsChanged="OnSelectionChangedTDF" 
                         EnableColumnVirtualization="True" EnableRowVirtualization="True"
-                        AlternatingRowBackground="Bisque" SelectionUnit="Cell" CellStyle="{StaticResource CustomCellStyle}" MouseRightButtonDown="OnCellRightClickClick">
+                        AlternatingRowBackground="Bisque" SelectionUnit="Cell" CellStyle="{StaticResource CustomCellStyle}" MouseRightButtonDown="OnCellRightClickClick" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="120" IsReadOnly="True" FontWeight="UltraLight">
                     </DataGridTextColumn>
@@ -198,7 +198,7 @@
                 <DataGrid x:Name="m_DataGridFBI"  ItemsSource="{Binding FBIData, IsAsync=True}" AutoGenerateColumns="False" AlternationCount="2" 
                           Visibility="{Binding FBI}" LoadingRow="DataGrid_LoadingRow" SelectedCellsChanged="OnSelectionChangedFBI"
                           EnableColumnVirtualization="True" EnableRowVirtualization="True"
-                          AlternatingRowBackground="LightBlue" SelectionUnit="Cell" CellStyle="{StaticResource CustomCellStyle}" MouseRightButtonDown="OnCellRightClickClick">
+                          AlternatingRowBackground="LightBlue" SelectionUnit="Cell" CellStyle="{StaticResource CustomCellStyle}" MouseRightButtonDown="OnCellRightClickClick" CanUserAddRows="False">
                     <DataGrid.Resources>
                         <local:BindingProxy x:Key="proxy" Data="{Binding}"/>
                     </DataGrid.Resources>
