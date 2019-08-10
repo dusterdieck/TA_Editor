@@ -8,6 +8,7 @@ namespace TA_Editor
         public static readonly RoutedUICommand ReadAllFBIFilesCommand;
         public static readonly RoutedUICommand WriteAllChangedFilesCommand;
         public static readonly RoutedUICommand PackAllFilesCommand;
+        public static readonly RoutedUICommand ExportCsvCommand;
         public static readonly RoutedUICommand AddToValueCommand;
         public static readonly RoutedUICommand MultiplyToValueCommand;
         public static readonly RoutedUICommand SetFixedValueCommand;
@@ -24,6 +25,7 @@ namespace TA_Editor
             ReadAllFBIFilesCommand = new RoutedUICommand("Execute ReadAllFBIFilesCommand", "ReadAllFBIFilesCommand", typeof(TaCommands));
             WriteAllChangedFilesCommand = new RoutedUICommand("Execute WriteAllChangedFilesCommand", "WriteAllChangedFilesCommand", typeof(TaCommands));
             PackAllFilesCommand = new RoutedUICommand("Execute PackAllFilesCommand", "PackAllFilesCommand", typeof(TaCommands));
+            ExportCsvCommand = new RoutedUICommand("Execute ExportCsvComand", "ExportCsvCommand", typeof(TaCommands));
             AddToValueCommand = new RoutedUICommand("Execute AddToValueCommand", "AddToValueCommand", typeof(TaCommands));
             MultiplyToValueCommand = new RoutedUICommand("Execute MultiplyToValueCommand", "MultiplyToValueCommand", typeof(TaCommands));
             SetFixedValueCommand = new RoutedUICommand("Execute SetFixedValueCommand", "SetFixedValueCommand", typeof(TaCommands));

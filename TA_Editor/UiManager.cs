@@ -44,6 +44,7 @@ namespace TA_Editor
             this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.ReadAllFBIFilesCommand, this.ExecuteReadAllFBIFilesCommand));
             this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.WriteAllChangedFilesCommand, this.ExecuteWriteAllChangedFilesCommand));
             this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.PackAllFilesCommand, this.ExecutePackAllFilesCommand));
+            this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.ExportCsvCommand, this.ExecuteExportCsvCommand));
             this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.AddToValueCommand, this.ExecuteAddToValueCommand));
             this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.SubstractToValueCommand, this.ExecuteSubstractToValueCommand));
             this.MainWindow.CommandBindings.Add(new CommandBinding(TaCommands.MultiplyToValueCommand, this.ExecuteMultiplyToValueCommand));
@@ -147,6 +148,28 @@ namespace TA_Editor
             else
                 Process.Start(packerpath);
 
+        }
+
+        private void ExecuteExportCsvCommand(object sender, ExecutedRoutedEventArgs e)
+        {
+            var dialog = new SaveFileDialog();
+            dialog.Title = "Choose where to save the CSV file";
+            dialog.Filter = "Comma Separated Values|*.csv";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    IO.WriteUnitCsvFile(dialog.FileName, this.UIModel.FBIData);
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show(
+                        "Failed to export CSV: " + ex.Message,
+                        "Failed to export CSV",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                }
+            }
         }
 
         private void ExecuteSelectFolderCommand(object sender, ExecutedRoutedEventArgs e)

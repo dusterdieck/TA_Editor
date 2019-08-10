@@ -124,8 +124,10 @@
                 <StackPanel Grid.Column="4" Orientation="Vertical" Margin="8,4,0,4" Height="84" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#B7D1E2">
                     <Button Margin="4,6,4,0"  Width="120" Height="20" Content="Save Data" Command="{x:Static local:TaCommands.WriteAllChangedFilesCommand}"
                             ToolTip="Writes all changed files back to the original folders. All old data will be overwritten"></Button>
-                    <Button Margin="4,7,4,7"  Width="120" Height="20" Content="Pack all Data" Command="{x:Static local:TaCommands.PackAllFilesCommand}"
+                    <Button Margin="4,6,4,0"  Width="120" Height="20" Content="Pack all Data" Command="{x:Static local:TaCommands.PackAllFilesCommand}"
                             ToolTip="Starts the default packing program (for example HPI File Pack). The path to the program will be stored in the TA_Editor.cfg"></Button>
+                    <Button Margin="4,6,4,0"  Width="120" Height="20" Content="Export CSV" Command="{x:Static local:TaCommands.ExportCsvCommand}"
+                            ToolTip="Exports the unit data to a CSV file"/>
                 </StackPanel>
             </Grid>
         </Border>

@@ -5,6 +5,8 @@ namespace TA_Editor
     using System.Linq;
     using System.Text;
 
+    using CsvHelper;
+
     using TAUtil.Tdf;
 
     internal static class IO
@@ -370,5 +372,17 @@ namespace TA_Editor
 
             return n;
         }
+
+        public static void WriteUnitCsvFile(string filename, IEnumerable<Fbi> fbis)
+        {
+            using (var writer = new StreamWriter(filename))
+            {
+                using (var csv = new CsvWriter(writer))
+                {
+                    csv.WriteRecords(fbis);
+                }
+            }
+        }
+
     }
 }
