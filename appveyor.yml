@@ -1,5 +1,5 @@
-version: 1.13.0.{build}
-
+install:
+  - ps: Update-AppveyorBuild -Version "$($(git describe --abbrev=0).subString(1)).$env:APPVEYOR_BUILD_NUMBER"
 before_build:
   - nuget restore
 
