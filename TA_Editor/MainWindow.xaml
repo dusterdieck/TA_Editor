@@ -184,9 +184,9 @@
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="MinBarrel" Binding="{Binding MinBarrelAngle}" Width="60">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Col1" Binding="{Binding Color1}" Width="35">
+                    <DataGridTextColumn Header="Color" Binding="{Binding Color}" Width="40">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Col2" Binding="{Binding Color2}" Width="35">
+                    <DataGridTextColumn Header="Color2" Binding="{Binding Color2}" Width="45">
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="UsedBy" Binding="{Binding UsedBy}" Width="160" IsReadOnly="True" FontWeight="Bold">
                     </DataGridTextColumn>

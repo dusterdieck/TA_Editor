@@ -96,7 +96,7 @@ namespace TA_Editor
             tdf.WeaponTimer = weaponInfo.GetDoubleOrDefault("WeaponTimer");
             tdf.Tolerance = weaponInfo.GetDoubleOrDefault("Tolerance");
             tdf.EdgeEffectiveness = weaponInfo.GetDoubleOrDefault("EdgeEffectiveness");
-            tdf.Color1 = weaponInfo.GetStringOrDefault("Color1");
+            tdf.Color = weaponInfo.GetStringOrDefault("Color");
             tdf.Color2 = weaponInfo.GetStringOrDefault("Color2");
             tdf.SprayAngle = weaponInfo.GetDoubleOrDefault("SprayAngle");
             tdf.PitchTolerance = weaponInfo.GetDoubleOrDefault("PitchTolerance");
@@ -273,7 +273,7 @@ namespace TA_Editor
             n.Entries["WeaponTimer"] = TdfConvert.ToStringInfo(weapon.WeaponTimer);
             n.Entries["Tolerance"] = TdfConvert.ToStringInfo(weapon.Tolerance);
             n.Entries["EdgeEffectiveness"] = TdfConvert.ToStringInfo(weapon.EdgeEffectiveness);
-            n.Entries["Color1"] = TdfConvert.ToStringInfo(weapon.Color1);
+            n.Entries["Color1"] = TdfConvert.ToStringInfo(weapon.Color);
             n.Entries["Color2"] = TdfConvert.ToStringInfo(weapon.Color2);
             n.Entries["SprayAngle"] = TdfConvert.ToStringInfo(weapon.SprayAngle);
             n.Entries["PitchTolerance"] = TdfConvert.ToStringInfo(weapon.PitchTolerance);

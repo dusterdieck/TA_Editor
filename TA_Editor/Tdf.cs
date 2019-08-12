@@ -207,13 +207,13 @@
             }
         }
 
-        private string m_Color1;
-        public string Color1
+        private string m_Color;
+        public string Color
         {
-            get => this.m_Color1;
+            get => this.m_Color;
             set
             {
-                this.m_Color1 = value;
+                this.m_Color = value;
                 this.Changed = true;
                 this.NotifyPropertyChanged();
             }
