@@ -379,6 +379,11 @@ namespace TA_Editor
             {
                 using (var csv = new CsvWriter(writer))
                 {
+                    // If the file starts with "ID" (without quotes),
+                    // then Excel interprets the file as a SYLK file and issues an error.
+                    // This may affect us since "ID" is a header we export.
+                    // We wrap it in quotes to make Excel stop complaining.
+                    csv.Configuration.ShouldQuote = (field, context) => !context.HasHeaderBeenWritten && field == "ID";
                     csv.WriteRecords(fbis);
                 }
             }
