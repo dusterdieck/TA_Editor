@@ -82,7 +82,7 @@
                         <CheckBox Width="50" Margin="58,0,0,0" Height="20" Content="Lvl 1" IsChecked="{Binding Lvl1}" IsEnabled="{Binding UseFilters}"></CheckBox>
                         <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Lvl 2" IsChecked="{Binding Lvl2}" IsEnabled="{Binding UseFilters}"></CheckBox>
                         <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Lvl 3+" IsChecked="{Binding Lvl3}" IsEnabled="{Binding UseFilters}"></CheckBox>
-                        <CheckBox Width="17" Margin="3,-38,0,0" Height="20" IsChecked="{Binding UseFilters, Mode=TwoWay}" BorderThickness="2" BorderBrush="Black" ToolTip="Enable/Disable filters - disable filters if the files use other factions than Arm or Core or if they have their own TEDclasses"></CheckBox>
+                        <CheckBox Width="17" Margin="3,-38,0,0" Height="20" IsChecked="{Binding UseFilters}" BorderThickness="2" BorderBrush="Black" ToolTip="Enable/Disable filters - disable filters if the files use other factions than Arm or Core or if they have their own TEDclasses"></CheckBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="2,2,0,0" Height="20" Visibility="{Binding FBI}">
                         <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="KBot" IsChecked="{Binding KBot}" IsEnabled="{Binding UseFilters}"></CheckBox>
@@ -116,7 +116,7 @@
                     <StackPanel Orientation="Horizontal" Margin="2,2,0,6" Height="20" Visibility="{Binding FBI}">
                         <CheckBox Width="100" Margin="4,0,0,0" Background="#660000FF" Content="Order/Abilities" IsChecked="{Binding ShowOrder}" IsEnabled="{Binding ViewAllColumns}" ToolTip="Shows all extra columns related to general order or ability values"></CheckBox>
                         <CheckBox Width="100" Margin="4,0,0,0" Content="Misc" IsChecked="{Binding ShowMisc}" IsEnabled="{Binding ViewAllColumns}" ToolTip="Shows all extra columns where a category does not fit"></CheckBox>
-                        <CheckBox Width="17" Margin="-17,-63,0,0" IsChecked="{Binding ViewAllColumns, Mode=TwoWay}" BorderThickness="2" BorderBrush="Black" ToolTip="Uncheck to view all available columns"></CheckBox>
+                        <CheckBox Width="17" Margin="-17,-63,0,0" IsChecked="{Binding ViewAllColumns}" BorderThickness="2" BorderBrush="Black" ToolTip="Uncheck to view all available columns"></CheckBox>
                     </StackPanel>
                 </StackPanel>
 
