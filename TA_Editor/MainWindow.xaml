@@ -150,9 +150,9 @@
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Range" Binding="{Binding Range}" Width="45">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Reload" Binding="{Binding Reloadtime, UpdateSourceTrigger=PropertyChanged}" Width="50">
+                    <DataGridTextColumn Header="Reload" Binding="{Binding Reloadtime}" Width="50">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Default" Binding="{Binding Default , UpdateSourceTrigger=PropertyChanged}" Width="50">
+                    <DataGridTextColumn Header="Default" Binding="{Binding Default}" Width="50">
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="DPS" Binding="{Binding DPS}" Width="50" IsReadOnly="True" FontWeight="Bold">
                     </DataGridTextColumn>
@@ -160,9 +160,9 @@
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="AOE" Binding="{Binding Areaofeffect}" Width="40">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Burst" Binding="{Binding Burst, UpdateSourceTrigger=PropertyChanged}" Width="40">
+                    <DataGridTextColumn Header="Burst" Binding="{Binding Burst}" Width="40">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="BurstRate" Binding="{Binding BurstRate, UpdateSourceTrigger=PropertyChanged}" Width="60">
+                    <DataGridTextColumn Header="BurstRate" Binding="{Binding BurstRate}" Width="60">
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Accuracy" Binding="{Binding Accuracy}" Width="50">
                     </DataGridTextColumn>
@@ -217,167 +217,167 @@
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Cost E" Binding="{Binding BuildCostEnergy}" Width="50">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Cost M" Binding="{Binding BuildCostMetal, UpdateSourceTrigger=PropertyChanged}" Width="50">
+                        <DataGridTextColumn Header="Cost M" Binding="{Binding BuildCostMetal}" Width="50">
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="BuildTime" Binding="{Binding BuildTime}" Width="65">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="TotalHP" Binding="{Binding MaxDamage, UpdateSourceTrigger=PropertyChanged}" Width="60">
+                        <DataGridTextColumn Header="TotalHP" Binding="{Binding MaxDamage}" Width="60">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="RealHP" Binding="{Binding RealDamage, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="60">
+                        <DataGridTextColumn Header="RealHP" Binding="{Binding RealDamage}" IsReadOnly="True" Width="60">
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="RHP/Metal" Binding="{Binding DPM}" IsReadOnly="True" FontWeight="Bold" Width="70">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="DmgMod" Binding="{Binding DamageModifier, UpdateSourceTrigger=LostFocus}" Width="60">
+                        <DataGridTextColumn Header="DmgMod" Binding="{Binding DamageModifier}" Width="60">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="SightDist" Binding="{Binding SightDistance, UpdateSourceTrigger=PropertyChanged}" Width="60">
+                        <DataGridTextColumn Header="SightDist" Binding="{Binding SightDistance}" Width="60">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Velocity" Binding="{Binding MaxVelocity, UpdateSourceTrigger=LostFocus}" Width="50">
+                        <DataGridTextColumn Header="Velocity" Binding="{Binding MaxVelocity}" Width="50">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Brake" Binding="{Binding BrakeRate, UpdateSourceTrigger=LostFocus}" Width="50">
+                        <DataGridTextColumn Header="Brake" Binding="{Binding BrakeRate}" Width="50">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Accel" Binding="{Binding Acceleration, UpdateSourceTrigger=LostFocus}" Width="50">
+                        <DataGridTextColumn Header="Accel" Binding="{Binding Acceleration}" Width="50">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="TurnRate" Binding="{Binding TurnRate, UpdateSourceTrigger=LostFocus}" Width="60">
+                        <DataGridTextColumn Header="TurnRate" Binding="{Binding TurnRate}" Width="60">
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="WorkTime" Binding="{Binding WorkerTime, UpdateSourceTrigger=PropertyChanged}" Width="65" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="WorkTime" Binding="{Binding WorkerTime}" Width="65" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="E Usage" Binding="{Binding EnergyUse, UpdateSourceTrigger=LostFocus}" Width="60" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="E Usage" Binding="{Binding EnergyUse}" Width="60" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="E Storage" Binding="{Binding EnergyStorage, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="E Storage" Binding="{Binding EnergyStorage}" Width="60" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="M Storage" Binding="{Binding MetalStorage, UpdateSourceTrigger=PropertyChanged}" Width="65" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="M Storage" Binding="{Binding MetalStorage}" Width="65" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="E Make" Binding="{Binding EnergyMake, UpdateSourceTrigger=LostFocus}" Width="50" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="E Make" Binding="{Binding EnergyMake}" Width="50" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="M Make" Binding="{Binding MetalMake, UpdateSourceTrigger=LostFocus}" Width="55" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="M Make" Binding="{Binding MetalMake}" Width="55" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Makes M" Binding="{Binding MakesMetal, UpdateSourceTrigger=LostFocus}" Width="60" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Makes M" Binding="{Binding MakesMetal}" Width="60" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Wind" Binding="{Binding WindGenerator, UpdateSourceTrigger=LostFocus}" Width="40" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Wind" Binding="{Binding WindGenerator}" Width="40" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="BuildDist" Binding="{Binding BuildDistance, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="BuildDist" Binding="{Binding BuildDistance}" Width="60" Foreground="DarkRed" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130" SortDirection="Descending" Visibility="{Binding DataContext.VisibilityShowEco, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="RadarDist" Binding="{Binding RadarDistance, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="RadarDist" Binding="{Binding RadarDistance}" Width="60" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="SonarDist" Binding="{Binding SonarDistance, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="SonarDist" Binding="{Binding SonarDistance}" Width="60" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="RadarJam" Binding="{Binding RadarDistanceJam, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="RadarJam" Binding="{Binding RadarDistanceJam}" Width="60" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="SonarJam" Binding="{Binding SonarDistanceJam, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="SonarJam" Binding="{Binding SonarDistanceJam}" Width="60" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Stealth" Binding="{Binding Stealth, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Stealth" Binding="{Binding Stealth}" Width="50" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="CloakCost" Binding="{Binding CloakCost, UpdateSourceTrigger=PropertyChanged}" Width="65" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="CloakCost" Binding="{Binding CloakCost}" Width="65" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="CloakCostMov" Binding="{Binding CloakCostMoving, UpdateSourceTrigger=PropertyChanged}" Width="90" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="CloakCostMov" Binding="{Binding CloakCostMoving}" Width="90" Foreground="DarkGreen" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="CloakDist" Binding="{Binding MinCloakDistance, UpdateSourceTrigger=PropertyChanged}" Foreground="DarkGreen" FontWeight="SemiBold" Width="60" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="CloakDist" Binding="{Binding MinCloakDistance}" Foreground="DarkGreen" FontWeight="SemiBold" Width="60" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130" SortDirection="Descending" Visibility="{Binding DataContext.VisibilityShowRadar, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Move" Binding="{Binding CanMove, UpdateSourceTrigger=PropertyChanged}" Width="40" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Move" Binding="{Binding CanMove}" Width="40" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Guard" Binding="{Binding CanGuard, UpdateSourceTrigger=PropertyChanged}" Width="45" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Guard" Binding="{Binding CanGuard}" Width="45" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Patrol" Binding="{Binding CanPatrol, UpdateSourceTrigger=PropertyChanged}" Width="45" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Patrol" Binding="{Binding CanPatrol}" Width="45" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Reclaim" Binding="{Binding CanReclamate, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Reclaim" Binding="{Binding CanReclamate}" Width="50" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="DGun" Binding="{Binding CanDgun, UpdateSourceTrigger=PropertyChanged}" Width="40" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="DGun" Binding="{Binding CanDgun}" Width="40" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Capture" Binding="{Binding CanCapture, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Capture" Binding="{Binding CanCapture}" Width="50" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Load" Binding="{Binding CanLoad, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Load" Binding="{Binding CanLoad}" Width="50" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="CantTransp" Binding="{Binding CantBeTransported, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="CantTransp" Binding="{Binding CantBeTransported}" Width="50" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="OnOff" Binding="{Binding OnOffable, UpdateSourceTrigger=PropertyChanged}" Width="45" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="OnOff" Binding="{Binding OnOffable}" Width="45" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="ShootMe" Binding="{Binding ShootMe, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="ShootMe" Binding="{Binding ShootMe}" Width="60" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="NoAutoFire" Binding="{Binding NoAutoFire, UpdateSourceTrigger=PropertyChanged}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="NoAutoFire" Binding="{Binding NoAutoFire}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="FireStandOrders" Binding="{Binding FireStandOrders, UpdateSourceTrigger=PropertyChanged}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="FireStandOrders" Binding="{Binding FireStandOrders}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="StandFireOrder" Binding="{Binding StandingFireOrder, UpdateSourceTrigger=PropertyChanged}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="StandFireOrder" Binding="{Binding StandingFireOrder}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="MobileStandOrders" Binding="{Binding MobileStandOrders, UpdateSourceTrigger=PropertyChanged}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="MobileStandOrders" Binding="{Binding MobileStandOrders}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="StandMoveOrder" Binding="{Binding StandingMoveOrder, UpdateSourceTrigger=PropertyChanged}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="StandMoveOrder" Binding="{Binding StandingMoveOrder}" Width="70" Foreground="Blue" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130" SortDirection="Descending" Visibility="{Binding DataContext.VisibilityShowOrder, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="FootX" Binding="{Binding FootPrintX, UpdateSourceTrigger=PropertyChanged}" Width="45" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="FootX" Binding="{Binding FootPrintX}" Width="45" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="FootZ" Binding="{Binding FootPrintZ, UpdateSourceTrigger=PropertyChanged}" Width="45" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="FootZ" Binding="{Binding FootPrintZ}" Width="45" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="MaxWater" Binding="{Binding MaxWaterDepth, UpdateSourceTrigger=PropertyChanged}" Width="65" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="MaxWater" Binding="{Binding MaxWaterDepth}" Width="65" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="MinWater" Binding="{Binding MinWaterDepth, UpdateSourceTrigger=PropertyChanged}" Width="65" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="MinWater" Binding="{Binding MinWaterDepth}" Width="65" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Slope" Binding="{Binding MaxSlope, UpdateSourceTrigger=PropertyChanged}" Width="45" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Slope" Binding="{Binding MaxSlope}" Width="45" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="WaterLine" Binding="{Binding WaterLine, UpdateSourceTrigger=PropertyChanged}" Width="65" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="WaterLine" Binding="{Binding WaterLine}" Width="65" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Amph" Binding="{Binding Amphibious, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Amph" Binding="{Binding Amphibious}" Width="50" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Floater" Binding="{Binding Floater, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Floater" Binding="{Binding Floater}" Width="50" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Upright" Binding="{Binding Upright, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Upright" Binding="{Binding Upright}" Width="50" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="TransSize" Binding="{Binding TransportSize, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="TransSize" Binding="{Binding TransportSize}" Width="60" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="TransCap" Binding="{Binding TransportCapacity, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="TransCap" Binding="{Binding TransportCapacity}" Width="60" Foreground="Teal" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130" SortDirection="Descending" Visibility="{Binding DataContext.VisibilityShowMovePlace, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="CanFly" Binding="{Binding CanFly, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="CanFly" Binding="{Binding CanFly}" Width="50" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="HovAttck" Binding="{Binding HoverAttack, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="HovAttck" Binding="{Binding HoverAttack}" Width="60" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Cruisealt" Binding="{Binding Cruisealt, UpdateSourceTrigger=PropertyChanged}" Width="60" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Cruisealt" Binding="{Binding Cruisealt}" Width="60" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="BankScale" Binding="{Binding BankScale, UpdateSourceTrigger=LostFocus}" Width="65" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="BankScale" Binding="{Binding BankScale}" Width="65" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="PitchScale" Binding="{Binding PitchScale, UpdateSourceTrigger=LostFocus}" Width="65" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="PitchScale" Binding="{Binding PitchScale}" Width="65" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Move1" Binding="{Binding MoveRate1, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Move1" Binding="{Binding MoveRate1}" Width="50" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Move2" Binding="{Binding MoveRate2, UpdateSourceTrigger=PropertyChanged}" Width="50" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Move2" Binding="{Binding MoveRate2}" Width="50" Foreground="#FF9900FF" FontWeight="SemiBold" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130" SortDirection="Descending" Visibility="{Binding DataContext.VisibilityShowAir, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="ImmuneParalyze" Binding="{Binding ImmuneToParalyzer, UpdateSourceTrigger=PropertyChanged}" Width="80" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="ImmuneParalyze" Binding="{Binding ImmuneToParalyzer}" Width="80" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="HealTime" Binding="{Binding HealTime, UpdateSourceTrigger=PropertyChanged}" Width="60" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="HealTime" Binding="{Binding HealTime}" Width="60" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Sound" Binding="{Binding SoundCategory, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Sound" Binding="{Binding SoundCategory}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Explode" Binding="{Binding ExplodeAs, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Explode" Binding="{Binding ExplodeAs}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="SelfDestruct" Binding="{Binding SelfDestructAs, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="SelfDestruct" Binding="{Binding SelfDestructAs}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Corpse" Binding="{Binding Corpse, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Corpse" Binding="{Binding Corpse}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="PriBadTarget" Binding="{Binding wpri_badtargetcategory, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="PriBadTarget" Binding="{Binding wpri_badtargetcategory}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="SecBadTarget" Binding="{Binding wsec_badtargetcategory, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="SecBadTarget" Binding="{Binding wsec_badtargetcategory}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="SpeBadTarget" Binding="{Binding wspe_badtargetcategory, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="SpeBadTarget" Binding="{Binding wspe_badtargetcategory}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Movement" Binding="{Binding MovementClass, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="Movement" Binding="{Binding MovementClass}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="NoChase" Binding="{Binding NoChaseCategory, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="NoChase" Binding="{Binding NoChaseCategory}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="MissiontType" Binding="{Binding DefaultMissionType, UpdateSourceTrigger=PropertyChanged}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
+                        <DataGridTextColumn Header="MissiontType" Binding="{Binding DefaultMissionType}" Width="90" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold" Width="130" Visibility="{Binding DataContext.VisibilityShowMisc, Source={x:Reference dummyElement}}">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Category" Binding="{Binding Category, UpdateSourceTrigger=PropertyChanged}" FontWeight="Light" Width="190">
+                        <DataGridTextColumn Header="Category" Binding="{Binding Category}" FontWeight="Light" Width="190">
                         </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
