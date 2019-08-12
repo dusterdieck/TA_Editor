@@ -584,7 +584,7 @@ namespace TA_Editor
             List<string> fileList = new List<string>();
             foreach (string folder in folders)
             {
-                if (Regex.IsMatch(Path.GetFileName(folder), @"^units[a-z]$", RegexOptions.IgnoreCase))
+                if (Regex.IsMatch(Path.GetFileName(folder), @"^units[a-z]?$", RegexOptions.IgnoreCase))
                 {
                     unitFolders.Add(folder);
                 }
