@@ -221,12 +221,12 @@ namespace TA_Editor
             }
 
             var tedClass = unitInfo.GetStringOrDefault("TEDCLASS") ?? "";
-            unit.Vehcl = tedClass.Contains("TANK");
+            unit.Vehcl = tedClass.Contains("VEHICLE") || tedClass.Contains("HOVER") || tedClass.Contains("TANK");
             unit.KBot = tedClass.Contains("KBOT") || tedClass.Contains("COMMANDER");
-            unit.Building = new[] { "ENERGY", "METAL", "PLANT", "FORT", "SPECIAL" }.Any(x => tedClass.Contains(x));
+            unit.Building = new[] { "ENERGY", "METAL", "PLANT", "FORT", "SPECIAL", "FACTORY", "MINE", "UTILITY" }.Any(x => tedClass.Contains(x));
             unit.Ship = tedClass.Contains("SHIP") || tedClass.Contains("WATER");
             unit.Cnstr = tedClass.Contains("CNSTR") || (unit.Category != null && unit.Category.Contains("CNSTR"));
-            unit.Air = tedClass.Contains("VTOL");
+            unit.Air = tedClass.Contains("AIR") || tedClass.Contains("VTOL");
 
             unit.Weapons = new List<string>();
             for (var i = 1; i <= 5; ++i)
