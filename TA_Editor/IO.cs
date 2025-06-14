@@ -227,7 +227,7 @@ namespace TA_Editor
             unit.Air = tedClass.Contains("AIR") || tedClass.Contains("VTOL");
             unit.Ship = tedClass.Contains("SHIP") || tedClass.Contains("WATER");
             unit.Hover = tedClass.Contains("HOVER") || (unit.Category != null && unit.Category.Contains("HOVER"));
-            unit.Cnstr = tedClass.Contains("CNSTR") || (unit.Category != null && unit.Category.Contains("CNSTR"));
+            unit.Cnstr = tedClass.Contains("CNSTR") || (unit.Category != null && (unit.Category.Contains("CNSTR") || unit.Category.Contains("CONSTR")));
 
             unit.Lab = tedClass.Contains("LAB") || tedClass.Contains("PLANT") || tedClass.Contains("FACTORY");
             unit.Resource = tedClass.Contains("RESOURCE") || tedClass.Contains("METAL") || tedClass.Contains("ENERGY");
