@@ -84,8 +84,14 @@ namespace TA_Editor
         private bool m_Air;
         private bool m_Ship;
         private bool m_Cnstr;
-        private bool m_Building;
-        
+        private bool m_Defense; // Renamed from Building
+        private bool m_Hover;
+        private bool m_Resource;
+        private bool m_Utility;
+        private bool m_Special;
+        private bool m_Lab;
+        private bool m_Mission;
+
         public bool Vehcl
         {
             get => this.m_Vehcl;
@@ -136,13 +142,73 @@ namespace TA_Editor
                 this.NotifyPropertyChanged();
             }
         }
-        public bool Building
+        public bool Defense // Renamed from Building
         {
-            get => this.m_Building;
+            get => this.m_Defense;
             set
             {
-                if (this.m_Building == value) return;
-                this.m_Building = value;
+                if (this.m_Defense == value) return;
+                this.m_Defense = value;
+                this.NotifyPropertyChanged();
+            }
+        }
+        public bool Hover
+        {
+            get => this.m_Hover;
+            set
+            {
+                if (this.m_Hover == value) return;
+                this.m_Hover = value;
+                this.NotifyPropertyChanged();
+            }
+        }
+        public bool Resource
+        {
+            get => this.m_Resource;
+            set
+            {
+                if (this.m_Resource == value) return;
+                this.m_Resource = value;
+                this.NotifyPropertyChanged();
+            }
+        }
+        public bool Utility
+        {
+            get => this.m_Utility;
+            set
+            {
+                if (this.m_Utility == value) return;
+                this.m_Utility = value;
+                this.NotifyPropertyChanged();
+            }
+        }
+        public bool Special
+        {
+            get => this.m_Special;
+            set
+            {
+                if (this.m_Special == value) return;
+                this.m_Special = value;
+                this.NotifyPropertyChanged();
+            }
+        }
+        public bool Lab
+        {
+            get => this.m_Lab;
+            set
+            {
+                if (this.m_Lab == value) return;
+                this.m_Lab = value;
+                this.NotifyPropertyChanged();
+            }
+        }
+        public bool Mission
+        {
+            get => this.m_Mission;
+            set
+            {
+                if (this.m_Mission == value) return;
+                this.m_Mission = value;
                 this.NotifyPropertyChanged();
             }
         }
@@ -422,9 +488,15 @@ namespace TA_Editor
             this.Vehcl = true;
             this.KBot = true;
             this.Ship = true;
+            this.Hover = true;
             this.Cnstr = true;
-            this.Building = true;
             this.Air = true;
+            this.Lab = true;
+            this.Resource = true;
+            this.Defense = true;
+            this.Utility = true;
+            this.Special = true;
+            this.Mission = true;
             this.UseFilters = true;
             this.FilterWeaponsForWords = false;
             this.ViewAllColumns = true;
@@ -544,7 +616,8 @@ namespace TA_Editor
                 else
                     return false;
 
-                if (this.KBot && fbi.KBot || this.Vehcl && fbi.Vehcl || this.Air && fbi.Air || this.Ship && fbi.Ship || this.Cnstr && fbi.Cnstr || this.Building && fbi.Building)
+                if (this.KBot && fbi.KBot || this.Vehcl && fbi.Vehcl || this.Air && fbi.Air || this.Ship && fbi.Ship || this.Hover && fbi.Hover || this.Cnstr && fbi.Cnstr ||
+                    this.Lab && fbi.Lab || this.Resource && fbi.Resource || this.Defense && fbi.Defense || this.Utility && fbi.Utility || this.Special && fbi.Special || this.Mission && fbi.Mission)
                 {
                 }
                 else

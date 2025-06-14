@@ -8,16 +8,16 @@
         Title="Total Annihilation Units and Weapons Editor" Height="808" Width="1360" MinHeight="800" MinWidth="1360" Background="#8996AF">
     <Window.Resources>
         <Style x:Key="CustomCellStyle" TargetType="DataGridCell" BasedOn="{StaticResource {x:Type DataGridCell}}">
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding Path=Content.Text, Mode=OneWay, RelativeSource={RelativeSource Self}}" Value="0">
-                        <Setter Property="Opacity" Value="0.5"/>
-                    </DataTrigger>
-                    <Trigger Property="IsSelected" Value="true">
-                        <Setter Property="Background" Value="OliveDrab"></Setter>
-                    </Trigger>
-                </Style.Triggers>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=Content.Text, Mode=OneWay, RelativeSource={RelativeSource Self}}" Value="0">
+                    <Setter Property="Opacity" Value="0.5"/>
+                </DataTrigger>
+                <Trigger Property="IsSelected" Value="true">
+                    <Setter Property="Background" Value="OliveDrab"></Setter>
+                </Trigger>
+            </Style.Triggers>
             <Setter Property="ToolTip" Value="{Binding ID}"></Setter>
-            </Style>
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -28,7 +28,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Border BorderThickness="1" Width="1400" Margin="0,4,0,0" Height="94" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Grid>
+            <Grid Margin="0,0,0,-1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -43,7 +43,7 @@
                         <Button Width="80" Margin="2,6,4,6" VerticalAlignment="Top" Height="20" Content="Select Folder" Command="{x:Static local:TaCommands.SelectFolderCommand}" ToolTip="Select the extracted .hpi, .gp3 or .ufo folder containing the UNITS and WEAPONS folders."></Button>
                     </StackPanel>
                 </StackPanel>
-                
+
                 <StackPanel Orientation="Vertical" Margin="6,0,0,4" VerticalAlignment="Bottom" Background="#B7D1E2" HorizontalAlignment="Left">
                     <StackPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
                         <TextBlock Text="Mass cell editing"></TextBlock>
@@ -70,31 +70,37 @@
                     <Button Margin="4,0,4,4" Width="120" Height="20" Content="Clear all" Command="{x:Static local:TaCommands.ClearAllDataCommand}"
                             ToolTip="Clears all tables and resets the filters. Does not save anything. Unsaved data will be lost!"></Button>
                 </StackPanel>
-                
+
                 <!-- Filters -->
-                <StackPanel Grid.Column="2" Orientation="Vertical" Margin="8,4,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#B7D1E2">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock Text="Filters"></TextBlock>
+                <StackPanel Grid.Column="2" Orientation="Vertical" Margin="8,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Background="#B7D1E2" Height="84">
+
+                    <StackPanel Orientation="Horizontal" Margin="2,2,0,0" Height="18" Visibility="{Binding FBI}">
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="18" Content="Arm" Background="#660000FF" IsChecked="{Binding Arm}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="18" Content="Core" Background="#77FF0000" IsChecked="{Binding Core}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                        <CheckBox Width="52" Margin="58,0,0,0" Height="18" Content="Lvl 1" IsChecked="{Binding Lvl1}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                        <CheckBox Width="52" Margin="4,0,0,0" Height="18" Content="Lvl 2" IsChecked="{Binding Lvl2}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="18" Content="Lvl 3+" IsChecked="{Binding Lvl3}" IsEnabled="{Binding UseFilters}"></CheckBox>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="2,2,0,0" Height="20" Visibility="{Binding FBI}">
-                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Arm" Background="#660000FF" IsChecked="{Binding Arm}" IsEnabled="{Binding UseFilters}"></CheckBox>
-                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Core" Background="#77FF0000" IsChecked="{Binding Core}" IsEnabled="{Binding UseFilters}"></CheckBox>
-                        <CheckBox Width="50" Margin="58,0,0,0" Height="20" Content="Lvl 1" IsChecked="{Binding Lvl1}" IsEnabled="{Binding UseFilters}"></CheckBox>
-                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Lvl 2" IsChecked="{Binding Lvl2}" IsEnabled="{Binding UseFilters}"></CheckBox>
-                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Lvl 3+" IsChecked="{Binding Lvl3}" IsEnabled="{Binding UseFilters}"></CheckBox>
-                        <CheckBox Width="17" Margin="3,-38,0,0" Height="20" IsChecked="{Binding UseFilters}" BorderThickness="2" BorderBrush="Black" ToolTip="Enable/Disable filters - disable filters if the files use other factions than Arm or Core or if they have their own TEDclasses"></CheckBox>
+                    <StackPanel Orientation="Horizontal" Margin="2,2,0,0" Height="18" Visibility="{Binding FBI}">
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="18" Content="KBot" IsChecked="{Binding KBot}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="18" Content="Vehcl" IsChecked="{Binding Vehcl}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="18" Content="Air" IsChecked="{Binding Air}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                        <CheckBox Width="52" Margin="4,0,0,0" Height="18" Content="Ship" IsChecked="{Binding Ship}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                        <CheckBox Width="52" Margin="4,0,0,0" Height="18" Content="Hover" IsChecked="{Binding Hover}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                        <CheckBox Width="65" Margin="4,0,4,0" Height="18" Content="Cnstr" IsChecked="{Binding Cnstr}" IsEnabled="{Binding UseFilters}"></CheckBox>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="2,2,0,0" Height="20" Visibility="{Binding FBI}">
-                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="KBot" IsChecked="{Binding KBot}" IsEnabled="{Binding UseFilters}"></CheckBox>
-                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Vehcl" IsChecked="{Binding Vehcl}" IsEnabled="{Binding UseFilters}"></CheckBox>
-                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Air" IsChecked="{Binding Air}" IsEnabled="{Binding UseFilters}"></CheckBox>
-                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Ship" IsChecked="{Binding Ship}" IsEnabled="{Binding UseFilters}"></CheckBox>
-                        <CheckBox Width="50" Margin="4,0,0,0" Height="20" Content="Cnstr" IsChecked="{Binding Cnstr}" IsEnabled="{Binding UseFilters}"></CheckBox>
-                        <CheckBox Width="65" Margin="4,0,4,0" Height="20" Content="Building" IsChecked="{Binding Building}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                    <StackPanel Orientation="Horizontal" Margin="2,2,0,0" Height="18" Visibility="{Binding FBI}">
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="18" Content="Lab" IsChecked="{Binding Lab}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="18" Content="Resrc" IsChecked="{Binding Resource}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                        <CheckBox Width="50" Margin="4,0,0,0" Height="18" Content="Dfens" IsChecked="{Binding Defense}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                        <CheckBox Width="52" Margin="4,0,0,0" Height="18" Content="Utility" IsChecked="{Binding Utility}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                        <CheckBox Width="52" Margin="4,0,0,0" Height="18" Content="Specl" IsChecked="{Binding Special}" IsEnabled="{Binding UseFilters}"></CheckBox>
+                        <CheckBox Width="65" Margin="4,0,4,0" Height="18" Content="Mission" IsChecked="{Binding Mission}" IsEnabled="{Binding UseFilters}"></CheckBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-2,0,2" Height="24">
-                        <TextBlock Margin="8,0,0,0" Height="20" Width="30" Text="Filter" ToolTip="Search for the specific text in the name or description (if available). You can use blank as 'or'."/>
-                        <TextBox Margin="4,0" Width="172" Height="20" Text="{Binding SearchText}" ToolTip="Search for the specific text in the name or description (if available). You can use blank as 'or'."/>
+                        <CheckBox Width="17" Margin="5,0,0,0" Height="18" IsChecked="{Binding UseFilters}" BorderThickness="2" BorderBrush="Black" ToolTip="Enable/Disable filters - disable filters if the files use other factions than Arm or Core or if they have their own TEDclasses"></CheckBox>
+                        <TextBlock Margin="4,0,0,0" Height="20" Width="30" Text="Filter" ToolTip="Search for the specific text in the name or description (if available). You can use blank as 'or'."/>
+                        <TextBox Margin="4,0" Width="155" Height="20" Text="{Binding SearchText}" ToolTip="Search for the specific text in the name or description (if available). You can use blank as 'or'."/>
                         <Button x:Name="m_FilterUnits" Margin="0,0,4,0" Width="60" Height="20" Content="Units" Command="{x:Static local:TaCommands.FilterUnitsCommand}" ToolTip="Filters the units list depending on the set filters. The weapon list will be updatet appropriately to show only weapons used by these units."></Button>
                         <Button x:Name="m_FilterWeapons" Margin="0,0,4,0" Width="60" Height="20" Content="Weapons" Command="{x:Static local:TaCommands.FilterWeaponsCommand}" ToolTip="Filters the weapons list. Only weapons associated to a filtered units and containing a search text word (if entered) will be shown."></Button>
                     </StackPanel>

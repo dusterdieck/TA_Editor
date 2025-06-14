@@ -220,7 +220,13 @@ namespace TA_Editor
             this.UIModel.Ship = true;
             this.UIModel.Cnstr = true;
             this.UIModel.Vehcl = true;
-            this.UIModel.Building = true;
+            this.UIModel.Hover = true;
+            this.UIModel.Lab = true;
+            this.UIModel.Resource = true;
+            this.UIModel.Utility = true;
+            this.UIModel.Defense = true;
+            this.UIModel.Special = true;
+            this.UIModel.Mission = true;
             this.UIModel.Lvl1 = true;
             this.UIModel.Lvl2 = true;
             this.UIModel.Lvl3 = true;

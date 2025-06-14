@@ -221,12 +221,20 @@ namespace TA_Editor
             }
 
             var tedClass = unitInfo.GetStringOrDefault("TEDCLASS") ?? "";
-            unit.Vehcl = tedClass.Contains("VEHICLE") || tedClass.Contains("HOVER") || tedClass.Contains("TANK");
+            
             unit.KBot = tedClass.Contains("KBOT") || tedClass.Contains("COMMANDER");
-            unit.Building = new[] { "ENERGY", "METAL", "PLANT", "FORT", "SPECIAL", "FACTORY", "MINE", "UTILITY" }.Any(x => tedClass.Contains(x));
-            unit.Ship = tedClass.Contains("SHIP") || tedClass.Contains("WATER");
-            unit.Cnstr = tedClass.Contains("CNSTR") || (unit.Category != null && unit.Category.Contains("CNSTR"));
+            unit.Vehcl = tedClass.Contains("VEHICLE") || tedClass.Contains("TANK");
             unit.Air = tedClass.Contains("AIR") || tedClass.Contains("VTOL");
+            unit.Ship = tedClass.Contains("SHIP") || tedClass.Contains("WATER");
+            unit.Hover = tedClass.Contains("HOVER") || (unit.Category != null && unit.Category.Contains("HOVER"));
+            unit.Cnstr = tedClass.Contains("CNSTR") || (unit.Category != null && unit.Category.Contains("CNSTR"));
+
+            unit.Lab = tedClass.Contains("LAB") || tedClass.Contains("PLANT") || tedClass.Contains("FACTORY");
+            unit.Resource = tedClass.Contains("RESOURCE") || tedClass.Contains("METAL") || tedClass.Contains("ENERGY");
+            unit.Defense = tedClass.Contains("FORT") || tedClass.Contains("MINE");
+            unit.Utility = tedClass.Contains("UTILITY");
+            unit.Special = tedClass.Contains("SPECIAL");
+            unit.Mission = tedClass.Contains("MISSION");
 
             unit.Weapons = new List<string>();
             for (var i = 1; i <= 5; ++i)
